@@ -68,3 +68,5 @@ global using MVFC.Connectors.Conversores.DictionaryApi.Modelos;
 global using MVFC.Connectors.Conversores.DictionaryApi.Modelos.Extensoes;
 global using MVFC.Connectors.Developer.DisifyEmail;
 global using MVFC.Connectors.Developer.DisifyEmail.Extensoes;
+global using MVFC.Connectors.Geo.GeoNet;
+global using MVFC.Connectors.Geo.GeoNet.Extensoes;
