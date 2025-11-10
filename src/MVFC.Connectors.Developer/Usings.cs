@@ -7,3 +7,4 @@ global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Request;
 global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Dtos;
 global using MVFC.Connectors.Developer.IpApi.Modelos;
 global using MVFC.Connectors.Developer.KeyVal.Modelos;
+global using MVFC.Connectors.Developer.DisifyEmail.Modelos.Dtos;

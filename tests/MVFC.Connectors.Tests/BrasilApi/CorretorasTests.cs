@@ -13,7 +13,7 @@ public sealed class CorretorasTests
     public async Task RecuperarTodasAsCorretoras_DeveRetornarItens(ICorretoraBrasilApi api)
     {
         // Arrange & Act
-        var corretoras = await api.GetCorretorasAsync();
+        var corretoras = await api.ObterCorretorasAsync();
 
         // Assert
         corretoras.IsSuccessful.Should().BeTrue();
@@ -28,7 +28,7 @@ public sealed class CorretorasTests
         const string cnpj = "02332886000104";
 
         // Act
-        var corretora = await api.GetCorretoraByCnpjAsync(cnpj);
+        var corretora = await api.ObterCorretoraPorCnpjAsync(cnpj);
 
         // Assert
         corretora.IsSuccessful.Should().BeTrue();

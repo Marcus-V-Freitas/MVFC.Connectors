@@ -1,6 +1,6 @@
 namespace MVFC.Connectors.BrasilApi.CNPJ.Modelos.Dtos;
 
-public sealed record CnpjDto(
+public sealed record EmpresaCnpjDto(
     [property: JsonPropertyName("uf")] string Uf,
     [property: JsonPropertyName("cep")] string Cep,
     [property: JsonPropertyName("qsa")] IReadOnlyList<QsaDto> Qsa,

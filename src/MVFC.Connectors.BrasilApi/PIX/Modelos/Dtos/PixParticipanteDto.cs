@@ -1,6 +1,6 @@
 ﻿namespace MVFC.Connectors.BrasilApi.PIX.Modelos.Dtos;
 
-public sealed record PixParticipantDto(
+public sealed record PixParticipanteDto(
     [property: JsonPropertyName("ispb")] string Ispb,
     [property: JsonPropertyName("nome")] string Nome,
     [property: JsonPropertyName("nome_reduzido")] string NomeReduzido,

@@ -20,6 +20,8 @@ public sealed class GoogleTradutorTests
         var textoGerado = await api.TraduzirTextoAsync(textoDeEntrada, "en", "pt-br");
 
         // Assert
-        textoGerado.Should().BeEquivalentTo(textoEsperado);
+        textoGerado.IsSuccessStatusCode.Should().BeTrue();
+        textoGerado.Content.Should().NotBeNullOrEmpty();
+        textoGerado.Content.Should().BeEquivalentTo(textoEsperado);
     }
 }

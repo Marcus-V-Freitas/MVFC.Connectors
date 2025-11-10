@@ -1,6 +1,6 @@
-﻿namespace MVFC.Connectors.BrasilApi.Banks.Modelos.Dtos;
+﻿namespace MVFC.Connectors.BrasilApi.Bancos.Modelos.Dtos;
 
-public sealed record BankDto(
+public sealed record BrasilBancoDto(
     [property: JsonPropertyName("ispb")] string Ispb,
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("code")] int? Code,

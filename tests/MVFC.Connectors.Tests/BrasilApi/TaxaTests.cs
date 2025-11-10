@@ -13,7 +13,7 @@ public sealed class TaxaTests
     public async Task RecuperarTodasAsTaxas_DeveRetornarItens(ITaxaBrasilApi api)
     {
         // Arrange & Act
-        var taxas = await api.GetTaxasAsync();
+        var taxas = await api.ObterTaxasAsync();
 
         // Assert
         taxas.IsSuccessful.Should().BeTrue();
@@ -28,7 +28,7 @@ public sealed class TaxaTests
         const string sigla = "IPCA";
 
         // Act
-        var taxa = await api.GetTaxaAsync(sigla);
+        var taxa = await api.ObterTaxaPorSiglaAsync(sigla);
 
         // Assert
         taxa.IsSuccessful.Should().BeTrue();

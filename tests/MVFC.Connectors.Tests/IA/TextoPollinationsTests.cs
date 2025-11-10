@@ -10,7 +10,7 @@ public sealed class TextoPollinationsTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GerarTexto_Console_DeveRetornarNaoVazioAsync(ITextoPollinationsApi api)
+    public async Task GerarTexto_DeveRetornarNaoVazioAsync(ITextoPollinationsApi api)
     {
         // Arrange
         const string prompt = "Quem é Darth Vader?";

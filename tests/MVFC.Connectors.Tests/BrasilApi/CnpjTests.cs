@@ -16,7 +16,7 @@ public sealed class CnpjTests
         const string cnpj = "07174743000399";
 
         // Act
-        var resultado = await api.GetCNPJAsync(cnpj);
+        var resultado = await api.ObterEmpresaPorCnpjAsync(cnpj);
 
         // Assert
         resultado.IsSuccessful.Should().BeTrue();

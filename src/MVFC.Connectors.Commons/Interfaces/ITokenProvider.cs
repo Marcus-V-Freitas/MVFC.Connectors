@@ -2,7 +2,7 @@
 
 public interface ITokenProvider
 {
-    string TokenType => "Bearer";
+    string TipoDeToken => "Bearer";
 
-    Task<string> GetTokenAsync(CancellationToken cancellationToken);
+    Task<string> ObterTokenAsync(CancellationToken cancellationToken);
 }

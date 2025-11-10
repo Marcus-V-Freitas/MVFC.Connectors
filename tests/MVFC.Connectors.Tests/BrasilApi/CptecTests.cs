@@ -10,10 +10,10 @@ public sealed class CptecBrasilApiTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GetCidadesAsync_DeveRetornarItens(ICptecBrasilApi api)
+    public async Task ObterCidadesAsync_DeveRetornarItens(ICptecBrasilApi api)
     {
         // Arrange & Act
-        var cidades = await api.GetCidadesAsync();
+        var cidades = await api.ObterCidadesAsync();
 
         // Assert
         cidades.IsSuccessful.Should().BeTrue();
@@ -23,13 +23,13 @@ public sealed class CptecBrasilApiTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GetCidadesByNameAsync_DeveRetornarItens(ICptecBrasilApi api)
+    public async Task ObterCidadesPorNomeAsync_DeveRetornarItens(ICptecBrasilApi api)
     {
         // Arrange
-        const string cityName = "São Paulo";
+        const string nomeDaCidade = "São Paulo";
 
         // Act
-        var cidades = await api.GetCidadesByNameAsync(cityName);
+        var cidades = await api.ObterCidadesPorNomeAsync(nomeDaCidade);
 
         // Assert
         cidades.IsSuccessful.Should().BeTrue();
@@ -39,13 +39,13 @@ public sealed class CptecBrasilApiTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GetPrevisaoByCityCodeAsync_Console_DeveRetornarItem(ICptecBrasilApi api)
+    public async Task ObterPrevisaoPorCodigoDaCidadeAsync_Console_DeveRetornarItem(ICptecBrasilApi api)
     {
-        // Arrange &
-        const int cityCode = 244; // São Paulo
+        // Arrange
+        const int codigoDaCidade = 244; // São Paulo
 
         // Act
-        var previsao = await api.GetPrevisaoByCityCodeAsync(cityCode);
+        var previsao = await api.ObterPrevisaoPorCodigoDaCidadeAsync(codigoDaCidade);
 
         // Assert
         previsao.IsSuccessful.Should().BeTrue();
@@ -54,14 +54,14 @@ public sealed class CptecBrasilApiTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GetPrevisaoByCityCodeAndDaysAsync_Console_DeveRetornarItem(ICptecBrasilApi api)
+    public async Task ObterPrevisaoPorCodigoDaCidadeEDiasAsync_DeveRetornarItem(ICptecBrasilApi api)
     {
         // Arrange
-        const int cityCode = 244;
-        const int days = 3;
+        const int codigoDaCidade = 244;
+        const int dias = 3;
 
         // Act
-        var previsao = await api.GetPrevisaoByCityCodeAndDaysAsync(cityCode, days);
+        var previsao = await api.ObterPrevisaoPorCodigoDaCidadeEDiasAsync(codigoDaCidade, dias);
 
         // Assert
         previsao.IsSuccessful.Should().BeTrue();
@@ -70,13 +70,13 @@ public sealed class CptecBrasilApiTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task GetOndasByCityCodeAsync_Console_DeveRetornarItem(ICptecBrasilApi api)
+    public async Task ObterOndasPorCodigoDaCidadeAsync_DeveRetornarItem(ICptecBrasilApi api)
     {
         // Arrange
-        const int cityCode = 241;
+        const int codigoDaCidade = 241;
 
         // Act
-        var ondas = await api.GetOndasByCityCodeAsync(cityCode);
+        var ondas = await api.ObterOndasPorCodigoDaCidadeAsync(codigoDaCidade);
 
         // Assert
         ondas.IsSuccessful.Should().BeTrue();

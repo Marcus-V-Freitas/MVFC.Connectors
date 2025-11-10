@@ -3,23 +3,23 @@
 public interface ICptecBrasilApi : IConnectorApi
 {
     [Get("/cptec/v1/cidade")]
-    Task<ApiResponse<IReadOnlyList<CptecCidadeDto>>> GetCidadesAsync();
+    Task<ApiResponse<IReadOnlyList<CptecCidadeDto>>> ObterCidadesAsync();
 
-    [Get("/cptec/v1/cidade/{cityName}")]
-    Task<ApiResponse<IReadOnlyList<CptecCidadeDto>>> GetCidadesByNameAsync(string cityName);
+    [Get("/cptec/v1/cidade/{nomeDaCidade}")]
+    Task<ApiResponse<IReadOnlyList<CptecCidadeDto>>> ObterCidadesPorNomeAsync(string nomeDaCidade);
 
-    [Get("/cptec/v1/clima/aeroporto/{icaoCode}")]
-    Task<ApiResponse<CptecClimaDto>> GetClimaByIcaoCodeAsync(string icaoCode);
+    [Get("/cptec/v1/clima/aeroporto/{codigoClima}")]
+    Task<ApiResponse<CptecClimaDto>> ObterClimaPorCodigoAsync(string codigoClima);
 
-    [Get("/cptec/v1/clima/previsao/{cityCode}")]
-    Task<ApiResponse<CptecPrevisaoDto<CptecClimaCidadeDto>>> GetPrevisaoByCityCodeAsync(int cityCode);
+    [Get("/cptec/v1/clima/previsao/{codigoDaCidade}")]
+    Task<ApiResponse<CptecPrevisaoDto<CptecClimaCidadeDto>>> ObterPrevisaoPorCodigoDaCidadeAsync(int codigoDaCidade);
 
-    [Get("/cptec/v1/clima/previsao/{cityCode}/{days}")]
-    Task<ApiResponse<CptecPrevisaoDto<CptecClimaCidadeDto>>> GetPrevisaoByCityCodeAndDaysAsync(int cityCode, int days);
+    [Get("/cptec/v1/clima/previsao/{codigoDaCidade}/{dias}")]
+    Task<ApiResponse<CptecPrevisaoDto<CptecClimaCidadeDto>>> ObterPrevisaoPorCodigoDaCidadeEDiasAsync(int codigoDaCidade, int dias);
 
-    [Get("/cptec/v1/ondas/{cityCode}")]
-    Task<ApiResponse<CptecPrevisaoDto<CptecOndaCidadeDto>>> GetOndasByCityCodeAsync(int cityCode);
+    [Get("/cptec/v1/ondas/{codigoDaCidade}")]
+    Task<ApiResponse<CptecPrevisaoDto<CptecOndaCidadeDto>>> ObterOndasPorCodigoDaCidadeAsync(int codigoDaCidade);
 
-    [Get("/cptec/v1/ondas/{cityCode}/{days}")]
-    Task<ApiResponse<CptecPrevisaoDto<CptecOndaCidadeDto>>> GetOndasByCityCodeAndDaysAsync(int cityCode, int days);
+    [Get("/cptec/v1/ondas/{codigoDaCidade}/{dias}")]
+    Task<ApiResponse<CptecPrevisaoDto<CptecOndaCidadeDto>>> ObterOndasPorCodigoDaCidadeEDiasAsync(int codigoDaCidade, int dias);
 }

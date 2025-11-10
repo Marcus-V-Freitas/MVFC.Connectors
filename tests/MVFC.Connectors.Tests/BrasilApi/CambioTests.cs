@@ -13,7 +13,7 @@ public sealed class CambioTests
     public async Task RecuperarTodasAsMoedas_Console_DeveRetornarItens(ICambioBrasilApi api)
     {
         // Arrange & Act
-        var moedas = await api.GetCurrenciesAsync();
+        var moedas = await api.ObterCambiosAsync();
 
         // Assert
         moedas.IsSuccessful.Should().BeTrue();
@@ -31,7 +31,7 @@ public sealed class CambioTests
         const string data = "2024-01-02";
 
         // & Act
-        var cotacao = await api.GetCurrencyQuotationByDateAsync(moeda, data);
+        var cotacao = await api.ObterCambioPorMoedaEDataAsync(moeda, data);
 
         // Assert
         cotacao.IsSuccessful.Should().BeTrue();

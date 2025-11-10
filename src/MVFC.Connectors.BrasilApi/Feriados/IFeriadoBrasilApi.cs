@@ -3,5 +3,5 @@
 public interface IFeriadoBrasilApi : IConnectorApi
 {
     [Get("/feriados/v1/{ano}")]
-    Task<ApiResponse<IReadOnlyList<FeriadoDto>>> GetFeriadosByAnoAsync(int ano);
+    Task<ApiResponse<IReadOnlyList<FeriadoDto>>> ObterFeriadosPorAnoAsync(int ano);
 }

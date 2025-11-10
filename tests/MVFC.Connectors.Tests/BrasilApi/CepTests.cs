@@ -18,7 +18,7 @@ public sealed class CepTests
         const string version = "v1";
 
         // Act
-        var resultado = await api.GetCepAsync(cep, version);
+        var resultado = await api.ObterCepPorNumeroAsync(cep, version);
 
         // Assert
         resultado.IsSuccessful.Should().BeTrue();
@@ -40,7 +40,7 @@ public sealed class CepTests
         const string version = "v2";
 
         // Act
-        var resultado = await api.GetCepAsync(cep, version);
+        var resultado = await api.ObterCepPorNumeroAsync(cep, version);
 
         // Assert
         resultado.IsSuccessful.Should().BeTrue();

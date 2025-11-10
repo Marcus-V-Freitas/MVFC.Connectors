@@ -2,6 +2,6 @@
 
 public interface IDddBrasilApi : IConnectorApi
 {
-    [Get("/ddd/v1/{ddd}")]
-    Task<ApiResponse<DddInfoDto>> GetDddInfoAsync(string ddd);
+    [Get("/ddd/v1/{codigoDdd}")]
+    Task<ApiResponse<DddInfoDto>> ObterDddInfoPorCodigoAsync(string codigoDdd);
 }

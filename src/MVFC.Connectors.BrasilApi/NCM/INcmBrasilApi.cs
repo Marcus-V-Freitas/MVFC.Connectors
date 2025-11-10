@@ -3,11 +3,11 @@
 public interface INcmBrasilApi : IConnectorApi
 {
     [Get("/ncm/v1")]
-    Task<ApiResponse<IReadOnlyList<NcmDto>>> GetNcmsAsync();
+    Task<ApiResponse<IReadOnlyList<NcmDto>>> ObterNcmsAsync();
 
-    [Get("/ncm/v1?search={code}")]
-    Task<ApiResponse<IReadOnlyList<NcmDto>>> GetNcmsBySearchCodeAsync(string code);
+    [Get("/ncm/v1?search={codigo}")]
+    Task<ApiResponse<IReadOnlyList<NcmDto>>> ObterNcmsPorCodigoAsync(string codigo);
 
-    [Get("/ncm/v1/{code}")]
-    Task<ApiResponse<NcmDto>> GetNcmByCodeAsync(string code);
+    [Get("/ncm/v1/{codigo}")]
+    Task<ApiResponse<NcmDto>> ObterNcmPorCodigoAsync(string codigo);
 }

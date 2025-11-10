@@ -2,7 +2,7 @@
 global using Refit;
 global using MVFC.Connectors.BrasilApi.Feriados.Modelos;
 global using System.Text.Json.Serialization;
-global using MVFC.Connectors.BrasilApi.Banks.Modelos.Dtos;
+global using MVFC.Connectors.BrasilApi.Bancos.Modelos.Dtos;
 global using MVFC.Connectors.BrasilApi.Cambio.Modelos.Dtos;
 global using MVFC.Connectors.BrasilApi.CEP.Modelos.Dtos;
 global using MVFC.Connectors.BrasilApi.CNPJ.Enums;

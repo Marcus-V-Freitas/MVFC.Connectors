@@ -3,5 +3,5 @@
 public interface ICepBrasilApi : IConnectorApi
 {
     [Get("/cep/{version}/{cep}")]
-    Task<ApiResponse<CepDto>> GetCepAsync(string cep, string version = "v1");
+    Task<ApiResponse<CepDto>> ObterCepPorNumeroAsync(string cep, string version = "v1");
 }

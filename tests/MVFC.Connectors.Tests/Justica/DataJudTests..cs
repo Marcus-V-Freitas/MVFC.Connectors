@@ -10,7 +10,7 @@ public sealed class DataJudTests
 
     [Theory]
     [MemberData(nameof(Apis))]
-    public async Task ObterDataJudProcesso_Console_DeveRetornarItemAsync(IDataJudApi api)
+    public async Task ObterDataJudProcesso_DeveRetornarItemAsync(IDataJudApi api)
     {
         // Arrange
         const DataJudTribunal tribunal = DataJudTribunal.TRF1;

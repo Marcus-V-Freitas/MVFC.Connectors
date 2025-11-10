@@ -1,29 +1,22 @@
-﻿////namespace MVFC.Connectors.Tests.BrasilApi;
+﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-////public sealed class PixParticipantTests
-////{
-////    private readonly IPixParticipantBrasilApi _brasilApiConsole = PixParticipantBrasilApiExtensoes.ObterPixParticipantBrasilApi();
-////    private readonly IPixParticipantBrasilApi _brasilApiDI = TestsHelpers.ObterApi<IPixParticipantBrasilApi>(s => s.AddPixParticipantBrasilApi());
+public sealed class PixParticipantTests
+{
+    public static TheoryData<IPixParticipantesBrasilApi> Apis =>
+      [
+          PixParticipantesBrasilApiExtensoes.ObterPixParticipanteBrasilApi(),
+          TestsHelpers.ObterApi<IPixParticipantesBrasilApi>(s => s.AddPixParticipanteBrasilApi()),
+       ];
 
-////    [Fact]
-////    public async Task RecuperarPixParticipants_Console_DeveRetornarItem()
-////    {
-////        // Arrange & Act
-////        var pixParticipants = await _brasilApiConsole.GetPixParticipantsAsync();
+    [Theory]
+    [MemberData(nameof(Apis))]
+    public async Task RecuperarPixParticipantes_DeveRetornarItem(IPixParticipantesBrasilApi api)
+    {
+        // Arrange & Act
+        var pixParticipantes = await api.ObterParticipantesPixAsync();
 
-////        // Assert
-////        pixParticipants.IsSuccessful.Should().BeTrue();
-////        pixParticipants.Content.Should().NotBeNull();
-////    }
-
-////    [Fact]
-////    public async Task RecuperarPixParticipants_DI_DeveRetornarItem()
-////    {
-////        // Arrange & Act
-////        var pixParticipants = await _brasilApiDI.GetPixParticipantsAsync();
-
-////        // Assert
-////        pixParticipants.IsSuccessful.Should().BeTrue();
-////        pixParticipants.Content.Should().NotBeNull();
-////    }
-////}
+        // Assert
+        pixParticipantes.IsSuccessful.Should().BeTrue();
+        pixParticipantes.Content.Should().NotBeNull();
+    }
+}

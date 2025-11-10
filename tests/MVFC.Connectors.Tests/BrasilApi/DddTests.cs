@@ -13,10 +13,10 @@ public sealed class DddTests
     public async Task RecuperarDdd_DeveRetornarItens(IDddBrasilApi api)
     {
         // Arrange &
-        const string ddd = "55";
+        const string codigoDdd = "55";
 
         // Act
-        var dddInfo = await api.GetDddInfoAsync(ddd);
+        var dddInfo = await api.ObterDddInfoPorCodigoAsync(codigoDdd);
 
         // Assert
         dddInfo.IsSuccessful.Should().BeTrue();

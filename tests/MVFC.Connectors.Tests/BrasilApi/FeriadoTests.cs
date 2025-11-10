@@ -16,7 +16,7 @@ public sealed class FeriadoTests
         const int ano = 2025;
 
         // & Act
-        var feriados = await api.GetFeriadosByAnoAsync(ano);
+        var feriados = await api.ObterFeriadosPorAnoAsync(ano);
 
         // Assert
         feriados.IsSuccessful.Should().BeTrue();

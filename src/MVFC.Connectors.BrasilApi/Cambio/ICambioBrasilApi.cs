@@ -3,8 +3,8 @@
 public interface ICambioBrasilApi : IConnectorApi
 {
     [Get("/cambio/v1/moedas")]
-    Task<ApiResponse<IReadOnlyList<CambioDto>>> GetCurrenciesAsync();
+    Task<ApiResponse<IReadOnlyList<CambioDto>>> ObterCambiosAsync();
 
     [Get("/cambio/v1/cotacao/{moeda}/{data}")]
-    Task<ApiResponse<CotacaoMoedaDto>> GetCurrencyQuotationByDateAsync(string moeda, string data);
+    Task<ApiResponse<CotacaoMoedaDto>> ObterCambioPorMoedaEDataAsync(string moeda, string data);
 }
