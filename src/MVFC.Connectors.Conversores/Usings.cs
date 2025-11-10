@@ -1,0 +1,11 @@
+﻿global using Refit;
+global using System.Text.Json.Serialization;
+global using MVFC.Connectors.Conversores.Html2Pdf.Modelos.Request;
+global using Microsoft.Extensions.DependencyInjection;
+global using MVFC.Connectors.Commons.Extensoes;
+global using MVFC.Connectors.Commons.Interfaces;
+global using MVFC.Connectors.Commons.Handlers;
+global using System.Text;
+global using System.Text.Json;
+global using MVFC.Connectors.Commons.Providers;
+global using MVFC.Connectors.Conversores.GoogleTradutor.Handlers;

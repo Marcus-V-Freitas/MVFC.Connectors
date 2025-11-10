@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>0.0.0</Version>
+		<Authors>Marcus Vinicius de Freitas Costa</Authors>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://www.nuget.org/packages/MVFC.Connectors.Developer</PackageProjectUrl>
+		<PackageTags>developer;utilitarios;mvfc;ferramentas;teste</PackageTags>
+		<RepositoryUrl>https://github.com/Marcus-V-Freitas/MVFC.Connectors/tree/master/src/MVFC.Connectors.Developer</RepositoryUrl>
+		<Description>Utilitários e conectores para desenvolvedores, facilitando integrações, testes e depuração nos projetos MVFC.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MVFC.Connectors.Commons\MVFC.Connectors.Commons.csproj" />
+	</ItemGroup>
+
+</Project>

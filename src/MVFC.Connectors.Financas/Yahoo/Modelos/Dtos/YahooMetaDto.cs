@@ -1,0 +1,28 @@
+﻿namespace MVFC.Connectors.Financas.Yahoo.Modelos.Dtos;
+
+public sealed record YahooMetaDto(
+    [property: JsonPropertyName("currency")] string Currency,
+    [property: JsonPropertyName("symbol")] string Symbol,
+    [property: JsonPropertyName("exchangeName")] string ExchangeName,
+    [property: JsonPropertyName("fullExchangeName")] string FullExchangeName,
+    [property: JsonPropertyName("instrumentType")] string InstrumentType,
+    [property: JsonPropertyName("firstTradeDate")] int FirstTradeDate,
+    [property: JsonPropertyName("regularMarketTime")] int RegularMarketTime,
+    [property: JsonPropertyName("hasPrePostMarketData")] bool HasPrePostMarketData,
+    [property: JsonPropertyName("gmtoffset")] int Gmtoffset,
+    [property: JsonPropertyName("timezone")] string Timezone,
+    [property: JsonPropertyName("exchangeTimezoneName")] string ExchangeTimezoneName,
+    [property: JsonPropertyName("regularMarketPrice")] double RegularMarketPrice,
+    [property: JsonPropertyName("fiftyTwoWeekHigh")] double FiftyTwoWeekHigh,
+    [property: JsonPropertyName("fiftyTwoWeekLow")] double FiftyTwoWeekLow,
+    [property: JsonPropertyName("regularMarketDayHigh")] double RegularMarketDayHigh,
+    [property: JsonPropertyName("regularMarketDayLow")] double RegularMarketDayLow,
+    [property: JsonPropertyName("regularMarketVolume")] long RegularMarketVolume,
+    [property: JsonPropertyName("longName")] string LongName,
+    [property: JsonPropertyName("shortName")] string ShortName,
+    [property: JsonPropertyName("chartPreviousClose")] double ChartPreviousClose,
+    [property: JsonPropertyName("priceHint")] int PriceHint,
+    [property: JsonPropertyName("currentTradingPeriod")] YahooTradingPeriodDto CurrentTradingPeriod,
+    [property: JsonPropertyName("dataGranularity")] string DataGranularity,
+    [property: JsonPropertyName("range")] string Range,
+    [property: JsonPropertyName("validRanges")] IReadOnlyList<string> ValidRanges);

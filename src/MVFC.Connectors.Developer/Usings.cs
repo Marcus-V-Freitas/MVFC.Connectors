@@ -1,0 +1,9 @@
+﻿global using MVFC.Connectors.Commons.Interfaces;
+global using Refit;
+global using Microsoft.Extensions.DependencyInjection;
+global using MVFC.Connectors.Commons.Extensoes;
+global using System.Text.Json.Serialization;
+global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Request;
+global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Dtos;
+global using MVFC.Connectors.Developer.IpApi.Modelos;
+global using MVFC.Connectors.Developer.KeyVal.Modelos;

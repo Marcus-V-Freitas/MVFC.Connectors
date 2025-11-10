@@ -1,0 +1,17 @@
+﻿global using Microsoft.Extensions.DependencyInjection;
+global using Refit;
+global using MVFC.Connectors.Commons.Interfaces;
+global using MVFC.Connectors.Commons.Handlers;
+global using MVFC.Connectors.Commons.Providers;
+global using MVFC.Connectors.Commons.Builders;
+global using Microsoft.Extensions.Logging;
+global using MVFC.Connectors.Commons.Settings;
+global using MVFC.Connectors.Commons.Extensoes;
+global using System.Net;
+global using Polly;
+global using Microsoft.Extensions.Http.Resilience;
+global using Polly.CircuitBreaker;
+global using Polly.Retry;
+global using Polly.Timeout;
+global using System.Threading.RateLimiting;
+global using System.Net.Http.Headers;

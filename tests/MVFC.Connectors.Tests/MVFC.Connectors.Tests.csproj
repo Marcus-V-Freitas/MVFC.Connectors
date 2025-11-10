@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="coverlet.collector" Version="6.0.2" />
+		<PackageReference Include="fluentAssertions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+		<PackageReference Include="xunit" Version="2.9.2" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\MVFC.Connectors.BrasilApi\MVFC.Connectors.BrasilApi.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Conversores\MVFC.Connectors.Conversores.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Developer\MVFC.Connectors.Developer.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Financas\MVFC.Connectors.Financas.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Geo\MVFC.Connectors.Geo.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Justica\MVFC.Connectors.Justica.csproj" />
+	</ItemGroup>
+
+</Project>

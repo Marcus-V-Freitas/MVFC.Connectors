@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>0.0.0</Version>
+		<Authors>Marcus Vinicius de Freitas Costa</Authors>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://www.nuget.org/packages/MVFC.Connectors.Geo</PackageProjectUrl>
+		<PackageTags>geo;geolocalizacao;localizacao;mvfc;coordenadas</PackageTags>
+		<RepositoryUrl>https://github.com/Marcus-V-Freitas/MVFC.Connectors/tree/master/src/MVFC.Connectors.Geo</RepositoryUrl>
+		<Description>Conectores para serviços de geolocalização e dados geográficos, incluindo consulta de coordenadas, cidades, estados e outras informações.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MVFC.Connectors.Commons\MVFC.Connectors.Commons.csproj" />
+	</ItemGroup>
+
+</Project>
