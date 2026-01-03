@@ -170,4 +170,7 @@ internal static class HelpersExtensoes
 
         return new DateTime(ano, mes, 1, 0, 0, 0, DateTimeKind.Unspecified);
     }
+
+    internal static StringContent CriarConteudoJson<T>(T obj) =>
+        new(JsonSerializer.Serialize<T>(obj), Encoding.UTF8, "application/json");
 }

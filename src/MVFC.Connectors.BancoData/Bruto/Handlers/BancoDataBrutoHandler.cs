@@ -17,7 +17,7 @@ internal sealed class BancoDataBrutoHandler(IBancoDataScraper scraper) : Delegat
 
         return new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = JsonContent.Create(dadosBrutos)
+            Content = HelpersExtensoes.CriarConteudoJson(dadosBrutos),
         };
     }
 }

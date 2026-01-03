@@ -19,7 +19,7 @@ internal sealed class BancoDataTratadoHandler(IBancoDataScraper scraper, IBancoD
 
         return new HttpResponseMessage(HttpStatusCode.OK)
         {
-            Content = JsonContent.Create(dadosTratados)
+            Content = HelpersExtensoes.CriarConteudoJson(dadosTratados),
         };
     }
 }
