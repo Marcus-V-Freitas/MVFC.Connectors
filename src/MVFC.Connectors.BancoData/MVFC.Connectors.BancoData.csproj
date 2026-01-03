@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net10.0;net9.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<Version>0.0.0</Version>
+	<Authors>Marcus Vinicius de Freitas Costa</Authors>
+	<RepositoryType>git</RepositoryType>
+	<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+	<IsPackable>true</IsPackable>
+	<PackageIcon>icon.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageProjectUrl>https://www.nuget.org/packages/MVFC.Connectors.BancoData</PackageProjectUrl>
+	<PackageTags>bancodata;bancos;conector;api;dados-publicos;mvfc;web-scraping</PackageTags>
+	<RepositoryUrl>https://github.com/Marcus-V-Freitas/MVFC.Connectors.BancoData/tree/master/src/MVFC.Connectors.BancoData</RepositoryUrl>
+	<Description>Conector MVFC para integração com a API BancoData, permitindo consultas a bancos, agências e instituições financeiras do sistema financeiro nacional.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="1.4.*" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.*" />
+  </ItemGroup>
+	
+  <ItemGroup>
+	 <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<None Include="icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MVFC.Connectors.Commons\MVFC.Connectors.Commons.csproj" />
+  </ItemGroup>
+
+</Project>

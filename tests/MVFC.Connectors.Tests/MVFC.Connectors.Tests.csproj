@@ -17,6 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\src\MVFC.Connectors.BancoData\MVFC.Connectors.BancoData.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.BrasilApi\MVFC.Connectors.BrasilApi.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Conversores\MVFC.Connectors.Conversores.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Developer\MVFC.Connectors.Developer.csproj" />

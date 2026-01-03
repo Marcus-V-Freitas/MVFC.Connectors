@@ -70,3 +70,7 @@ global using MVFC.Connectors.Developer.DisifyEmail;
 global using MVFC.Connectors.Developer.DisifyEmail.Extensoes;
 global using MVFC.Connectors.Geo.GeoNet;
 global using MVFC.Connectors.Geo.GeoNet.Extensoes;
+global using MVFC.Connectors.BancoData.Bruto;
+global using MVFC.Connectors.BancoData.Bruto.Extensoes;
+global using MVFC.Connectors.BancoData.Tratado;
+global using MVFC.Connectors.BancoData.Tratado.Extensoes;

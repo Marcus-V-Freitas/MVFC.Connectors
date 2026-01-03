@@ -1,6 +1,6 @@
 ﻿namespace MVFC.Connectors.BrasilApi.Extensoes;
 
-internal static class BrasilExtensoes
+public static class BrasilExtensoes
 {
     private const string URL_BASE = "https://brasilapi.com.br/api";
 
