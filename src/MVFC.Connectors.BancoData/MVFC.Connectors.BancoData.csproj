@@ -14,7 +14,7 @@
 	<PackageProjectUrl>https://www.nuget.org/packages/MVFC.Connectors.BancoData</PackageProjectUrl>
 	<PackageTags>bancodata;bancos;conector;api;dados-publicos;mvfc;web-scraping</PackageTags>
 	<RepositoryUrl>https://github.com/Marcus-V-Freitas/MVFC.Connectors.BancoData/tree/master/src/MVFC.Connectors.BancoData</RepositoryUrl>
-	<Description>Conector MVFC para integração com a API BancoData, permitindo consultas a bancos, agências e instituições financeiras do sistema financeiro nacional.</Description>
+	<Description>Conector MVFC para integração com o BancoData, permitindo consultas a bancos, agências e instituições financeiras do sistema financeiro nacional.</Description>
   </PropertyGroup>
 
   <ItemGroup>

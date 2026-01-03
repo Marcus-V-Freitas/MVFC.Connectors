@@ -4,6 +4,7 @@ Repositório de conectores MVFC para integração com diversos serviços públic
 
 ## Projetos
 
+- [MVFC.Connectors.BancoData](src/MVFC.Connectors.BancoData) — Conector MVFC para integração com o [BancoData](https://bancodata.com.br/), permitindo consultas a bancos, agências e instituições financeiras do sistema financeiro nacional.
 - [MVFC.Connectors.BrasilApi](src/MVFC.Connectors.BrasilApi) — Conectores para a [BrasilAPI](https://brasilapi.com.br/), permitindo acesso a bancos, CEPs, CNPJs, clima, feriados, FIPE, IBGE, ISBN, entre outros dados públicos nacionais.
 - [MVFC.Connectors.Commons](src/MVFC.Connectors.Commons) — Componentes, utilitários e modelos comuns compartilhados entre os conectores, promovendo padronização e reutilização de código.
 - [MVFC.Connectors.Conversores](src/MVFC.Connectors.Conversores) — Conversores para transformação de dados entre diferentes formatos e domínios, facilitando a interoperabilidade entre APIs e conectores.

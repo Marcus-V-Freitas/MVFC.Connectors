@@ -1,6 +1,6 @@
 # MVFC.Connectors.BancoData
 
-Projeto de conector para integração com a API BancoData, permitindo consultas a informações de bancos, agências e instituições financeiras do sistema bancário nacional.
+Projeto de conector para integração com o BancoData, permitindo consultas a informações de bancos, agências e instituições financeiras do sistema bancário nacional.
 
 ## Funcionalidades
 - Consulta de bancos e instituições financeiras.
