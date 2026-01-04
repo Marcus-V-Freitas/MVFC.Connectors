@@ -1,17 +1,17 @@
 # MVFC.Connectors.BancoData
 
-Projeto de conector para integração com o BancoData, permitindo consultas a informações de bancos, agências e instituições financeiras do sistema bancário nacional.
+Projeto de conector para integraÃ§Ã£o com o BancoData, permitindo consultas a informaÃ§Ãµes de bancos, agÃªncias e instituiÃ§Ãµes financeiras do sistema bancÃ¡rio nacional.
 
 ## Funcionalidades
-- Consulta de bancos e instituições financeiras.
-- Consulta de agências bancárias.
+- Consulta de bancos e instituiÃ§Ãµes financeiras.
+- Consulta de agÃªncias bancÃ¡rias.
 - Acesso a dados cadastrais do sistema financeiro.
 
 ## Aviso importante
-Este conector utiliza técnicas de scraping para obter dados do site BancoData. Como o site pode apresentar instabilidade ou mudanças frequentes, é possível ocorrerem problemas de conexão, lentidão ou falhas na obtenção dos dados. Recomenda-se tratar exceções e validar os resultados em produção.
+Este conector utiliza tÃ©cnicas de scraping para obter dados do site BancoData. Como o site pode apresentar instabilidade ou mudanÃ§as frequentes, Ã© possÃ©vel ocorrerem problemas de conexÃ£o, lentidÃ£o ou falhas na obtenÃ§Ã£o dos dados. Recomenda-se tratar exceÃ§Ãµes e validar os resultados em produÃ§Ã£o.
 
 ## Uso
-Inclua este projeto para facilitar integrações com a API BancoData em aplicações .NET.
+Inclua este projeto para facilitar integraÃ§Ãµes com a API BancoData em aplicaÃ§Ãµes .NET.
 
 ## Requisitos
 - .NET SDK
