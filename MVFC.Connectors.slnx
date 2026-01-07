@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MVFC.Connectors.BancoData/MVFC.Connectors.BancoData.csproj" />
+    <Project Path="src/MVFC.Connectors.BrasilApi/MVFC.Connectors.BrasilApi.csproj" />
+    <Project Path="src/MVFC.Connectors.Commons/MVFC.Connectors.Commons.csproj" />
+    <Project Path="src/MVFC.Connectors.Conversores/MVFC.Connectors.Conversores.csproj" />
+    <Project Path="src/MVFC.Connectors.Developer/MVFC.Connectors.Developer.csproj" />
+    <Project Path="src/MVFC.Connectors.Financas/MVFC.Connectors.Financas.csproj" />
+    <Project Path="src/MVFC.Connectors.Geo/MVFC.Connectors.Geo.csproj" />
+    <Project Path="src/MVFC.Connectors.IA/MVFC.Connectors.IA.csproj" />
+    <Project Path="src/MVFC.Connectors.Justica/MVFC.Connectors.Justica.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/MVFC.Connectors.Tests/MVFC.Connectors.Tests.csproj" />
+  </Folder>
+</Solution>
