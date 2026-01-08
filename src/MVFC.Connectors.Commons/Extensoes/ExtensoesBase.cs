@@ -27,6 +27,10 @@ public static class ExtensoesBase
 
         var http = services.AddRefitClient<T>(settings.RefitSettings)
                            .ConfigureHttpClient(h => h.BaseAddress = new Uri(url))
+                           .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
+                           { 
+                               ServerCertificateCustomValidationCallback = (_, _, _, _) => true,
+                           })
                            .AddHttpMessageHandler<LoggingHandler>()
                            .AddHttpMessageHandler<UserAgentHandler>()
                            .AdicionarResiliencia(settings.HttpAction);

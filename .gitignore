@@ -8,6 +8,7 @@ CoverageReport/
 TestResults/
 
 # User-specific files
+*.csproj.user
 *.rsuser
 *.suo
 *.user

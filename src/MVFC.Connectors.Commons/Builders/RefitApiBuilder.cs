@@ -56,7 +56,10 @@ public sealed class RefitApiBuilder<T>
     {
         _handlers.Add(ExtensoesResilience.CriarStandardResilienceHandler(_httpSettings ?? new HttpSettings()));
 
-        HttpMessageHandler innerHandler = new HttpClientHandler();
+        HttpMessageHandler innerHandler = new HttpClientHandler()
+        {
+            ServerCertificateCustomValidationCallback = (_, _, _, _) => true,
+        };
 
         for (var i = _handlers.Count - 1; i >= 0; i--)
         {
