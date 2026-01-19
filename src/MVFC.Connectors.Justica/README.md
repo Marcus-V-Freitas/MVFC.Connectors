@@ -9,6 +9,6 @@ Projeto de conectores para serviços relacionados ao sistema judiciário e dados
 Inclua este projeto para acessar dados e serviços jurídicos.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

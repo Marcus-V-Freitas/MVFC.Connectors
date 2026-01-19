@@ -9,6 +9,6 @@ Projeto de conectores para serviços de Inteligência Artificial, facilitando in
 Utilize este projeto para acessar funcionalidades de IA em suas aplicações.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

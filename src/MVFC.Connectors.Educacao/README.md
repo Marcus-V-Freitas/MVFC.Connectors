@@ -1,6 +1,6 @@
-# MVFC.Connectors.Financas
+# MVFC.Connectors.Educacao
 
-Projeto de conectores para serviços financeiros, facilitando integrações com APIs de bancos, câmbio, cotação de moedas, entre outros.
+Projeto de conectores para integração com sistemas educacionais, facilitando o acesso a APIs e dados escolares.
 
 ## Funcionalidades
 - Consulta de dados financeiros e bancários.

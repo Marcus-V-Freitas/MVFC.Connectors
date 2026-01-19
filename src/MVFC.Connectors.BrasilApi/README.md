@@ -9,6 +9,6 @@ Projeto responsável por integrações com a BrasilAPI, fornecendo conectores pa
 Inclua este projeto como dependência para acessar dados públicos via BrasilAPI.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

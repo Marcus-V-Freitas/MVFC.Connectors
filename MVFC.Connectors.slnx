@@ -5,6 +5,7 @@
     <Project Path="src/MVFC.Connectors.Commons/MVFC.Connectors.Commons.csproj" />
     <Project Path="src/MVFC.Connectors.Conversores/MVFC.Connectors.Conversores.csproj" />
     <Project Path="src/MVFC.Connectors.Developer/MVFC.Connectors.Developer.csproj" />
+    <Project Path="src/MVFC.Connectors.Educacao/MVFC.Connectors.Educacao.csproj" />
     <Project Path="src/MVFC.Connectors.Financas/MVFC.Connectors.Financas.csproj" />
     <Project Path="src/MVFC.Connectors.Geo/MVFC.Connectors.Geo.csproj" />
     <Project Path="src/MVFC.Connectors.IA/MVFC.Connectors.IA.csproj" />

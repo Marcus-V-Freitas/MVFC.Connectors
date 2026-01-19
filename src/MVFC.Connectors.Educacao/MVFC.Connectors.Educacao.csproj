@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>0.0.0</Version>
+		<Authors>Marcus Vinicius de Freitas Costa</Authors>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+		<IsPackable>true</IsPackable>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://www.nuget.org/packages/MVFC.Connectors.Educacao</PackageProjectUrl>
+		<PackageTags>educação;conector;api;integração;escolar;MVFC;dotnet;net10;net9</PackageTags>
+		<RepositoryUrl>https://github.com/Marcus-V-Freitas/MVFC.Connectors/tree/master/src/MVFC.Connectors.Educacao</RepositoryUrl>
+		<Description>Biblioteca .NET para integração com sistemas educacionais, facilitando o acesso a APIs e dados escolares. Suporta múltiplos frameworks e oferece componentes reutilizáveis para cenários de conectividade no setor de educação.</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="icon.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MVFC.Connectors.Commons\MVFC.Connectors.Commons.csproj" />
+	</ItemGroup>
+
+</Project>

@@ -9,6 +9,6 @@ Projeto de conectores para serviços de geolocalização e dados geográficos.
 Inclua este projeto para acessar dados de localização e geografia.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

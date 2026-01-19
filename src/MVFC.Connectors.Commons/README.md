@@ -10,6 +10,6 @@ Projeto com componentes, utilitários e modelos comuns utilizados pelos demais c
 Inclua este projeto como dependência para acessar funcionalidades comuns aos conectores MVFC.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

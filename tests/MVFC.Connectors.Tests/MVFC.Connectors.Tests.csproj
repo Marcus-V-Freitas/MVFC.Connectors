@@ -21,6 +21,7 @@
 		<ProjectReference Include="..\..\src\MVFC.Connectors.BrasilApi\MVFC.Connectors.BrasilApi.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Conversores\MVFC.Connectors.Conversores.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Developer\MVFC.Connectors.Developer.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Educacao\MVFC.Connectors.Educacao.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Financas\MVFC.Connectors.Financas.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Geo\MVFC.Connectors.Geo.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />

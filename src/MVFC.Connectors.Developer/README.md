@@ -9,6 +9,6 @@ Projeto com utilitários e conectores voltados para desenvolvedores, facilitando
 Inclua este projeto para acelerar o desenvolvimento de integrações e testes.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

@@ -14,6 +14,6 @@ Este conector utiliza técnicas de scraping para obter dados do site BancoData. 
 Inclua este projeto para facilitar integrações com a API BancoData em aplicações .NET.
 
 ## Requisitos
-- .NET SDK
+- .NET SDK +9
 
 ---

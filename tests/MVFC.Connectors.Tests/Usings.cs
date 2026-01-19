@@ -79,3 +79,5 @@ global using MVFC.Connectors.Geo.ViaCep.Extensoes;
 global using MVFC.Connectors.Financas.Bcb;
 global using MVFC.Connectors.Financas.Bcb.Extensoes;
 global using MVFC.Connectors.Financas.Bcb.Modelos.Request;
+global using MVFC.Connectors.Educacao.Hipolabs;
+global using MVFC.Connectors.Educacao.Hipolabs.Extensoes;
