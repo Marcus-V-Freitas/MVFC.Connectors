@@ -12,4 +12,3 @@ global using MVFC.Connectors.Financas.Bcb.Modelos.Response;
 global using System.Runtime.Serialization;
 global using MVFC.Connectors.Financas.Bcb.Modelos.Enums;
 global using MVFC.Connectors.Financas.Bcb.Modelos.Dtos.Base;
-global using MVFC.Connectors.Financas.Bcb.Modelos.QueryStrings;
