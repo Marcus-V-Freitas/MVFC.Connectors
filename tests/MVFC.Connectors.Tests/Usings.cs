@@ -74,3 +74,8 @@ global using MVFC.Connectors.BancoData.Bruto;
 global using MVFC.Connectors.BancoData.Bruto.Extensoes;
 global using MVFC.Connectors.BancoData.Tratado;
 global using MVFC.Connectors.BancoData.Tratado.Extensoes;
+global using MVFC.Connectors.Geo.ViaCep;
+global using MVFC.Connectors.Geo.ViaCep.Extensoes;
+global using MVFC.Connectors.Financas.Bcb;
+global using MVFC.Connectors.Financas.Bcb.Extensoes;
+global using MVFC.Connectors.Financas.Bcb.Modelos.Request;

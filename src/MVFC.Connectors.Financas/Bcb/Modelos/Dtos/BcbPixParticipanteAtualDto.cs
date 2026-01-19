@@ -1,0 +1,26 @@
+﻿namespace MVFC.Connectors.Financas.Bcb.Modelos.Dtos;
+
+public sealed record BcbPixParticipanteAtualDto(
+        [property: JsonPropertyName("nomeBase")] string NomeBase,
+        [property: JsonPropertyName("participanteLiquidanteSPI")] string ParticipanteLiquidanteSPI,
+        [property: JsonPropertyName("ispbLiquidanteDIC")] string IspbLiquidanteDIC,
+        [property: JsonPropertyName("participacaoPix")] string ParticipacaoPix,
+        [property: JsonPropertyName("modalidadeParticipacaoPix")] string ModalidadeParticipacaoPix,
+        [property: JsonPropertyName("instituicaoUnicadBase")] int InstituicaoUnicadBase,
+        [property: JsonPropertyName("participacaoSPI")] string ParticipacaoSPI,
+        [property: JsonPropertyName("iniciadorTransacaoPagamentoPix")] string IniciadorTransacaoPagamentoPix,
+        [property: JsonPropertyName("servicoIniciacaoOpenFinancePix")] string ServicoIniciacaoOpenFinancePix,
+        [property: JsonPropertyName("pssPix")] string PssPix,
+        [property: JsonPropertyName("utilizaAPIPix")] string UtilizaAPIPix,
+        [property: JsonPropertyName("ofertaContaPFPix")] string OfertaContaPFPix,
+        [property: JsonPropertyName("ofertaContaPJPix")] string OfertaContaPJPix,
+        [property: JsonPropertyName("nomeModalidadeParticipacaoPix")] string NomeModalidadeParticipacaoPix,
+        [property: JsonPropertyName("nomeParticipacaoPix")] string NomeParticipacaoPix,
+        [property: JsonPropertyName("nomeParticipacaoSPI")] string NomeParticipacaoSPI,
+        [property: JsonPropertyName("nomeIniciadorTransacaoPagamentoPix")] string NomeIniciadorTransacaoPagamentoPix,
+        [property: JsonPropertyName("nomeServicoIniciacaoOpenFinancePix")] string NomeServicoIniciacaoOpenFinancePix,
+        [property: JsonPropertyName("nomePssPix")] string NomePssPix,
+        [property: JsonPropertyName("nomeUtilizaAPIPix")] string NomeUtilizaAPIPix,
+        [property: JsonPropertyName("nomeOfertaContaPFPix")] string NomeOfertaContaPFPix,
+        [property: JsonPropertyName("nomeOfertaContaPJPix")] string NomeOfertaContaPJPix,
+        [property: JsonPropertyName("dataInicioOperacaoSPI")] string DataInicioOperacaoSPI);

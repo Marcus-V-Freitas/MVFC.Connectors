@@ -5,3 +5,4 @@ global using MVFC.Connectors.Geo.Geocoding.Modelos.Dtos;
 global using Microsoft.Extensions.DependencyInjection;
 global using MVFC.Connectors.Commons.Extensoes;
 global using MVFC.Connectors.Geo.GeoNet.Modelos.Dtos;
+global using MVFC.Connectors.Geo.ViaCep.Modelos.Dtos;
