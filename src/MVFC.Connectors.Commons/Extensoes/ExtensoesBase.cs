@@ -22,7 +22,7 @@ public static class ExtensoesBase
         services.AddTransient<LoggingHandler>();
         services.AddTransient<UserAgentHandler>();
 
-        var settings = new ConnectorsSettingsServices();
+        var settings = new ConnectorsSettingsServices(new RefitSettings());
         action?.Invoke(settings, services);
 
         var http = services.AddRefitClient<T>(settings.RefitSettings)

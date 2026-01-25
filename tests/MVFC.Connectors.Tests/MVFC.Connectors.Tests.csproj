@@ -6,11 +6,13 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<UserSecretsId>24e0c8ce-cc99-4e24-b73a-dcbb6b9dfa35</UserSecretsId>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="coverlet.collector" Version="6.0.*" />
 		<PackageReference Include="fluentAssertions" Version="7.0.*" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.*" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
 		<PackageReference Include="xunit" Version="2.9.*" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.*" />
@@ -26,6 +28,21 @@
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Geo\MVFC.Connectors.Geo.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Justica\MVFC.Connectors.Justica.csproj" />
+		<ProjectReference Include="..\..\src\MVFC.Connectors.Sicoob\MVFC.Connectors.Sicoob.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.*" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Sicoob\Jsons\**">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

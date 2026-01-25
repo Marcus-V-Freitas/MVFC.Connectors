@@ -10,6 +10,7 @@
     <Project Path="src/MVFC.Connectors.Geo/MVFC.Connectors.Geo.csproj" />
     <Project Path="src/MVFC.Connectors.IA/MVFC.Connectors.IA.csproj" />
     <Project Path="src/MVFC.Connectors.Justica/MVFC.Connectors.Justica.csproj" />
+    <Project Path="src/MVFC.Connectors.Sicoob/MVFC.Connectors.Sicoob.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/MVFC.Connectors.Tests/MVFC.Connectors.Tests.csproj" />

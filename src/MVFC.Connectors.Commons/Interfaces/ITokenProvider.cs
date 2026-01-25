@@ -5,4 +5,6 @@ public interface ITokenProvider
     string TipoDeToken => "Bearer";
 
     Task<string> ObterTokenAsync(CancellationToken cancellationToken);
+
+    IDictionary<string, string> ObterAuthHeaders();
 }

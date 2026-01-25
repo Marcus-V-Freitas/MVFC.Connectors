@@ -13,6 +13,11 @@ public sealed class AuthTokenHandler(ITokenProvider tokenProvider) : DelegatingH
             request.Headers.Authorization = new AuthenticationHeaderValue(_tokenProvider.TipoDeToken, token);
         }
 
+        foreach (var header in _tokenProvider.ObterAuthHeaders())
+        {
+            request.Headers.TryAddWithoutValidation(header.Key, header.Value);
+        }
+
         return await base.SendAsync(request, cancellationToken);
     }
 }

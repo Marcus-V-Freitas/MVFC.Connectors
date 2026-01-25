@@ -12,7 +12,7 @@ public static class DataJudExtensoes
     public static void AddDataJud(this IServiceCollection services) =>
         services.AddApi<IDataJudApi>(URL_BASE, (_, s) =>
         {
-            s.AddSingleton<ITokenProvider, DataJudAuthProvider>();
-            s.AddTransient<AuthTokenHandler>();
+            s.TryAddSingleton<ITokenProvider, DataJudAuthProvider>();
+            s.TryAddTransient<AuthTokenHandler>();
         }).AddHttpMessageHandler<AuthTokenHandler>();
 }

@@ -9,3 +9,4 @@ global using Microsoft.Extensions.DependencyInjection;
 global using MVFC.Connectors.Commons.Extensoes;
 global using MVFC.Connectors.Commons.Handlers;
 global using MVFC.Connectors.Justica.DataJud.Providers;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
