@@ -2,7 +2,7 @@
 
 public sealed record CobrancaWebhookConsultarQuery(
     [property: AliasAs("idWebhook")] long? IdWebhook = null,
-    [property: JsonIgnore] CodigoTipoMovimento? CodigoTipoMovimento = null)
+    [property: AliasAs(null!)] CodigoTipoMovimento? CodigoTipoMovimento = null)
 {
     [AliasAs("codigoTipoMovimento")]
     public int? CodigoTipoMovimentoValue => (int?)CodigoTipoMovimento;

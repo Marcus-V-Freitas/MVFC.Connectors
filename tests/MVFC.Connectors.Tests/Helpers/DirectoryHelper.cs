@@ -4,12 +4,12 @@ public abstract class DirectoryHelper : IAsyncLifetime
 {
     protected abstract string ARQUIVO_PATH { get; }
 
-    public static async Task<T> ObterDoArquivoAsync<T>(params string[] pastasDoArquivo)
+    public static async Task<T> ObterDoArquivoAsync<T>(JsonSerializerOptions options, params string[] pastasDoArquivo)
     {
         var caminhoArquivo = Path.Combine(pastasDoArquivo);
         await using var stream = File.OpenRead(caminhoArquivo);
 
-        return await JsonSerializer.DeserializeAsync<T>(stream).ConfigureAwait(false) 
+        return await JsonSerializer.DeserializeAsync<T>(stream, options).ConfigureAwait(false) 
             ?? throw new InvalidOperationException("Desserialização retornou null");
     }
 

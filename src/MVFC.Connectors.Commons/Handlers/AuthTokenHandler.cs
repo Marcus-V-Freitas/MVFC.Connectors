@@ -18,6 +18,8 @@ public sealed class AuthTokenHandler(ITokenProvider tokenProvider) : DelegatingH
             request.Headers.TryAddWithoutValidation(header.Key, header.Value);
         }
 
-        return await base.SendAsync(request, cancellationToken);
+        var response = await base.SendAsync(request, cancellationToken);
+
+        return response;
     }
 }

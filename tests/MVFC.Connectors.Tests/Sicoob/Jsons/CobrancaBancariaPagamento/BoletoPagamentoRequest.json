@@ -1,0 +1,18 @@
+{
+  "identificadorConsulta": "hash",
+  "valorBoleto": 152.3,
+  "valorDescontoAbatimento": 0,
+  "valorMultaMora": 0,
+  "descricaoObservacao": "Boleto da Escola",
+  "aceitaValorDivergente": true,
+  "numeroCpfCnpjPortador": "12345678900",
+  "nomePortador": "Rosa Maria da Silva",
+  "amount": 152.3,
+  "date": "2021-04-24",
+  "debtorAccount": {
+    "issuer": 1234,
+    "number": 1234569,
+    "accountType": 0,
+    "personType": 0
+  }
+}

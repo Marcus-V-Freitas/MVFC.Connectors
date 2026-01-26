@@ -3,13 +3,13 @@
 public partial interface ISicoobCobrancaBancariaApi
 {
     [Post("/webhooks")]
-    Task<ApiResponse<SicoobResponse<WebhookCBCadastroResponse>>> CadastrarWebhookAsync([Body] WebhookCBCadastroRequest webhook);
+    Task<ApiResponse<SicoobResponse<WebhookCBCadastroResponse>>> CadastrarWebhookAsync([Body] WebhookCBCadastroRequest request);
 
     [Get("/webhooks")]
     Task<ApiResponse<SicoobResponse<WebhookCBResponse[]>>> ConsultarWebhooksAsync([Query] CobrancaWebhookConsultarQuery query);
 
     [Patch("/webhooks/{idWebhook}")]
-    Task<ApiResponse<string>> AtualizarWebhookAsync(long idWebhook, [Body] WebhookCBAlteracaoRequest webhook);
+    Task<ApiResponse<string>> AtualizarWebhookAsync(long idWebhook, [Body] WebhookCBAlteracaoRequest request);
 
     [Delete("/webhooks/{idWebhook}")]
     Task<ApiResponse<string>> ExcluirWebhookAsync(long idWebhook);

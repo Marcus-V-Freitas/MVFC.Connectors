@@ -3,7 +3,7 @@
 public partial interface ISicoobCobrancaBancariaApi
 {
     [Post("/boletos")]
-    Task<ApiResponse<SicoobResponse<BoletoResponse>>> IncluirBoletoAsync([Body] BoletoRequest boleto);
+    Task<ApiResponse<SicoobResponse<BoletoResponse>>> IncluirBoletoAsync([Body] BoletoRequest request);
 
     [Get("/boletos")]
     Task<ApiResponse<SicoobResponse<BoletoConsultaResponse>>> ConsultarBoletoAsync([Query] BoletoConsultaQuery query);
@@ -18,8 +18,8 @@ public partial interface ISicoobCobrancaBancariaApi
     Task<ApiResponse<SicoobResponse<FaixaNossoNumeroResponse[]>>> ConsultarFaixasNossoNumeroAsync([Query] BoletoConsultarFaixaQuery query);
 
     [Patch("/boletos/{nossoNumero}")]
-    Task<ApiResponse<string>> AlterarBoletoAsync(int nossoNumero, [Body] BoletoAlteracaoRequest boleto);
+    Task<ApiResponse<string>> AlterarBoletoAsync(int nossoNumero, [Body] BoletoAlteracaoRequest request);
 
     [Post("/boletos/{nossoNumero}/baixar")]
-    Task<ApiResponse<string>> BaixarBoletoAsync(int nossoNumero, [Body] BoletoBaixaRequest boleto);
+    Task<ApiResponse<string>> BaixarBoletoAsync(int nossoNumero, [Body] BoletoBaixaRequest request);
 }

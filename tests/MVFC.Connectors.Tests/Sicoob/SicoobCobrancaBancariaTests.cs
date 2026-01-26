@@ -1,11 +1,7 @@
 ﻿namespace MVFC.Connectors.Tests.Sicoob;
 
-public sealed class SicoobCobrancaBancariaTests
+public sealed class SicoobCobrancaBancariaTests : SicoobBaseTests
 {
-    private static readonly SicoobConfig _config = new(
-        SecretsHelper.ObterSecretPorChave("Sicoob:ClientId")!, 
-        SecretsHelper.ObterSecretPorChave("Sicoob:AccessToken")!, true);
-
     public static TheoryData<ISicoobCobrancaBancariaApi> Apis =>
      [
           SicoobCobrancaBancariaExtensoes.ObterSicoobCobrancaBancariaApi(_config),
@@ -17,7 +13,7 @@ public sealed class SicoobCobrancaBancariaTests
     public async Task IncluirBoletoAsync_DeveRetornarSucessoAsync(ISicoobCobrancaBancariaApi api)
     {
         // Arrange
-        var request = await DirectoryHelper.ObterDoArquivoAsync<BoletoRequest>("Sicoob", "Jsons", "CobrancaBancaria", "BoletoRequest.json");
+        var request = await ObterPorArquivoAsync<BoletoRequest>("CobrancaBancaria", "BoletoRequest.json");
 
         // Act
         var response = await api.IncluirBoletoAsync(request!);
@@ -126,7 +122,7 @@ public sealed class SicoobCobrancaBancariaTests
     public async Task AlterarPagadorAsync_DeveRetornarSucessoAsync(ISicoobCobrancaBancariaApi api)
     {
         // Arrange
-        var request = await DirectoryHelper.ObterDoArquivoAsync<PagadorRequest>("Sicoob", "Jsons", "CobrancaBancaria", "PagadorRequest.json");
+        var request = await ObterPorArquivoAsync<PagadorRequest>("CobrancaBancaria", "PagadorRequest.json");
 
         // Act
         var response = await api.AlterarPagadorAsync(request);
@@ -231,7 +227,7 @@ public sealed class SicoobCobrancaBancariaTests
     public async Task SolicitarMovimentacaoAsync_DeveRetornarSucessoAsync(ISicoobCobrancaBancariaApi api)
     {
         // Arrange
-        var request = await DirectoryHelper.ObterDoArquivoAsync<MovimentacaoRequest>("Sicoob", "Jsons", "CobrancaBancaria", "MovimentacaoRequest.json");
+        var request = await ObterPorArquivoAsync<MovimentacaoRequest>("CobrancaBancaria", "MovimentacaoRequest.json");
 
         // Act
         var response = await api.SolicitarMovimentacaoAsync(request);
@@ -276,7 +272,7 @@ public sealed class SicoobCobrancaBancariaTests
     public async Task CadastrarWebhookAsync_DeveRetornarSucessoAsync(ISicoobCobrancaBancariaApi api)
     {
         // Arrange
-        var request = await DirectoryHelper.ObterDoArquivoAsync<WebhookCBCadastroRequest>("Sicoob", "Jsons", "CobrancaBancaria", "WebhookRequest.json");
+        var request = await ObterPorArquivoAsync<WebhookCBCadastroRequest>("CobrancaBancaria", "WebhookRequest.json");
 
         // Act
         var response = await api.CadastrarWebhookAsync(request!);

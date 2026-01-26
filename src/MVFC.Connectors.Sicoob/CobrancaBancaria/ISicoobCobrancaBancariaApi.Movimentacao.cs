@@ -3,7 +3,7 @@
 public partial interface ISicoobCobrancaBancariaApi
 {
     [Post("/boletos/movimentacoes")]
-    Task<ApiResponse<SicoobResponse<MovimentacaoSolicitacaoResponse>>> SolicitarMovimentacaoAsync([Body] MovimentacaoRequest movimentacao);
+    Task<ApiResponse<SicoobResponse<MovimentacaoSolicitacaoResponse>>> SolicitarMovimentacaoAsync([Body] MovimentacaoRequest request);
 
     [Get("/boletos/movimentacoes")]
     Task<ApiResponse<SicoobResponse<MovimentacaoQuantidadeResponse>>> ConsultarMovimentacaoAsync([Query] ConsultarMovimentacaoQuery query);

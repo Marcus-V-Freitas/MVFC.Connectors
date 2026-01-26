@@ -3,5 +3,5 @@
 public partial interface ISicoobCobrancaBancariaApi
 {
     [Put("/pagadores")]
-    Task<ApiResponse<string>> AlterarPagadorAsync([Body] PagadorRequest pagador);
+    Task<ApiResponse<string>> AlterarPagadorAsync([Body] PagadorRequest request);
 }

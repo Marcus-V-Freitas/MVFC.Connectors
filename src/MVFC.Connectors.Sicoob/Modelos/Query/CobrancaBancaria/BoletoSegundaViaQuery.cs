@@ -2,7 +2,7 @@
 
 public sealed record BoletoSegundaViaQuery(
     [property: AliasAs("numeroCliente")] int NumeroCliente,
-    [property: JsonIgnore] ModalidadeBoleto CodigoModalidade,
+    [property: AliasAs(null!)] ModalidadeBoleto CodigoModalidade,
     [property: AliasAs("nossoNumero")] int? NossoNumero = null,
     [property: AliasAs("linhaDigitavel")] string? LinhaDigitavel = null,
     [property: AliasAs("codigoBarras")] string? CodigoBarras = null,

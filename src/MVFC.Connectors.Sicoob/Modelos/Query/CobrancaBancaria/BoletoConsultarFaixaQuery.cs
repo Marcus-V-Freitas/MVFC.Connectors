@@ -2,7 +2,7 @@
 
 public sealed record BoletoConsultarFaixaQuery(
     [property: AliasAs("numeroCliente")] int NumeroCliente,
-    [property: JsonIgnore] ModalidadeBoleto CodigoModalidade,
+    [property: AliasAs(null!)] ModalidadeBoleto CodigoModalidade,
     [property: AliasAs("quantidade")] int Quantidade,
     [property: AliasAs("numeroContratoCobranca")] long? NumeroContratoCobranca = null)
 {
