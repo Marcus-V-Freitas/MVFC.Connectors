@@ -3,10 +3,11 @@
 public sealed class BancoDataBrutoTests
 {
     public static TheoryData<IBancoDataBrutoApi> Apis =>
-      [
-          BancoDataBrutoExtensoes.ObterBancoDataBrutoApi(),
-          TestsHelpers.ObterApi<IBancoDataBrutoApi>(s => s.AddBancoDataBruto()),
-       ];
+    new()
+    {
+        BancoDataBrutoExtensoes.ObterBancoDataBrutoApi(),
+        TestsHelpers.ObterApi<IBancoDataBrutoApi>(s => s.AddBancoDataBruto()),
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

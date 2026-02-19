@@ -3,10 +3,11 @@
 public sealed class ImagemPollinationsTests : DirectoryHelper
 {
     public static TheoryData<IImagemPollinationsApi> Apis =>
-     [
-          ImagemPollinationExtensoes.ObterImagemPollinationsApi(),
-          TestsHelpers.ObterApi<IImagemPollinationsApi>(s => s.AddImagemPollinations()),
-     ];
+    new()
+    {
+        { ImagemPollinationExtensoes.ObterImagemPollinationsApi() },
+        { TestsHelpers.ObterApi<IImagemPollinationsApi>(s => s.AddImagemPollinations()) },
+    };
 
     protected override string ARQUIVO_PATH => "temp_folder_pollinations";
 

@@ -3,10 +3,11 @@
 public sealed class CorretorasTests
 {
     public static TheoryData<ICorretoraBrasilApi> Apis =>
-        [
-            CorretorasBrasilApiExtensoes.ObterCorretoraBrasilApi(),
-            TestsHelpers.ObterApi<ICorretoraBrasilApi>(s => s.AddCorretoraBrasilApi()),
-        ];
+        new()
+        {
+            { CorretorasBrasilApiExtensoes.ObterCorretoraBrasilApi() },
+            { TestsHelpers.ObterApi<ICorretoraBrasilApi>(s => s.AddCorretoraBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

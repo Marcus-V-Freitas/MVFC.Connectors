@@ -3,10 +3,11 @@
 public sealed class MysqlExplainTests
 {
     public static TheoryData<IMysqlExplainApi> Apis =>
-     [
-          MysqlExplainExtensoes.ObterMysqlExplainApi(),
-          TestsHelpers.ObterApi<IMysqlExplainApi>(s => s.AddMysqlExplain()),
-       ];
+    new()
+    {
+        { MysqlExplainExtensoes.ObterMysqlExplainApi() },
+        { TestsHelpers.ObterApi<IMysqlExplainApi>(s => s.AddMysqlExplain()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

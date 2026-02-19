@@ -3,10 +3,11 @@
 public sealed class HipolabsTests
 {
     public static TheoryData<IHipolabsApi> Apis =>
-     [
-          HipolabsExtensoes.ObterHipolabsApi(),
-          TestsHelpers.ObterApi<IHipolabsApi>(s => s.AddHipolabs()),
-     ];
+        new()
+        {
+            { HipolabsExtensoes.ObterHipolabsApi() },
+            { TestsHelpers.ObterApi<IHipolabsApi>(s => s.AddHipolabs()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

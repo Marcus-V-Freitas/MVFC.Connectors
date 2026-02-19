@@ -3,10 +3,11 @@
 public sealed class BancosTests
 {
     public static TheoryData<IBancoBrasilApi> Apis =>
-        [
+        new()
+        {
             BancosBrasilApiExtensoes.ObterBankBrasilApi(),
             TestsHelpers.ObterApi<IBancoBrasilApi>(s => s.AddBankBrasilApi()),
-        ];
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

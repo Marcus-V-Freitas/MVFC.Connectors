@@ -3,10 +3,11 @@
 public sealed class PixParticipantTests
 {
     public static TheoryData<IPixParticipantesBrasilApi> Apis =>
-      [
-          PixParticipantesBrasilApiExtensoes.ObterPixParticipanteBrasilApi(),
-          TestsHelpers.ObterApi<IPixParticipantesBrasilApi>(s => s.AddPixParticipanteBrasilApi()),
-       ];
+        new()
+        {
+            { PixParticipantesBrasilApiExtensoes.ObterPixParticipanteBrasilApi() },
+            { TestsHelpers.ObterApi<IPixParticipantesBrasilApi>(s => s.AddPixParticipanteBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

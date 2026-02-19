@@ -3,10 +3,11 @@
 public sealed class CepTests
 {
     public static TheoryData<ICepBrasilApi> Apis =>
-        [
+        new()
+        {
             CepBrasilApiExtensoes.ObterCepBrasilApi(),
             TestsHelpers.ObterApi<ICepBrasilApi>(s => s.AddCepBrasilApi()),
-        ];
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

@@ -3,10 +3,11 @@
 public sealed class KeyValTests
 {
     public static TheoryData<IKeyValApi> Apis =>
-     [
-          KeyValExtensoes.ObterKeyValApi(),
-          TestsHelpers.ObterApi<IKeyValApi>(s => s.AddKeyVal()),
-       ];
+    new()
+    {
+        { KeyValExtensoes.ObterKeyValApi() },
+        { TestsHelpers.ObterApi<IKeyValApi>(s => s.AddKeyVal()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

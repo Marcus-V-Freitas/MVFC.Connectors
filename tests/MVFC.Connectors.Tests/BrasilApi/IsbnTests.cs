@@ -3,10 +3,11 @@
 public sealed class IsbnTests
 {
     public static TheoryData<IIsbnBrasilApi> Apis =>
-       [
-           IsbnBrasilApiExtensoes.ObterIsbnBrasilApi(),
-           TestsHelpers.ObterApi<IIsbnBrasilApi>(s => s.AddIsbnBrasilApi()),
-       ];
+        new()
+        {
+            { IsbnBrasilApiExtensoes.ObterIsbnBrasilApi() },
+            { TestsHelpers.ObterApi<IIsbnBrasilApi>(s => s.AddIsbnBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

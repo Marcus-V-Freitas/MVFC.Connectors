@@ -3,10 +3,11 @@
 public sealed class BancoDataTratadoTests
 {
     public static TheoryData<IBancoDataTratadoApi> Apis =>
-      [
-          BancoDataTratadoExtensoes.ObterBancoTratadoApi(),
-          TestsHelpers.ObterApi<IBancoDataTratadoApi>(s => s.AddBancoDataTratado()),
-       ];
+        new()
+        {
+            BancoDataTratadoExtensoes.ObterBancoTratadoApi(),
+            TestsHelpers.ObterApi<IBancoDataTratadoApi>(s => s.AddBancoDataTratado()),
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

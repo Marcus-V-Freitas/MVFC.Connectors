@@ -3,10 +3,11 @@
 public sealed class SicoobCobrancaBancariaTests : SicoobBaseTests
 {
     public static TheoryData<ISicoobCobrancaBancariaApi> Apis =>
-     [
-          SicoobCobrancaBancariaExtensoes.ObterSicoobCobrancaBancariaApi(_config),
-          TestsHelpers.ObterApi<ISicoobCobrancaBancariaApi>(s => s.AddSicoobCobrancaBancaria(_config)),
-       ];
+    new()
+    {
+        { SicoobCobrancaBancariaExtensoes.ObterSicoobCobrancaBancariaApi(_config) },
+        { TestsHelpers.ObterApi<ISicoobCobrancaBancariaApi>(s => s.AddSicoobCobrancaBancaria(_config)) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

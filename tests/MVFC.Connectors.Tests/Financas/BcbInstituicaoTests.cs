@@ -3,10 +3,11 @@
 public sealed class BcbInstituicaoTests
 {
     public static TheoryData<IBcbInstituicaoApi> Apis =>
-     [
-          BcbInstituicaoExtensoes.ObterBcbInstituicaoApi(),
-          TestsHelpers.ObterApi<IBcbInstituicaoApi>(s => s.AddBcbInstituicao()),
-     ];
+    new()
+    {
+        { BcbInstituicaoExtensoes.ObterBcbInstituicaoApi() },
+        { TestsHelpers.ObterApi<IBcbInstituicaoApi>(s => s.AddBcbInstituicao()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

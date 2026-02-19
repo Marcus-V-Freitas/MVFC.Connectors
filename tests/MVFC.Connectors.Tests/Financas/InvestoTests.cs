@@ -3,10 +3,11 @@
 public sealed class InvestoTests
 {
     public static TheoryData<IInvestoApi> Apis =>
-     [
-          InvestoExtensoes.ObterInvestoApi(),
-          TestsHelpers.ObterApi<IInvestoApi>(s => s.AddInvesto()),
-     ];
+    new()
+    {
+        { InvestoExtensoes.ObterInvestoApi() },
+        { TestsHelpers.ObterApi<IInvestoApi>(s => s.AddInvesto()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

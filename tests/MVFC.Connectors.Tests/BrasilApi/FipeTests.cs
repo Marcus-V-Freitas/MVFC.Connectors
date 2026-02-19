@@ -3,10 +3,11 @@
 public sealed class FipeTests
 {
     public static TheoryData<IFipeBrasilApi> Apis =>
-       [
-           FipeBrasilApiExtensoes.ObterFipeBrasilApi(),
-            TestsHelpers.ObterApi<IFipeBrasilApi>(s => s.AddFipeBrasilApi()),
-       ];
+        new()
+        {
+            { FipeBrasilApiExtensoes.ObterFipeBrasilApi() },
+            { TestsHelpers.ObterApi<IFipeBrasilApi>(s => s.AddFipeBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

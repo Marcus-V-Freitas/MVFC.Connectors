@@ -3,10 +3,11 @@
 public sealed class GeoNetTests
 {
     public static TheoryData<IGeoNetApi> Apis =>
-     [
-          GeoNetApiExtensoes.ObterGeoNetApi(),
-          TestsHelpers.ObterApi<IGeoNetApi>(s => s.AddGeoNet()),
-     ];
+    new()
+    {
+        { GeoNetApiExtensoes.ObterGeoNetApi() },
+        { TestsHelpers.ObterApi<IGeoNetApi>(s => s.AddGeoNet()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

@@ -3,10 +3,11 @@
 public sealed class IpTests
 {
     public static TheoryData<IIpApi> Apis =>
-     [
-          IpApiExtensoes.ObterIpApi(),
-          TestsHelpers.ObterApi<IIpApi>(s => s.AddIp()),
-       ];
+    new()
+    {
+        { IpApiExtensoes.ObterIpApi() },
+        { TestsHelpers.ObterApi<IIpApi>(s => s.AddIp()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

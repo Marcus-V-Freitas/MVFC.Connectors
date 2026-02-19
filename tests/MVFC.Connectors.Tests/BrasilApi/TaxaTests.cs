@@ -3,10 +3,11 @@
 public sealed class TaxaTests
 {
     public static TheoryData<ITaxaBrasilApi> Apis =>
-      [
-          TaxaBrasilApiExtensoes.ObterTaxaBrasilApi(),
-          TestsHelpers.ObterApi<ITaxaBrasilApi>(s => s.AddTaxaBrasilApi()),
-       ];
+        new()
+        {
+            { TaxaBrasilApiExtensoes.ObterTaxaBrasilApi() },
+            { TestsHelpers.ObterApi<ITaxaBrasilApi>(s => s.AddTaxaBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

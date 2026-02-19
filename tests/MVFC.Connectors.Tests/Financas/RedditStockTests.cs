@@ -3,10 +3,11 @@
 public sealed class RedditStockTests
 {
     public static TheoryData<IRedditStockApi> Apis =>
-     [
-          RedditExtensoes.ObterRedditStockApi(),
-          TestsHelpers.ObterApi<IRedditStockApi>(s => s.AddRedditStock()),
-     ];
+    new()
+    {
+        { RedditExtensoes.ObterRedditStockApi() },
+        { TestsHelpers.ObterApi<IRedditStockApi>(s => s.AddRedditStock()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

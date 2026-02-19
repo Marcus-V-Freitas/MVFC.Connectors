@@ -3,10 +3,11 @@
 public sealed class GeocodingTests
 {
     public static TheoryData<IGeocodingApi> Apis =>
-     [
-          GeocodingExtensoes.ObterGeocodingApi(),
-          TestsHelpers.ObterApi<IGeocodingApi>(s => s.AddGeocoding()),
-     ];
+    new()
+    {
+        { GeocodingExtensoes.ObterGeocodingApi() },
+        { TestsHelpers.ObterApi<IGeocodingApi>(s => s.AddGeocoding()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

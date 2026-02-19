@@ -3,10 +3,11 @@
 public sealed class FeriadoTests
 {
     public static TheoryData<IFeriadoBrasilApi> Apis =>
-       [
-           FeriadoBrasilApiExtensoes.ObterFeriadoBrasilApi(),
-            TestsHelpers.ObterApi<IFeriadoBrasilApi>(s => s.AddFeriadoBrasilApi()),
-       ];
+        new()
+        {
+            { FeriadoBrasilApiExtensoes.ObterFeriadoBrasilApi() },
+            { TestsHelpers.ObterApi<IFeriadoBrasilApi>(s => s.AddFeriadoBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

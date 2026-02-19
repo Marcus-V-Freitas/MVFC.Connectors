@@ -3,10 +3,11 @@
 public sealed class GoogleTradutorTests
 {
     public static TheoryData<IGoogleTradutorApi> Apis =>
-      [
-          GoogleTradutorExtensoes.ObterGoogleTradutorApi(),
-          TestsHelpers.ObterApi<IGoogleTradutorApi>(s => s.AddGoogleTradutor()),
-       ];
+    new()
+    {
+        { GoogleTradutorExtensoes.ObterGoogleTradutorApi() },
+        { TestsHelpers.ObterApi<IGoogleTradutorApi>(s => s.AddGoogleTradutor()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

@@ -3,10 +3,11 @@
 public sealed class CambioTests
 {
     public static TheoryData<ICambioBrasilApi> Apis =>
-        [
-            CambioBrasilApiExtensoes.ObterCambioBrasilApi(),
-            TestsHelpers.ObterApi<ICambioBrasilApi>(s => s.AddCambioBrasilApi()),
-        ];
+        new()
+        {
+            { CambioBrasilApiExtensoes.ObterCambioBrasilApi() },
+            { TestsHelpers.ObterApi<ICambioBrasilApi>(s => s.AddCambioBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

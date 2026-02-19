@@ -3,10 +3,11 @@
 public sealed class DataJudTests
 {
     public static TheoryData<IDataJudApi> Apis =>
-     [
-          DataJudExtensoes.ObterDataJudApi(),
-          TestsHelpers.ObterApi<IDataJudApi>(s => s.AddDataJud()),
-     ];
+        new()
+        {
+            DataJudExtensoes.ObterDataJudApi(),
+            TestsHelpers.ObterApi<IDataJudApi>(s => s.AddDataJud()),
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

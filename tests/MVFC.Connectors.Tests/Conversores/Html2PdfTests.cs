@@ -3,10 +3,11 @@
 public sealed class Html2PdfTests : DirectoryHelper
 {
     public static TheoryData<IHtml2PdfApi> Apis =>
-      [
-          Html2PdfExtensoes.ObterHtml2PdfApi(),
-          TestsHelpers.ObterApi<IHtml2PdfApi>(s => s.AddHtml2Pdf()),
-       ];
+        new()
+        {
+            { Html2PdfExtensoes.ObterHtml2PdfApi() },
+            { TestsHelpers.ObterApi<IHtml2PdfApi>(s => s.AddHtml2Pdf()) },
+        };
 
     protected override string ARQUIVO_PATH => "temp_folder_html2";
 

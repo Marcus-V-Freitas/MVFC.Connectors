@@ -3,10 +3,11 @@
 public sealed class FishFisTests
 {
     public static TheoryData<IFishFishApi> Apis =>
-     [
-          FishFishExtensoes.ObterFishFishApi(),
-          TestsHelpers.ObterApi<IFishFishApi>(s => s.AddFishFish()),
-       ];
+        new()
+        {
+            { FishFishExtensoes.ObterFishFishApi() },
+            { TestsHelpers.ObterApi<IFishFishApi>(s => s.AddFishFish()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

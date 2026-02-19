@@ -13,15 +13,18 @@ public abstract class DirectoryHelper : IAsyncLifetime
             ?? throw new InvalidOperationException("Desserialização retornou null");
     }
 
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await DeleteDirectoryAsync(ARQUIVO_PATH).ConfigureAwait(false);
         Directory.CreateDirectory(ARQUIVO_PATH);
     }
 
-    public async Task DisposeAsync() =>
+    public async ValueTask DisposeAsync()
+    {
+        GC.SuppressFinalize(this);
         await DeleteDirectoryAsync(ARQUIVO_PATH).ConfigureAwait(false);
-
+    }
+        
     protected static async Task DeleteDirectoryAsync(string path)
     {
         if (Directory.Exists(path))

@@ -3,10 +3,11 @@
 public sealed class CnpjTests
 {
     public static TheoryData<ICnpjBrasilApi> Apis =>
-        [
-            CnpjBrasilApiExtensoes.ObterCnpjBrasilApi(),
-            TestsHelpers.ObterApi<ICnpjBrasilApi>(s => s.AddCnpjBrasilApi()),
-        ];
+        new()
+        {
+            { CnpjBrasilApiExtensoes.ObterCnpjBrasilApi() },
+            { TestsHelpers.ObterApi<ICnpjBrasilApi>(s => s.AddCnpjBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

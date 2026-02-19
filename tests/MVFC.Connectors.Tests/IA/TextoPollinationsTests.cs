@@ -3,10 +3,11 @@
 public sealed class TextoPollinationsTests
 {
     public static TheoryData<ITextoPollinationsApi> Apis =>
-     [
-          TextoPollinationsExtensoes.ObterTextoPollinationsApi(),
-          TestsHelpers.ObterApi<ITextoPollinationsApi>(s => s.AddTextoPollinations()),
-     ];
+    new()
+    {
+        { TextoPollinationsExtensoes.ObterTextoPollinationsApi() },
+        { TestsHelpers.ObterApi<ITextoPollinationsApi>(s => s.AddTextoPollinations()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

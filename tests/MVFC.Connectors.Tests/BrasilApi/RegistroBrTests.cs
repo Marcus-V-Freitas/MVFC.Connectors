@@ -3,10 +3,11 @@
 public sealed class RegistroBrTests
 {
     public static TheoryData<IRegistroBrApi> Apis =>
-      [
-          RegistroBrBrasilApiExtensoes.ObterRegistroBrBrasilApi(),
-          TestsHelpers.ObterApi<IRegistroBrApi>(s => s.AddRegistroBrBrasilApi()),
-       ];
+    new()
+    {
+        { RegistroBrBrasilApiExtensoes.ObterRegistroBrBrasilApi() },
+        { TestsHelpers.ObterApi<IRegistroBrApi>(s => s.AddRegistroBrBrasilApi()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

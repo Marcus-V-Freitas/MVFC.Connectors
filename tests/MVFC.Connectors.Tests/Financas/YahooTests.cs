@@ -3,10 +3,11 @@
 public sealed class YahooTests
 {
     public static TheoryData<IYahooApi> Apis =>
-     [
-          YahooExtensoes.ObterYahooApi(),
-          TestsHelpers.ObterApi<IYahooApi>(s => s.AddYahoo()),
-     ];
+    new()
+    {
+        { YahooExtensoes.ObterYahooApi() },
+        { TestsHelpers.ObterApi<IYahooApi>(s => s.AddYahoo()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

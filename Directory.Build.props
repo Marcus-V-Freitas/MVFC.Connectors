@@ -17,13 +17,11 @@
     <!-- Configurações básicas -->
     <LangVersion>latest</LangVersion>
     <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>CS0029</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <!-- APENAS SonarAnalyzer - foca em bugs e code smells -->
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="*">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="SonarAnalyzer.CSharp" />
   </ItemGroup>
 </Project>

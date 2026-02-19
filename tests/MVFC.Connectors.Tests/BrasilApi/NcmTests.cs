@@ -3,10 +3,11 @@
 public sealed class NcmTests
 {
     public static TheoryData<INcmBrasilApi> Apis =>
-      [
-          NcmBrasilApiExtensoes.ObterNcmBrasilApi(),
-          TestsHelpers.ObterApi<INcmBrasilApi>(s => s.AddNcmBrasilApi()),
-       ];
+        new()
+        {
+            { NcmBrasilApiExtensoes.ObterNcmBrasilApi() },
+            { TestsHelpers.ObterApi<INcmBrasilApi>(s => s.AddNcmBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

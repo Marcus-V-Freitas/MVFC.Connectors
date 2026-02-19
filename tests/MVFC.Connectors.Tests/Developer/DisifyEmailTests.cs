@@ -3,10 +3,11 @@
 public sealed class DisifyEmailTests
 {
     public static TheoryData<IDisifyEmailApi> Apis =>
-     [
-          DisifyEmailApiExtensoes.ObterDisifyEmailApi(),
-          TestsHelpers.ObterApi<IDisifyEmailApi>(s => s.AddDisifyEmail()),
-       ];
+    new()
+    {
+        { DisifyEmailApiExtensoes.ObterDisifyEmailApi() },
+        { TestsHelpers.ObterApi<IDisifyEmailApi>(s => s.AddDisifyEmail()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

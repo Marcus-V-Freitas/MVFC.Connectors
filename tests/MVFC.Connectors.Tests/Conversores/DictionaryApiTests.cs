@@ -3,10 +3,11 @@
 public sealed class DictionaryApiTests
 {
     public static TheoryData<IDictionaryApi> Apis =>
-      [
-          DictionaryApiExtensoes.ObterDictionaryApi(),
-          TestsHelpers.ObterApi<IDictionaryApi>(s => s.AddDictionaryApi()),
-       ];
+    new()
+    {
+        { DictionaryApiExtensoes.ObterDictionaryApi() },
+        { TestsHelpers.ObterApi<IDictionaryApi>(s => s.AddDictionaryApi()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

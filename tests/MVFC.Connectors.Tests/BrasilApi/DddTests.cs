@@ -3,10 +3,11 @@
 public sealed class DddTests
 {
     public static TheoryData<IDddBrasilApi> Apis =>
-        [
+        new()
+        {
             DddBrasilApiExtensoes.ObterDddBrasilApi(),
             TestsHelpers.ObterApi<IDddBrasilApi>(s => s.AddDddBrasilApi()),
-        ];
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

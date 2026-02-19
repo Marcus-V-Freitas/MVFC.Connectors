@@ -3,10 +3,11 @@
 public sealed class ViaCepTests
 {
     public static TheoryData<IViaCepApi> Apis =>
-     [
-          ViaCepApiExtensoes.ObterViaCepApi(),
-          TestsHelpers.ObterApi<IViaCepApi>(s => s.AddViaCep()),
-     ];
+    new()
+    {
+        { ViaCepApiExtensoes.ObterViaCepApi() },
+        { TestsHelpers.ObterApi<IViaCepApi>(s => s.AddViaCep()) },
+    };
 
     [Theory]
     [MemberData(nameof(Apis))]

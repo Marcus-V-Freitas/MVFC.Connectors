@@ -10,10 +10,11 @@ public sealed class IbgeTests
         ];
 
     public static TheoryData<IIbgeBrasilApi> Apis =>
-       [
-           IbgeBrasilApiExtensoes.ObterIbgeBrasilApi(),
-           TestsHelpers.ObterApi<IIbgeBrasilApi>(s => s.AddIbgeBrasilApi()),
-       ];
+        new()
+        {
+            { IbgeBrasilApiExtensoes.ObterIbgeBrasilApi() },
+            { TestsHelpers.ObterApi<IIbgeBrasilApi>(s => s.AddIbgeBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]

@@ -10,12 +10,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="coverlet.collector" Version="6.0.*" />
-		<PackageReference Include="fluentAssertions" Version="7.0.*" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.*" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
-		<PackageReference Include="xunit" Version="2.9.*" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.*" />
+		<PackageReference Include="coverlet.collector" />
+		<PackageReference Include="fluentAssertions" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" />
+		<PackageReference Include="xunit.v3" />
+		<PackageReference Include="xunit.runner.visualstudio" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -29,14 +29,6 @@
 		<ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Justica\MVFC.Connectors.Justica.csproj" />
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Sicoob\MVFC.Connectors.Sicoob.csproj" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.*" />
-	</ItemGroup>
-
-	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
-		<PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.*" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -3,10 +3,11 @@
 public sealed class CptecBrasilApiTests
 {
     public static TheoryData<ICptecBrasilApi> Apis =>
-        [
-            CptecBrasilApiExtensoes.ObterCptecBrasilApi(),
-            TestsHelpers.ObterApi<ICptecBrasilApi>(s => s.AddCptecBrasilApi()),
-        ];
+        new()
+        {
+            { CptecBrasilApiExtensoes.ObterCptecBrasilApi() },
+            { TestsHelpers.ObterApi<ICptecBrasilApi>(s => s.AddCptecBrasilApi()) },
+        };
 
     [Theory]
     [MemberData(nameof(Apis))]
