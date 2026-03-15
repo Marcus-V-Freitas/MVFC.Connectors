@@ -7,6 +7,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.0] - 2026-03-15
+
+### Added
+
+- GitHub issue templates (bug report and feature request) and pull request template (`.github/`)
+- CI workflow (`ci.yml`) with automated test execution
+- `CONTRIBUTING.md` with contribution guidelines
+- `SECURITY.md` with security policy
+- `Directory.Build.target` for centralized build targets
+- `codecov.yml` and `coverage.runsettings` for code coverage configuration
+- `IImagemPollinationsProvider` interface in the IA (Pollinations) connector
+
+### Changed
+
+- Repository structure standardized across all `src/` and `tests/` projects
+- `public` access modifier applied to interfaces and classes across all connectors
+  (BancoData, BrasilApi, Sicoob, Conversores, Developer, Educacao, Financas, Geo, IA, Justica, Commons)
+- `.editorconfig` expanded and restandarized
+- `build.cake` refactored with pipeline improvements
+- `Directory.Build.props` and `Directory.Packages.props` updated
+- `.gitignore` updated
+- `CobrancaBancaria`, `CobrancaBancariaPagamento` and `Pollinations` extension methods refactored
+- `AuthTokenHandler` visibility and logic adjustments
+
+### Removed
+
+- `publish.yml` workflow removed (replaced by unified CI)
+
+### Tests
+
+- Expanded test coverage for: BancoData (Bruto and Tratado), BrasilApi (Bancos,
+  CEP, CNPJ, Cambio, Corretoras, CPTEC, DDD, Feriado, FIPE, IBGE, ISBN, NCM, PIX, RegistroBR)
+- Test structure refactored following the Arrange-Act-Assert pattern
+
 ## [2.1.4] - 2026-02-19
 
 ### Added

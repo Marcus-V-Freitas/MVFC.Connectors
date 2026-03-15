@@ -4,6 +4,7 @@ public sealed class SecretsHelper
 {
     private static readonly IConfigurationRoot _config = new ConfigurationBuilder()
                                                                 .AddUserSecrets<SecretsHelper>()
+                                                                .AddEnvironmentVariables()
                                                                 .Build();
 
     private SecretsHelper() {}

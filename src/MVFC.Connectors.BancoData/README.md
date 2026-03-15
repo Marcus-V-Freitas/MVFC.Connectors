@@ -1,19 +1,105 @@
-# MVFC.Connectors.BancoData
+﻿# MVFC.Connectors.BancoData
 
-Projeto de conector para integração com o BancoData, permitindo consultas a informações de bancos, agências e instituições financeiras do sistema bancário nacional.
+Connector for fetching raw and transformed bank data from Banco Central do Brasil.
 
-## Funcionalidades
-- Consulta de bancos e instituições financeiras.
-- Consulta de agências bancárias.
-- Acesso a dados cadastrais do sistema financeiro.
+[![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.BancoData.svg)](https://www.nuget.org/packages/MVFC.Connectors.BancoData)
+[![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.BancoData.svg)](https://www.nuget.org/packages/MVFC.Connectors.BancoData)
+[![License](https://img.shields.io/github/license/Marcus-V-Freitas/MVFC.Connectors.svg)](../../LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/Marcus-V-Freitas/MVFC.Connectors/ci.yml?branch=main)](../../actions)
+![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
-## Aviso importante
-Este conector utiliza técnicas de scraping para obter dados do site BancoData. Como o site pode apresentar instabilidade ou mudanças frequentes, é possével ocorrerem problemas de conexão, lentidão ou falhas na obtenção dos dados. Recomenda-se tratar exceções e validar os resultados em produção.
-
-## Uso
-Inclua este projeto para facilitar integrações com a API BancoData em aplicações .NET.
-
-## Requisitos
-- .NET SDK +9
+English | [Português](README.pt-BR.md)
 
 ---
+
+## Features
+
+- Fetches raw bank data directly from the source (`Bruto`)
+- Fetches and transforms bank data into normalized DTOs (`Tratado`)
+- Scraper-based approach for resilient data extraction
+- Integrated with `MVFC.Connectors.Commons` HTTP infrastructure
+
+---
+
+## Installation
+
+```bash
+dotnet add package MVFC.Connectors.BancoData
+```
+
+---
+
+## Supported APIs
+
+| Interface | Description |
+|---|---|
+| `IBancoDataBrutoApi` | Raw bank list from Banco Central do Brasil |
+| `IBancoDataTratadoApi` | Normalized and structured bank list |
+| `IBancoDataScraper` | Scraper abstraction for data extraction |
+| `IBancoDataTransform` | Transformation pipeline for raw data |
+
+---
+
+## Quick Start
+
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddBancoData();
+
+var app = builder.Build();
+```
+
+---
+
+## Examples
+
+```csharp
+// Fetch raw bank list
+public class BankService(IBancoDataBrutoHandler handler)
+{
+    public async Task<IEnumerable<BancoBrutoDto>> GetRawAsync(CancellationToken ct)
+    {
+        return await handler.ObterAsync(ct);
+    }
+}
+```
+
+```csharp
+// Fetch normalized bank list
+public class BankService(IBancoDataTratadoHandler handler)
+{
+    public async Task<IEnumerable<BancoTratadoDto>> GetAsync(CancellationToken ct)
+    {
+        return await handler.ObterAsync(ct);
+    }
+}
+```
+
+---
+
+## Related Packages
+
+| Package | Description |
+|---|---|
+| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
+| [MVFC.Connectors.BrasilApi](../MVFC.Connectors.BrasilApi/README.md) | BrasilAPI bank endpoint |
+| [MVFC.Connectors](../../README.md) | Repository overview |
+
+---
+
+## Contributing
+
+Read [CONTRIBUTING.md](../../CONTRIBUTING.md) before opening issues or pull requests.
+
+---
+
+## Security
+
+If you discover a vulnerability, please refer to [SECURITY.md](../../SECURITY.md).
+
+---
+
+## License
+
+Distributed under the license available in [LICENSE](../../LICENSE).
