@@ -35,6 +35,9 @@ public sealed class MysqlExplainTests : ConnectorTestsBase<IMysqlExplainApi>
         // Act
         var visualExplainUrl = await ManualApi.ObterVisualExplainUrlAsync(requestUrl);
 
+        Console.WriteLine(visualExplainUrl.Error);
+        Console.WriteLine(visualExplainUrl.Error?.Content!);
+
         // Assert
         visualExplainUrl.IsSuccessful.Should().BeTrue();
         visualExplainUrl.Content.Should().NotBeNull();
