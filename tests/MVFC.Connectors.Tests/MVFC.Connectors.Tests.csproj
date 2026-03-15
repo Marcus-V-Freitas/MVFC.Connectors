@@ -32,10 +32,4 @@
 		<ProjectReference Include="..\..\src\MVFC.Connectors.Sicoob\MVFC.Connectors.Sicoob.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Update="Sicoob\Jsons\**">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
-
 </Project>

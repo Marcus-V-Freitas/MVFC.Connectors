@@ -35,11 +35,8 @@ public sealed class MysqlExplainTests : ConnectorTestsBase<IMysqlExplainApi>
         // Act
         var visualExplainUrl = await ManualApi.ObterVisualExplainUrlAsync(requestUrl);
 
-        Console.WriteLine(visualExplainUrl.Error);
-        Console.WriteLine(visualExplainUrl.Error?.Content!);
-
         // Assert
-        visualExplainUrl.IsSuccessful.Should().BeTrue();
+        visualExplainUrl.IsSuccessful.Should().BeTrue($"a requisição falhou: {visualExplainUrl.Error} {visualExplainUrl.Error?.Message} {visualExplainUrl.Error?.Content}");
         visualExplainUrl.Content.Should().NotBeNull();
 
         // Act
