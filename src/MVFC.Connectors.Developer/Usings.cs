@@ -8,3 +8,7 @@ global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Dtos;
 global using MVFC.Connectors.Developer.IpApi.Modelos;
 global using MVFC.Connectors.Developer.KeyVal.Modelos;
 global using MVFC.Connectors.Developer.DisifyEmail.Modelos.Dtos;
+global using System.Security.Cryptography;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using MVFC.Connectors.Commons.Handlers;
+global using MVFC.Connectors.Developer.MysqlExplain.Providers;
