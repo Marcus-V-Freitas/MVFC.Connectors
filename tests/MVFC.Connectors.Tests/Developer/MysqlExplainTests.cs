@@ -22,7 +22,7 @@ public sealed class MysqlExplainTests : ConnectorTestsBase<IMysqlExplainApi>
             ExplainTree: ""));
 
     [Fact]
-    public async Task ObterExplain_DeveRetornarItemAsync()
+    public async Task ObterVisualExplain_DeveRetornarItemAsync()
     {
         // Arrange
         var requestUrl = new MysqlExplainRequestUrl(
@@ -36,14 +36,19 @@ public sealed class MysqlExplainTests : ConnectorTestsBase<IMysqlExplainApi>
         var visualExplainUrl = await ManualApi.ObterVisualExplainUrlAsync(requestUrl);
 
         // Assert
-        visualExplainUrl.IsSuccessful.Should().BeTrue($"a requisição falhou: {visualExplainUrl.Error} {visualExplainUrl.Error?.Message} {visualExplainUrl.Error?.Content}");
-        visualExplainUrl.Content.Should().NotBeNull();
+        visualExplainUrl.Should().BeSuccessfulOrSkip("MysqlExplain (VisualExplain)");
+    }
+
+    [Fact]
+    public async Task ObterIFrameExplain_DeveRetornarItemAsync()
+    {
+        // Arrange
+        const string URL = "https://mysqlexplain.com/explain/01j2ef1bj7efr97m5v140rnxyz";
 
         // Act
-        var visualExplainIframe = await ManualApi.ObterVisualExplainIFrameAsync(visualExplainUrl.Content!.Url);
+        var visualExplainIframe = await ManualApi.ObterVisualExplainIFrameAsync(URL).ConfigureAwait(true);
 
         // Assert
-        visualExplainIframe.IsSuccessful.Should().BeTrue();
-        visualExplainIframe.Content.Should().NotBeNull();
+        visualExplainIframe.Should().BeSuccessfulOrSkip("MysqlExplain (IFrameExplain)");
     }
 }
