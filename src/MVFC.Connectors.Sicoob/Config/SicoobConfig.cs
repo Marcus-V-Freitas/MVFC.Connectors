@@ -2,5 +2,5 @@
 
 public sealed record SicoobConfig(
     string ClientId,
-    string AccessToken,
+    string ClientSecret,
     bool SandBox = false);

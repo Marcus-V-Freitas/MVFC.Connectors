@@ -4,7 +4,7 @@ public abstract class SicoobBaseTests
 {
     public static readonly SicoobConfig Config = new(
         SecretsHelper.ObterSecretPorChave("Sicoob:ClientId")!,
-        SecretsHelper.ObterSecretPorChave("Sicoob:AccessToken")!, true);
+        SecretsHelper.ObterSecretPorChave("Sicoob:ClientSecret")!, true);
 
     protected static readonly JsonSerializerOptions _jsonOptions = new()
     {
