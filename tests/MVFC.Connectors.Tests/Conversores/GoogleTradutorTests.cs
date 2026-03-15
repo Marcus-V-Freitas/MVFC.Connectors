@@ -1,28 +1,34 @@
 ﻿namespace MVFC.Connectors.Tests.Conversores;
 
-public sealed class GoogleTradutorTests
+public sealed class GoogleTradutorTests : ConnectorTestsBase<IGoogleTradutorApi>
 {
-    public static TheoryData<IGoogleTradutorApi> Apis =>
-    new()
-    {
-        { GoogleTradutorExtensoes.ObterGoogleTradutorApi() },
-        { TestsHelpers.ObterApi<IGoogleTradutorApi>(s => s.AddGoogleTradutor()) },
-    };
+    protected override IGoogleTradutorApi ManualApi => GoogleTradutorExtensoes.ObterGoogleTradutorApi();
+
+    protected override IGoogleTradutorApi ServiceCollectionApi => TestsHelpers.ObterApi<IGoogleTradutorApi>(s => s.AddGoogleTradutor());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task Traduzir_DeveRetornarItemAsync(IGoogleTradutorApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IGoogleTradutorApi api) =>
+        api.TraduzirTextoAsync("Hello World", "en", "pt-br");
+
+    [Fact]
+    public async Task Traduzir_DeveRetornarItemAsync()
     {
         // Arrange
-        const string textoDeEntrada = "Hello World";
-        const string textoEsperado = "Olá Mundo";
+        const string TEXTO_DE_ENTRADA = "Hello World";
+        const string TEXTO_ESPERADO = "Olá Mundo";
 
         // Act
-        var textoGerado = await api.TraduzirTextoAsync(textoDeEntrada, "en", "pt-br");
+        var textoGerado = await ManualApi.TraduzirTextoAsync(TEXTO_DE_ENTRADA, "en", "pt-br");
 
         // Assert
         textoGerado.IsSuccessStatusCode.Should().BeTrue();
         textoGerado.Content.Should().NotBeNullOrEmpty();
-        textoGerado.Content.Should().BeEquivalentTo(textoEsperado);
+        textoGerado.Content.Should().BeEquivalentTo(TEXTO_ESPERADO);
     }
 }

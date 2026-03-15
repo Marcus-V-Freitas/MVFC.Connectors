@@ -3,5 +3,5 @@
 public interface ITextoPollinationsApi : IConnectorApi
 {
     [Get("/{prompt}")]
-    Task<ApiResponse<string>> GerarTextoAsync(string prompt);
+    public Task<ApiResponse<string>> GerarTextoAsync(string prompt);
 }

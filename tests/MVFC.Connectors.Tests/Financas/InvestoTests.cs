@@ -1,27 +1,33 @@
 ﻿namespace MVFC.Connectors.Tests.Financas;
 
-public sealed class InvestoTests
+public sealed class InvestoTests : ConnectorTestsBase<IInvestoApi>
 {
-    public static TheoryData<IInvestoApi> Apis =>
-    new()
-    {
-        { InvestoExtensoes.ObterInvestoApi() },
-        { TestsHelpers.ObterApi<IInvestoApi>(s => s.AddInvesto()) },
-    };
+    protected override IInvestoApi ManualApi => InvestoExtensoes.ObterInvestoApi();
+
+    protected override IInvestoApi ServiceCollectionApi => TestsHelpers.ObterApi<IInvestoApi>(s => s.AddInvesto());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterEtfPorNome_DeveRetornarItemAsync(IInvestoApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IInvestoApi api) =>
+        api.ObterEtfPorNomeAsync("GPUS11");
+
+    [Fact]
+    public async Task ObterEtfPorNome_DeveRetornarItemAsync()
     {
         // Arrange
-        const string nome = "GPUS11";
+        const string NOME = "GPUS11";
 
         // Act
-        var investoEtf = await api.ObterEtfPorNomeAsync(nome);
+        var investoEtf = await ManualApi.ObterEtfPorNomeAsync(NOME);
 
         // Assert
         investoEtf.IsSuccessful.Should().BeTrue();
         investoEtf.Content.Should().NotBeNull();
-        investoEtf.Content!.Nome.Should().Be(nome);
+        investoEtf.Content!.Nome.Should().Be(NOME);
     }
 }

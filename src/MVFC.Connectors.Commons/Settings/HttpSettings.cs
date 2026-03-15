@@ -10,7 +10,7 @@ public sealed record HttpSettings(
         var totalMaximoPorTentativas = MaximoDeTentativas * TimeoutRetrySegundos;
         var totalMaximoDelay = 0.0;
 
-        for (int i = 0; i < MaximoDeTentativas - 1; i++)
+        for (var i = 0; i < MaximoDeTentativas - 1; i++)
         {
             totalMaximoDelay += DelayRetrySegundos * Math.Pow(2, i);
         }

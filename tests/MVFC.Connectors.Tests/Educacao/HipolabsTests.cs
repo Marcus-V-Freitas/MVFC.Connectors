@@ -1,23 +1,28 @@
-﻿namespace MVFC.Connectors.Tests.Educacao;
+namespace MVFC.Connectors.Tests.Educacao;
 
-public sealed class HipolabsTests
+public sealed class HipolabsTests : ConnectorTestsBase<IHipolabsApi>
 {
-    public static TheoryData<IHipolabsApi> Apis =>
-        new()
-        {
-            { HipolabsExtensoes.ObterHipolabsApi() },
-            { TestsHelpers.ObterApi<IHipolabsApi>(s => s.AddHipolabs()) },
-        };
+    protected override IHipolabsApi ManualApi => HipolabsExtensoes.ObterHipolabsApi();
+    protected override IHipolabsApi ServiceCollectionApi => TestsHelpers.ObterApi<IHipolabsApi>(s => s.AddHipolabs());
+
+    public static TheoryData<RegistrationMode> Modes => new() { RegistrationMode.Manual, RegistrationMode.ServiceCollection };
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterUniversidadesPorPais_DeveRetornarItemAsync(IHipolabsApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IHipolabsApi api) =>
+        api.ObterUniversidadesPorPaisAsync("Brazil");
+
+    [Fact]
+    public async Task ObterUniversidadesPorPais_DeveRetornarItemAsync()
     {
         // Arrange
-        const string pais = "Brazil";
+        const string PAIS = "Brazil";
 
         // Act
-        var phishing = await api.ObterUniversidadesPorPaisAsync(pais);
+        var phishing = await ManualApi.ObterUniversidadesPorPaisAsync(PAIS);
 
         // Assert
         phishing.IsSuccessful.Should().BeTrue();

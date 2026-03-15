@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.Geo;
 
-public sealed class ViaCepTests
+public sealed class ViaCepTests : ConnectorTestsBase<IViaCepApi>
 {
-    public static TheoryData<IViaCepApi> Apis =>
-    new()
-    {
-        { ViaCepApiExtensoes.ObterViaCepApi() },
-        { TestsHelpers.ObterApi<IViaCepApi>(s => s.AddViaCep()) },
-    };
+    protected override IViaCepApi ManualApi => ViaCepApiExtensoes.ObterViaCepApi();
+
+    protected override IViaCepApi ServiceCollectionApi => TestsHelpers.ObterApi<IViaCepApi>(s => s.AddViaCep());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterInfosDoCepAsync_DeveRetornarItemAsync(IViaCepApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IViaCepApi api) =>
+        api.ObterDadosPorCepAsync("04514103");
+
+    [Fact]
+    public async Task ObterInfosDoCepAsync_DeveRetornarItemAsync()
     {
         // Arrange
-        const string cep = "04514103";
+        const string CEP = "04514103";
 
         // Act
-        var viaCepDados = await api.ObterDadosPorCepAsync(cep);
+        var viaCepDados = await ManualApi.ObterDadosPorCepAsync(CEP);
 
         // Assert
         viaCepDados.IsSuccessful.Should().BeTrue();

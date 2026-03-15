@@ -94,3 +94,7 @@ global using MVFC.Connectors.Sicoob.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.Modelos.Query.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.Enums.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.Modelos.Request.CobrancaBancariaPagamento;
+global using MVFC.Connectors.Tests.IA.Helpers;
+global using MVFC.Connectors.Tests.Conversores.Helpers;
+global using MVFC.Connectors.BancoData.Exceptions;
+

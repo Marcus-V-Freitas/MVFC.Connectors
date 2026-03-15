@@ -3,7 +3,7 @@
 internal sealed class SicoobAuthProvider(SicoobConfig config) : ITokenProvider
 {
     public async Task<string> ObterTokenAsync(CancellationToken cancellationToken) =>
-        await Task.FromResult(config.AccessToken);
+        await Task.FromResult(config.AccessToken).ConfigureAwait(false);
 
     public IDictionary<string, string> ObterAuthHeaders() =>
         new Dictionary<string, string>()

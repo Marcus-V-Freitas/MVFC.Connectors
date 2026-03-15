@@ -1,52 +1,55 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class CepTests
+public sealed class CepTests : ConnectorTestsBase<ICepBrasilApi>
 {
-    public static TheoryData<ICepBrasilApi> Apis =>
-        new()
-        {
-            CepBrasilApiExtensoes.ObterCepBrasilApi(),
-            TestsHelpers.ObterApi<ICepBrasilApi>(s => s.AddCepBrasilApi()),
-        };
+    protected override ICepBrasilApi ManualApi => CepBrasilApiExtensoes.ObterCepBrasilApi();
+
+    protected override ICepBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<ICepBrasilApi>(s => s.AddCepBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
 
-    public async Task RecuperarCep_v1_DeveRetornarDadosCorretos(ICepBrasilApi api)
+    protected override Task ExecutarChamadaBasica(ICepBrasilApi api) =>
+        api.ObterCepPorNumeroAsync("01001000", "v1");
+
+    [Fact]
+    public async Task RecuperarCep_v1_DeveRetornarDadosCorretos()
     {
         // Arrange
-        const string cep = "01001000";
-        const string version = "v1";
+        const string CEP = "01001000";
+        const string VERSION = "v1";
 
         // Act
-        var resultado = await api.ObterCepPorNumeroAsync(cep, version);
+        var resultado = await ManualApi.ObterCepPorNumeroAsync(CEP, VERSION);
 
         // Assert
         resultado.IsSuccessful.Should().BeTrue();
         resultado.Content.Should().NotBeNull();
-        resultado.Content?.Cep.Should().Be(cep);
+        resultado.Content?.Cep.Should().Be(CEP);
         resultado.Content?.State.Should().Be("SP");
         resultado.Content?.City.Should().Be("São Paulo");
         resultado.Content?.Neighborhood.Should().Be("Sé");
         resultado.Content?.Street.Should().Contain("Praça da Sé");
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-
-    public async Task RecuperarCep_v2_DeveRetornarDadosCorretos(ICepBrasilApi api)
+    [Fact]
+    public async Task RecuperarCep_v2_DeveRetornarDadosCorretos()
     {
         // Arrange
-        const string cep = "01001000";
-        const string version = "v2";
+        const string CEP = "01001000";
+        const string VERSION = "v2";
 
         // Act
-        var resultado = await api.ObterCepPorNumeroAsync(cep, version);
+        var resultado = await ManualApi.ObterCepPorNumeroAsync(CEP, VERSION);
 
         // Assert
         resultado.IsSuccessful.Should().BeTrue();
         resultado.Content.Should().NotBeNull();
-        resultado.Content?.Cep.Should().Be(cep);
+        resultado.Content?.Cep.Should().Be(CEP);
         resultado.Content?.State.Should().Be("SP");
         resultado.Content?.City.Should().Be("São Paulo");
         resultado.Content?.Neighborhood.Should().Be("Sé");

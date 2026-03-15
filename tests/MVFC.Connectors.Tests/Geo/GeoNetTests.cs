@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.Geo;
 
-public sealed class GeoNetTests
+public sealed class GeoNetTests : ConnectorTestsBase<IGeoNetApi>
 {
-    public static TheoryData<IGeoNetApi> Apis =>
-    new()
-    {
-        { GeoNetApiExtensoes.ObterGeoNetApi() },
-        { TestsHelpers.ObterApi<IGeoNetApi>(s => s.AddGeoNet()) },
-    };
+    protected override IGeoNetApi ManualApi => GeoNetApiExtensoes.ObterGeoNetApi();
+
+    protected override IGeoNetApi ServiceCollectionApi => TestsHelpers.ObterApi<IGeoNetApi>(s => s.AddGeoNet());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterDnsGeosPorDominioAsync_DeveRetornarItemAsync(IGeoNetApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IGeoNetApi api) =>
+        api.ObterDnsGeosPorDominioAsync("google.com");
+
+    [Fact]
+    public async Task ObterDnsGeosPorDominioAsync_DeveRetornarItemAsync()
     {
         // Arrange
-        const string dominio = "google.com";
+        const string DOMINIO = "google.com";
 
         // Act
-        var dnsGeos = await api.ObterDnsGeosPorDominioAsync(dominio);
+        var dnsGeos = await ManualApi.ObterDnsGeosPorDominioAsync(DOMINIO);
 
         // Assert
         dnsGeos.IsSuccessful.Should().BeTrue();

@@ -3,5 +3,5 @@
 public interface IViaCepApi : IConnectorApi
 {
     [Get("/ws/{cep}/json/")]
-    Task<ApiResponse<ViaCepDto>> ObterDadosPorCepAsync(string cep);
+    public Task<ApiResponse<ViaCepDto>> ObterDadosPorCepAsync(string cep);
 }

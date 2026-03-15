@@ -2,7 +2,6 @@
 
 public interface IImagemPollinationsApi : IConnectorApi
 {
-
-    [Get("/prompt/{prompt}")]
-    Task<ApiResponse<Stream>> GerarImagemAsync(string prompt);
+    [Get("/image/{prompt}?model=flux&width=1024&height=1024&seed=0&enhance=false")]
+    public Task<ApiResponse<Stream>> GerarImagemAsync(string prompt);
 }

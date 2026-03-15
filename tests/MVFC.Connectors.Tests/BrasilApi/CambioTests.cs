@@ -1,20 +1,26 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class CambioTests
+public sealed class CambioTests : ConnectorTestsBase<ICambioBrasilApi>
 {
-    public static TheoryData<ICambioBrasilApi> Apis =>
-        new()
-        {
-            { CambioBrasilApiExtensoes.ObterCambioBrasilApi() },
-            { TestsHelpers.ObterApi<ICambioBrasilApi>(s => s.AddCambioBrasilApi()) },
-        };
+    protected override ICambioBrasilApi ManualApi => CambioBrasilApiExtensoes.ObterCambioBrasilApi();
+
+    protected override ICambioBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<ICambioBrasilApi>(s => s.AddCambioBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarTodasAsMoedas_Console_DeveRetornarItens(ICambioBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(ICambioBrasilApi api) =>
+        api.ObterCambiosAsync();
+
+    [Fact]
+    public async Task RecuperarTodasAsMoedas_Console_DeveRetornarItens()
     {
         // Arrange & Act
-        var moedas = await api.ObterCambiosAsync();
+        var moedas = await ManualApi.ObterCambiosAsync();
 
         // Assert
         moedas.IsSuccessful.Should().BeTrue();
@@ -23,22 +29,21 @@ public sealed class CambioTests
         moedas.Content.Should().BeEquivalentTo(moedas.Content);
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarCotacaoPorData_Console_DeveRetornarCotacao(ICambioBrasilApi api)
+    [Fact]
+    public async Task RecuperarCotacaoPorData_Console_DeveRetornarCotacao()
     {
         // Arrange
-        const string moeda = "USD";
-        const string data = "2024-01-02";
+        const string MOEDA = "USD";
+        const string DATA = "2024-01-02";
 
         // & Act
-        var cotacao = await api.ObterCambioPorMoedaEDataAsync(moeda, data);
+        var cotacao = await ManualApi.ObterCambioPorMoedaEDataAsync(MOEDA, DATA);
 
         // Assert
         cotacao.IsSuccessful.Should().BeTrue();
         cotacao.Content.Should().NotBeNull();
-        cotacao.Content?.Moeda.Should().Be(moeda);
-        cotacao.Content?.Data.Should().Be(data);
+        cotacao.Content?.Moeda.Should().Be(MOEDA);
+        cotacao.Content?.Data.Should().Be(DATA);
         cotacao.Content?.Cotacoes.Should().NotBeNull();
         cotacao.Content?.Cotacoes.Should().NotBeEmpty();
     }

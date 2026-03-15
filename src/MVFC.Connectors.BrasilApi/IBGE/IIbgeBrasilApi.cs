@@ -3,11 +3,11 @@
 public interface IIbgeBrasilApi : IConnectorApi
 {
     [Get("/ibge/municipios/v1/{sigla}")]
-    Task<ApiResponse<IReadOnlyList<IbgeMunicipioDto>>> ObterMunicipiosPorUfAsync(IbgeSiglaUf sigla, [Query(CollectionFormat.Csv)] IReadOnlyList<IbgeProvedor>? providers = null);
+    public Task<ApiResponse<IReadOnlyList<IbgeMunicipioDto>>> ObterMunicipiosPorUfAsync(IbgeSiglaUf sigla, [Query(CollectionFormat.Csv)] IReadOnlyList<IbgeProvedor>? providers = null);
 
     [Get("/ibge/uf/v1")]
-    Task<ApiResponse<IReadOnlyList<IbgeEstadoDto>>> ObterEstadosAsync();
+    public Task<ApiResponse<IReadOnlyList<IbgeEstadoDto>>> ObterEstadosAsync();
 
     [Get("/ibge/uf/v1/{codigo}")]
-    Task<ApiResponse<IbgeEstadoDto>> ObterEstadoPorCodigoAsync(int codigo);
+    public Task<ApiResponse<IbgeEstadoDto>> ObterEstadoPorCodigoAsync(int codigo);
 }

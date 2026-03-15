@@ -53,7 +53,7 @@ internal sealed class BancoDataTransformer : IBancoDataTransform
             total);
     }
 
-    private static List<ResultadoAnualTratadoDto> TransformResultadosAnuais(List<ResultadoAnualBrutoDto> dadosBrutos) =>
+    private static IReadOnlyList<ResultadoAnualTratadoDto> TransformResultadosAnuais(IReadOnlyList<ResultadoAnualBrutoDto> dadosBrutos) =>
         [.. dadosBrutos.Select(dadoBruto =>
         {
             var (ano, parcial) = HelpersExtensoes.ExtrairAno(dadoBruto.Ano);

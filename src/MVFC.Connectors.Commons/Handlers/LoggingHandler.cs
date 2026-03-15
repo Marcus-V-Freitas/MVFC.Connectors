@@ -8,7 +8,7 @@ internal sealed class LoggingHandler(ILogger<LoggingHandler> logger) : Delegatin
     {
         _logger.LogRequest(request.Method.Method, request.RequestUri);
 
-        var response = await base.SendAsync(request, cancellationToken);
+        var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
         _logger.LogResponse(response.StatusCode);
 

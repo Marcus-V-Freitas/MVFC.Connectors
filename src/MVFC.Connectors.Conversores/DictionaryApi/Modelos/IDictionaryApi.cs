@@ -3,5 +3,5 @@
 public interface IDictionaryApi : IConnectorApi
 {
     [Get("/entries/en/{palavra}")]
-    Task<ApiResponse<IReadOnlyList<DictWordDto>>> ObterSignificadoPorPalavraAsync(string palavra);
+    public Task<ApiResponse<IReadOnlyList<DictWordDto>>> ObterSignificadoPorPalavraAsync(string palavra);
 }

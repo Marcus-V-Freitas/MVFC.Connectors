@@ -1,20 +1,26 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class CptecBrasilApiTests
+public sealed class CptecBrasilApiTests : ConnectorTestsBase<ICptecBrasilApi>
 {
-    public static TheoryData<ICptecBrasilApi> Apis =>
-        new()
-        {
-            { CptecBrasilApiExtensoes.ObterCptecBrasilApi() },
-            { TestsHelpers.ObterApi<ICptecBrasilApi>(s => s.AddCptecBrasilApi()) },
-        };
+    protected override ICptecBrasilApi ManualApi => CptecBrasilApiExtensoes.ObterCptecBrasilApi();
+
+    protected override ICptecBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<ICptecBrasilApi>(s => s.AddCptecBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterCidadesAsync_DeveRetornarItens(ICptecBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(ICptecBrasilApi api) =>
+        api.ObterCidadesAsync();
+
+    [Fact]
+    public async Task ObterCidadesAsync_DeveRetornarItens()
     {
         // Arrange & Act
-        var cidades = await api.ObterCidadesAsync();
+        var cidades = await ManualApi.ObterCidadesAsync();
 
         // Assert
         cidades.IsSuccessful.Should().BeTrue();
@@ -22,15 +28,14 @@ public sealed class CptecBrasilApiTests
         cidades.Content.Should().NotBeEmpty();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterCidadesPorNomeAsync_DeveRetornarItens(ICptecBrasilApi api)
+    [Fact]
+    public async Task ObterCidadesPorNomeAsync_DeveRetornarItens()
     {
         // Arrange
-        const string nomeDaCidade = "São Paulo";
+        const string NOME_DA_CIDADE = "São Paulo";
 
         // Act
-        var cidades = await api.ObterCidadesPorNomeAsync(nomeDaCidade);
+        var cidades = await ManualApi.ObterCidadesPorNomeAsync(NOME_DA_CIDADE);
 
         // Assert
         cidades.IsSuccessful.Should().BeTrue();
@@ -38,46 +43,43 @@ public sealed class CptecBrasilApiTests
         cidades.Content.Should().NotBeEmpty();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterPrevisaoPorCodigoDaCidadeAsync_Console_DeveRetornarItem(ICptecBrasilApi api)
+    [Fact]
+    public async Task ObterPrevisaoPorCodigoDaCidadeAsync_Console_DeveRetornarItem()
     {
         // Arrange
-        const int codigoDaCidade = 244; // São Paulo
+        const int CODIGO_DA_CIDADE = 244; // São Paulo
 
         // Act
-        var previsao = await api.ObterPrevisaoPorCodigoDaCidadeAsync(codigoDaCidade);
+        var previsao = await ManualApi.ObterPrevisaoPorCodigoDaCidadeAsync(CODIGO_DA_CIDADE);
 
         // Assert
         previsao.IsSuccessful.Should().BeTrue();
         previsao.Content.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterPrevisaoPorCodigoDaCidadeEDiasAsync_DeveRetornarItem(ICptecBrasilApi api)
+    [Fact]
+    public async Task ObterPrevisaoPorCodigoDaCidadeEDiasAsync_DeveRetornarItem()
     {
         // Arrange
-        const int codigoDaCidade = 244;
-        const int dias = 3;
+        const int CODIGO_DA_CIDADE = 244;
+        const int DIAS = 3;
 
         // Act
-        var previsao = await api.ObterPrevisaoPorCodigoDaCidadeEDiasAsync(codigoDaCidade, dias);
+        var previsao = await ManualApi.ObterPrevisaoPorCodigoDaCidadeEDiasAsync(CODIGO_DA_CIDADE, DIAS);
 
         // Assert
         previsao.IsSuccessful.Should().BeTrue();
         previsao.Content.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterOndasPorCodigoDaCidadeAsync_DeveRetornarItem(ICptecBrasilApi api)
+    [Fact]
+    public async Task ObterOndasPorCodigoDaCidadeAsync_DeveRetornarItem()
     {
         // Arrange
-        const int codigoDaCidade = 241;
+        const int CODIGO_DA_CIDADE = 241;
 
         // Act
-        var ondas = await api.ObterOndasPorCodigoDaCidadeAsync(codigoDaCidade);
+        var ondas = await ManualApi.ObterOndasPorCodigoDaCidadeAsync(CODIGO_DA_CIDADE);
 
         // Assert
         ondas.IsSuccessful.Should().BeTrue();

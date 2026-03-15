@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.Developer;
 
-public sealed class IpTests
+public sealed class IpTests : ConnectorTestsBase<IIpApi>
 {
-    public static TheoryData<IIpApi> Apis =>
-    new()
-    {
-        { IpApiExtensoes.ObterIpApi() },
-        { TestsHelpers.ObterApi<IIpApi>(s => s.AddIp()) },
-    };
+    protected override IIpApi ManualApi => IpApiExtensoes.ObterIpApi();
+
+    protected override IIpApi ServiceCollectionApi => TestsHelpers.ObterApi<IIpApi>(s => s.AddIp());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterPhishing_DeveRetornarItemAsync(IIpApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IIpApi api) =>
+        api.ObterIpPorNumeroAsync("52.46.64.223");
+
+    [Fact]
+    public async Task ObterPhishing_DeveRetornarItemAsync()
     {
         // Arrange
-        const string numero = "52.46.64.223";
+        const string NUMERO = "52.46.64.223";
 
         // Act
-        var ip = await api.ObterIpPorNumeroAsync(numero);
+        var ip = await ManualApi.ObterIpPorNumeroAsync(NUMERO);
 
         // Assert
         ip.IsSuccessful.Should().BeTrue();

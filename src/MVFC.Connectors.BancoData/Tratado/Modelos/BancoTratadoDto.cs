@@ -5,7 +5,7 @@ public sealed record BancoTratadoDto(
     string Codigo,
     InfoBasicaTratadoDto InfoBasica,
     RedeAtendimentoTratadoDto RedeAtendimento,
-    List<ResultadoAnualTratadoDto> ResultadosAnuais,
+    IReadOnlyList<ResultadoAnualTratadoDto> ResultadosAnuais,
     IndicadoresTratadoDto Indicadores,
     DemonstrativoTratadoDto DRE,
     BalancoTratadoDto Balanco,

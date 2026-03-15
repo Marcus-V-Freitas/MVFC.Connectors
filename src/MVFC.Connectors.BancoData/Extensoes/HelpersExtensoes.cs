@@ -103,26 +103,32 @@ internal static class HelpersExtensoes
     }
 
     internal static decimal CalcularPercentual(decimal resultado, decimal lucro) =>
-        Math.Round(resultado != 0 ? (lucro / resultado) * 100 : 0, 2);
+        Math.Round(resultado != 0 ? lucro / resultado * 100 : 0, 2);
 
     internal static decimal ExtrairValorMonetario(string texto)
     {
         var match = RegexExtensoes.ValorMonetarioRegex().Match(texto);
         if (!match.Success) return 0m;
 
-        var textoNumerico = match.Groups[1].Value.Replace(",", ".");
+        var textoNumerico = match.Groups[1].Value.Replace(",", ".", StringComparison.Ordinal);
 
         if (!decimal.TryParse(textoNumerico, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor))
             return 0m;
 
         if (texto.Contains("milhões", StringComparison.OrdinalIgnoreCase) ||
             texto.Contains("milhão", StringComparison.OrdinalIgnoreCase))
+        {
             valor *= 1_000_000;
+        }
         else if (texto.Contains("bilhões", StringComparison.OrdinalIgnoreCase) ||
                  texto.Contains("bilhão", StringComparison.OrdinalIgnoreCase))
+        {
             valor *= 1_000_000_000;
+        }
         else if (texto.Contains("mil", StringComparison.OrdinalIgnoreCase))
+        {
             valor *= 1_000;
+        }
 
         return valor;
     }
@@ -137,7 +143,7 @@ internal static class HelpersExtensoes
         if (!match.Success) 
             return 0m;
 
-        var textoNumerico = match.Groups[1].Value.Replace(",", ".");
+        var textoNumerico = match.Groups[1].Value.Replace(",", ".", StringComparison.Ordinal);
         decimal.TryParse(textoNumerico, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor);
         return valor;
     }

@@ -1,46 +1,54 @@
 namespace MVFC.Connectors.Tests.Helpers;
 
-public abstract class DirectoryHelper : IAsyncLifetime
+public abstract class DirectoryHelper : IDisposable
 {
-    protected abstract string ARQUIVO_PATH { get; }
+    public abstract string ARQUIVO_PATH { get; }
 
-    public static async Task<T> ObterDoArquivoAsync<T>(JsonSerializerOptions options, params string[] pastasDoArquivo)
+    protected DirectoryHelper()
     {
-        var caminhoArquivo = Path.Combine(pastasDoArquivo);
-        await using var stream = File.OpenRead(caminhoArquivo);
-
-        return await JsonSerializer.DeserializeAsync<T>(stream, options).ConfigureAwait(false) 
-            ?? throw new InvalidOperationException("Desserialização retornou null");
     }
 
-    public async ValueTask InitializeAsync()
+    public void AssertArquivoGerado(ApiResponse<Stream> arquivoGerado, string arquivoGeradoPath)
     {
-        await DeleteDirectoryAsync(ARQUIVO_PATH).ConfigureAwait(false);
-        Directory.CreateDirectory(ARQUIVO_PATH);
-    }
+        ArgumentNullException.ThrowIfNull(arquivoGerado);
 
-    public async ValueTask DisposeAsync()
-    {
-        GC.SuppressFinalize(this);
-        await DeleteDirectoryAsync(ARQUIVO_PATH).ConfigureAwait(false);
-    }
-        
-    protected static async Task DeleteDirectoryAsync(string path)
-    {
-        if (Directory.Exists(path))
-            Directory.Delete(path, recursive: true);
+        if (!Directory.Exists(ARQUIVO_PATH))
+        {
+            Directory.CreateDirectory(ARQUIVO_PATH);
+        }
 
-        await Task.CompletedTask.ConfigureAwait(false);
-    }
-
-    protected static void AssertArquivoGerado(ApiResponse<Stream> arquivoGerado, string arquivoGeradoPath)
-    {
         arquivoGerado.IsSuccessful.Should().BeTrue();
         arquivoGerado.Content.Should().NotBeNull();
-
-        using var fileStream = new FileStream(arquivoGeradoPath, FileMode.Create, FileAccess.Write);
-        arquivoGerado.Content!.CopyTo(fileStream);
+        using (var fileStream = File.Create(arquivoGeradoPath))
+        {
+            arquivoGerado.Content!.CopyTo(fileStream);
+        }
 
         File.Exists(arquivoGeradoPath).Should().BeTrue();
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (Directory.Exists(ARQUIVO_PATH))
+            {
+                Directory.Delete(ARQUIVO_PATH, true);
+            }
+        }
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    public static async Task<T> ObterDoArquivoAsync<T>(JsonSerializerOptions options, params string[] paths)
+    {
+        var basePath = AppContext.BaseDirectory;
+        var fullPath = Path.Combine([basePath, .. paths]);
+        var json = await File.ReadAllTextAsync(fullPath).ConfigureAwait(false);
+        return JsonSerializer.Deserialize<T>(json, options)!;
     }
 }

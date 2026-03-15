@@ -22,5 +22,9 @@ public sealed class SafeEnumConverter<TEnum> : JsonConverter<TEnum>
     }
 
     public override void Write(Utf8JsonWriter writer, TEnum value, JsonSerializerOptions options)
-        => writer.WriteNumberValue(Convert.ToInt32(value));
+    {
+        ArgumentNullException.ThrowIfNull(writer);
+
+        writer.WriteNumberValue(Convert.ToInt32(value));
+    }
 }

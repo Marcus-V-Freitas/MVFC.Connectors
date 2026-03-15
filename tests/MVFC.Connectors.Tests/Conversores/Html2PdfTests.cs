@@ -1,28 +1,35 @@
 ﻿namespace MVFC.Connectors.Tests.Conversores;
 
-public sealed class Html2PdfTests : DirectoryHelper
+public sealed class Html2PdfTests() : ConnectorTestsBase<IHtml2PdfApi>
 {
-    public static TheoryData<IHtml2PdfApi> Apis =>
-        new()
-        {
-            { Html2PdfExtensoes.ObterHtml2PdfApi() },
-            { TestsHelpers.ObterApi<IHtml2PdfApi>(s => s.AddHtml2Pdf()) },
-        };
+    private readonly Html2PdfClassFixture _fixture = new();
 
-    protected override string ARQUIVO_PATH => "temp_folder_html2";
+    protected override IHtml2PdfApi ManualApi => Html2PdfExtensoes.ObterHtml2PdfApi();
+
+    protected override IHtml2PdfApi ServiceCollectionApi => TestsHelpers.ObterApi<IHtml2PdfApi>(s => s.AddHtml2Pdf());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task GerarPdfPorHtml_DeveRetornarItemAsync(IHtml2PdfApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IHtml2PdfApi api) =>
+        api.GerarPdfPorHtml(new Html2PdfRequest(Html: "<p>Olá</p>"));
+
+
+    [Fact]
+    public async Task GerarPdfPorHtml_DeveRetornarItemAsync()
     {
         // Arrange
-        var pdfGeradoPath = Path.Combine(ARQUIVO_PATH, $"{Guid.NewGuid()}.pdf");
+        var pdfGeradoPath = Path.Combine(_fixture.ARQUIVO_PATH, $"{Guid.NewGuid()}.pdf");
         var request = new Html2PdfRequest(Html: "<p>Olá , mundo!</p>");
 
         // Act
-        var pdfGerado = await api.GerarPdfPorHtml(request);
+        var pdfGerado = await ManualApi.GerarPdfPorHtml(request);
 
         // Assert
-        AssertArquivoGerado(pdfGerado, pdfGeradoPath);
+        _fixture.AssertArquivoGerado(pdfGerado, pdfGeradoPath);
     }
 }

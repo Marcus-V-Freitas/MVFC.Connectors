@@ -1,35 +1,40 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class CorretorasTests
+public sealed class CorretorasTests : ConnectorTestsBase<ICorretoraBrasilApi>
 {
-    public static TheoryData<ICorretoraBrasilApi> Apis =>
-        new()
-        {
-            { CorretorasBrasilApiExtensoes.ObterCorretoraBrasilApi() },
-            { TestsHelpers.ObterApi<ICorretoraBrasilApi>(s => s.AddCorretoraBrasilApi()) },
-        };
+    protected override ICorretoraBrasilApi ManualApi => CorretorasBrasilApiExtensoes.ObterCorretoraBrasilApi();
+
+    protected override ICorretoraBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<ICorretoraBrasilApi>(s => s.AddCorretoraBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarTodasAsCorretoras_DeveRetornarItens(ICorretoraBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(ICorretoraBrasilApi api) =>
+        api.ObterCorretorasAsync();
+
+    [Fact]
+    public async Task RecuperarTodasAsCorretoras_DeveRetornarItens()
     {
         // Arrange & Act
-        var corretoras = await api.ObterCorretorasAsync();
+        var corretoras = await ManualApi.ObterCorretorasAsync();
 
         // Assert
         corretoras.IsSuccessful.Should().BeTrue();
         corretoras.Content.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarCorretoraPorCnpj_DeveRetornarItem(ICorretoraBrasilApi api)
+    [Fact]
+    public async Task RecuperarCorretoraPorCnpj_DeveRetornarItem()
     {
         // Arrange
-        const string cnpj = "02332886000104";
+        const string CNPJ = "02332886000104";
 
         // Act
-        var corretora = await api.ObterCorretoraPorCnpjAsync(cnpj);
+        var corretora = await ManualApi.ObterCorretoraPorCnpjAsync(CNPJ);
 
         // Assert
         corretora.IsSuccessful.Should().BeTrue();

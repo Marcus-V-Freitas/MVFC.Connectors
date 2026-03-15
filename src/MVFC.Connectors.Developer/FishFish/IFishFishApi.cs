@@ -3,5 +3,5 @@
 public interface IFishFishApi : IConnectorApi
 {
     [Get("/domains")]
-    Task<ApiResponse<IReadOnlyList<string>>> ObterPhishingAsync();
+    public Task<ApiResponse<IReadOnlyList<string>>> ObterPhishingAsync();
 }

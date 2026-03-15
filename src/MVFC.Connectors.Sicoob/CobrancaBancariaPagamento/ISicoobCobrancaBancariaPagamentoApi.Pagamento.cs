@@ -3,5 +3,5 @@
 public partial interface ISicoobCobrancaBancariaPagamentoApi
 {
     [Get("/boletos")]
-    Task<ApiResponse<BoletoDdaResponse[]>> ConsultarBoletosDdaAsync([Query] ConsultarBoletosDdaQuery query);
+    public Task<ApiResponse<BoletoDdaResponse[]>> ConsultarBoletosDdaAsync([Query] ConsultarBoletosDdaQuery query);
 }

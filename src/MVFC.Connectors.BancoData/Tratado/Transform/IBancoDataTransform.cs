@@ -2,5 +2,5 @@
 
 public interface IBancoDataTransform
 {
-    BancoTratadoDto Transformar(BancoBrutoDto dadosBrutos);
+    public BancoTratadoDto Transformar(BancoBrutoDto dadosBrutos);
 }

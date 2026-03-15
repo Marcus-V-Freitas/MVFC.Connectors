@@ -6,7 +6,7 @@ internal sealed partial class BancoDataScraper : IBancoDataScraper, IDisposable
 
     public async Task<BancoBrutoDto> ScrapeAsync(string bankCode, string html)
     {
-        var documento = await _context.OpenAsync(req => req.Content(html));
+        var documento = await _context.OpenAsync(req => req.Content(html)).ConfigureAwait(false);
 
         return ExtrairDadosBrutos(documento, bankCode);
     }

@@ -3,5 +3,5 @@
 public partial interface ISicoobCobrancaBancariaApi
 {
     [Get("/health")]
-    Task<ApiResponse<HealthResponse>> VerificarSaudeAsync();
+    public Task<ApiResponse<HealthResponse>> VerificarSaudeAsync();
 }

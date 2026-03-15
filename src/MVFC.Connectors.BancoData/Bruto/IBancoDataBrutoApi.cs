@@ -3,5 +3,5 @@
 public interface IBancoDataBrutoApi : IConnectorApi
 {
     [Get("/{bankCode}")]
-    Task<ApiResponse<BancoBrutoDto>> ObterDadosBrutosAsync(string bankCode);
+    public Task<ApiResponse<BancoBrutoDto>> ObterDadosBrutosAsync(string bankCode);
 }

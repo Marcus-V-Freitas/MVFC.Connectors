@@ -2,5 +2,5 @@
 
 internal interface IBancoDataScraper
 {
-    Task<BancoBrutoDto> ScrapeAsync(string bankCode, string html);
+    internal Task<BancoBrutoDto> ScrapeAsync(string bankCode, string html);
 }

@@ -1,35 +1,40 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class BancosTests
+public sealed class BancosTests : ConnectorTestsBase<IBancoBrasilApi>
 {
-    public static TheoryData<IBancoBrasilApi> Apis =>
-        new()
-        {
-            BancosBrasilApiExtensoes.ObterBankBrasilApi(),
-            TestsHelpers.ObterApi<IBancoBrasilApi>(s => s.AddBankBrasilApi()),
-        };
+    protected override IBancoBrasilApi ManualApi => BancosBrasilApiExtensoes.ObterBankBrasilApi();
+
+    protected override IBancoBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<IBancoBrasilApi>(s => s.AddBankBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarTodosOsBancos_DeveRetornarItens(IBancoBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IBancoBrasilApi api) =>
+        api.ObterBancosAsync();
+
+    [Fact]
+    public async Task RecuperarTodosOsBancos_DeveRetornarItens()
     {
         // Arrange & Act
-        var bancos = await api.ObterBancosAsync();
+        var bancos = await ManualApi.ObterBancosAsync();
 
         // Assert
         bancos.IsSuccessful.Should().BeTrue();
         bancos.Content.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarBancoPorCodigo_DeveRetornarItem(IBancoBrasilApi api)
+    [Fact]
+    public async Task RecuperarBancoPorCodigo_DeveRetornarItem()
     {
         // Arrange
-        const int codigo = 1;
+        const int CODIGO = 1;
 
         // Act
-        var banco = await api.ObterBancosPorCodigoAsync(codigo);
+        var banco = await ManualApi.ObterBancosPorCodigoAsync(CODIGO);
 
         // Assert
         banco.IsSuccessful.Should().BeTrue();

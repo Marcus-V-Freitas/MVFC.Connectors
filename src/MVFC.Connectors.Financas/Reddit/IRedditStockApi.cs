@@ -3,5 +3,5 @@
 public interface IRedditStockApi : IConnectorApi
 {
     [Get("/apps/reddit")]
-    Task<ApiResponse<IReadOnlyList<RedditStockDto>>> ObterTopStocksAsync();
+    public Task<ApiResponse<IReadOnlyList<RedditStockDto>>> ObterTopStocksAsync();
 }

@@ -2,7 +2,7 @@
 
 public abstract class SicoobBaseTests
 {
-    protected static readonly SicoobConfig _config = new(
+    public static readonly SicoobConfig Config = new(
         SecretsHelper.ObterSecretPorChave("Sicoob:ClientId")!,
         SecretsHelper.ObterSecretPorChave("Sicoob:AccessToken")!, true);
 
@@ -14,7 +14,6 @@ public abstract class SicoobBaseTests
         WriteIndented = true,
     };
 
-    protected static async Task<T> ObterPorArquivoAsync<T>(string pasta, string nomeArquivo) =>
-        await DirectoryHelper.ObterDoArquivoAsync<T>(_jsonOptions, "Sicoob", "Jsons", pasta, nomeArquivo);
-
+    public static async Task<T> ObterPorArquivoAsync<T>(string pasta, string nomeArquivo) =>
+        await DirectoryHelper.ObterDoArquivoAsync<T>(_jsonOptions, "Sicoob", "Jsons", pasta, nomeArquivo).ConfigureAwait(false);
 }

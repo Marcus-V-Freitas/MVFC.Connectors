@@ -1,20 +1,26 @@
 ﻿namespace MVFC.Connectors.Tests.Financas;
 
-public sealed class RedditStockTests
+public sealed class RedditStockTests : ConnectorTestsBase<IRedditStockApi>
 {
-    public static TheoryData<IRedditStockApi> Apis =>
-    new()
-    {
-        { RedditExtensoes.ObterRedditStockApi() },
-        { TestsHelpers.ObterApi<IRedditStockApi>(s => s.AddRedditStock()) },
-    };
+    protected override IRedditStockApi ManualApi => RedditExtensoes.ObterRedditStockApi();
+
+    protected override IRedditStockApi ServiceCollectionApi => TestsHelpers.ObterApi<IRedditStockApi>(s => s.AddRedditStock());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterStocks_DeveRetornarItemAsync(IRedditStockApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IRedditStockApi api) =>
+        api.ObterTopStocksAsync();
+
+    [Fact]
+    public async Task ObterStocks_DeveRetornarItemAsync()
     {
         // Arrange & Act
-        var stocks = await api.ObterTopStocksAsync();
+        var stocks = await ManualApi.ObterTopStocksAsync();
 
         // Assert
         stocks.IsSuccessful.Should().BeTrue();

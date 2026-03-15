@@ -3,5 +3,5 @@
 public interface IGeocodingApi : IConnectorApi
 {
     [Get("/search?name={nomeDaCidade}")]
-    Task<ApiResponse<GeocodingDto>> ObterGeografiaPorNomeDaCidadeAsync(string nomeDaCidade);
+    public Task<ApiResponse<GeocodingDto>> ObterGeografiaPorNomeDaCidadeAsync(string nomeDaCidade);
 }

@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.IA;
 
-public sealed class TextoPollinationsTests
+public sealed class TextoPollinationsTests : ConnectorTestsBase<ITextoPollinationsApi>
 {
-    public static TheoryData<ITextoPollinationsApi> Apis =>
-    new()
-    {
-        { TextoPollinationsExtensoes.ObterTextoPollinationsApi() },
-        { TestsHelpers.ObterApi<ITextoPollinationsApi>(s => s.AddTextoPollinations()) },
-    };
+    protected override ITextoPollinationsApi ManualApi => TextoPollinationsExtensoes.ObterTextoPollinationsApi();
+
+    protected override ITextoPollinationsApi ServiceCollectionApi => TestsHelpers.ObterApi<ITextoPollinationsApi>(s => s.AddTextoPollinations());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task GerarTexto_DeveRetornarNaoVazioAsync(ITextoPollinationsApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(ITextoPollinationsApi api) =>
+        api.GerarTextoAsync("Quem é Darth Vader?");
+
+    [Fact]
+    public async Task GerarTexto_DeveRetornarNaoVazioAsync()
     {
         // Arrange
-        const string prompt = "Quem é Darth Vader?";
+        const string PROMPT = "Quem é Darth Vader?";
 
         // Act
-        var textoGerado = await api.GerarTextoAsync(prompt);
+        var textoGerado = await ManualApi.GerarTextoAsync(PROMPT);
 
         // Assert
         textoGerado.IsSuccessful.Should().BeTrue();

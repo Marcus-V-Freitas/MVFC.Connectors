@@ -5,7 +5,7 @@ public sealed record BancoBrutoDto(
    string Codigo,
    InfoBasicaBrutoDto InfoBasica,
    RedeAtendimentoBrutoDto RedeAtendimento,
-   List<ResultadoAnualBrutoDto> ResultadosAnuais,
+   IReadOnlyList<ResultadoAnualBrutoDto> ResultadosAnuais,
    IndicadoresBrutoDto Indicadores,
    DemonstrativoBrutoDto DRE,
    BalancoBrutoDto Balanco);

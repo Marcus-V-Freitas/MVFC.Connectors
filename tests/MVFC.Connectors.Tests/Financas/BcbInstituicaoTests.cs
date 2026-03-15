@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.Financas;
 
-public sealed class BcbInstituicaoTests
+public sealed class BcbInstituicaoTests : ConnectorTestsBase<IBcbInstituicaoApi>
 {
-    public static TheoryData<IBcbInstituicaoApi> Apis =>
-    new()
-    {
-        { BcbInstituicaoExtensoes.ObterBcbInstituicaoApi() },
-        { TestsHelpers.ObterApi<IBcbInstituicaoApi>(s => s.AddBcbInstituicao()) },
-    };
+    protected override IBcbInstituicaoApi ManualApi => BcbInstituicaoExtensoes.ObterBcbInstituicaoApi();
+
+    protected override IBcbInstituicaoApi ServiceCollectionApi => TestsHelpers.ObterApi<IBcbInstituicaoApi>(s => s.AddBcbInstituicao());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterInstituicoesReguladasAsync_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IBcbInstituicaoApi api) =>
+        api.ObterSegmentosAsync();
+
+    [Fact]
+    public async Task ObterInstituicoesReguladasAsync_DeveRetornarItemAsync()
     {
         // Arrange
         BcbInstituicaoRequest request = new();
 
         // Act
-        var bcbResponse = await api.ObterInstituicoesReguladasAsync(request);
+        var bcbResponse = await ManualApi.ObterInstituicoesReguladasAsync(request);
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();
@@ -25,15 +31,14 @@ public sealed class BcbInstituicaoTests
         bcbResponse.Content!.Content.Should().NotBeNullOrEmpty();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterInstituicaoPorCnpj_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [Fact]
+    public async Task ObterInstituicaoPorCnpj_DeveRetornarItemAsync()
     {
         // Arrange
-        const string cnpj = "54647259";
+        const string CNPJ = "54647259";
 
         // Act
-        var bcbResponse = await api.ObterInstituicaoPorCnpj(cnpj);
+        var bcbResponse = await ManualApi.ObterInstituicaoPorCnpj(CNPJ);
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();
@@ -41,15 +46,14 @@ public sealed class BcbInstituicaoTests
         bcbResponse.Content!.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterInstituicoesParticipantesDoPixAsync_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [Fact]
+    public async Task ObterInstituicoesParticipantesDoPixAsync_DeveRetornarItemAsync()
     {
         // Arrange
         BcbParticipanteDoPixRequest request = new();
 
         // Act
-        var bcbResponse = await api.ObterInstituicoesParticipantesDoPixAsync(request);
+        var bcbResponse = await ManualApi.ObterInstituicoesParticipantesDoPixAsync(request);
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();
@@ -57,12 +61,11 @@ public sealed class BcbInstituicaoTests
         bcbResponse.Content!.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterSegmentosAsync_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [Fact]
+    public async Task ObterSegmentosAsync_DeveRetornarItemAsync()
     {
         // Arrange & Act
-        var bcbResponse = await api.ObterSegmentosAsync();
+        var bcbResponse = await ManualApi.ObterSegmentosAsync();
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();
@@ -70,12 +73,11 @@ public sealed class BcbInstituicaoTests
         bcbResponse.Content!.Should().NotBeNullOrEmpty();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterEstadosAsync_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [Fact]
+    public async Task ObterEstadosAsync_DeveRetornarItemAsync()
     {
         // Arrange & Act
-        var bcbResponse = await api.ObterEstadosAsync();
+        var bcbResponse = await ManualApi.ObterEstadosAsync();
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();
@@ -83,12 +85,11 @@ public sealed class BcbInstituicaoTests
         bcbResponse.Content!.Should().NotBeNullOrEmpty();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task ObterPaisesAsync_DeveRetornarItemAsync(IBcbInstituicaoApi api)
+    [Fact]
+    public async Task ObterPaisesAsync_DeveRetornarItemAsync()
     {
         // Arrange & Act
-        var bcbResponse = await api.ObterPaisesAsync();
+        var bcbResponse = await ManualApi.ObterPaisesAsync();
 
         // Assert
         bcbResponse.IsSuccessful.Should().BeTrue();

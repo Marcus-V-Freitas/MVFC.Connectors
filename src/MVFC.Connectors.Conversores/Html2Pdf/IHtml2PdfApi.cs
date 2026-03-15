@@ -3,5 +3,5 @@
 public interface IHtml2PdfApi : IConnectorApi
 {
     [Post("/generate")]
-    Task<ApiResponse<Stream>> GerarPdfPorHtml([Body] Html2PdfRequest request);
+    public Task<ApiResponse<Stream>> GerarPdfPorHtml([Body] Html2PdfRequest request);
 }

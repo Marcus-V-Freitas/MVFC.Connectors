@@ -2,12 +2,12 @@
 
 internal sealed class RandomUserAgentProvider : IUserAgentProvider
 {
-    private static readonly string[] Browsers =
+    private static readonly string[] _browsers =
     [
         "Chrome", "Firefox", "Safari", "Edge",
     ];
 
-    private static readonly string[] Plataformas =
+    private static readonly string[] _plataformas =
     [
         "Windows NT 10.0; Win64; x64",
         "Windows NT 6.1; Win64; x64",
@@ -25,10 +25,10 @@ internal sealed class RandomUserAgentProvider : IUserAgentProvider
     }
 
     private static void ComBrowserAleatorio(out string browser) =>
-        browser = Browsers[Random.Shared.Next(Browsers.Length)];
+        browser = _browsers[Random.Shared.Next(_browsers.Length)];
 
     private static void ComPlataformaAleatoria(out string plataforma) =>
-        plataforma = Plataformas[Random.Shared.Next(Plataformas.Length)];
+        plataforma = _plataformas[Random.Shared.Next(_plataformas.Length)];
 
     private static void ComVersaoAleatoria(out int versaoMaior, out int versaoMenor, out int construcao)
     {

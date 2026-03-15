@@ -1,35 +1,40 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class TaxaTests
+public sealed class TaxaTests : ConnectorTestsBase<ITaxaBrasilApi>
 {
-    public static TheoryData<ITaxaBrasilApi> Apis =>
-        new()
-        {
-            { TaxaBrasilApiExtensoes.ObterTaxaBrasilApi() },
-            { TestsHelpers.ObterApi<ITaxaBrasilApi>(s => s.AddTaxaBrasilApi()) },
-        };
+    protected override ITaxaBrasilApi ManualApi => TaxaBrasilApiExtensoes.ObterTaxaBrasilApi();
+
+    protected override ITaxaBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<ITaxaBrasilApi>(s => s.AddTaxaBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarTodasAsTaxas_DeveRetornarItens(ITaxaBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(ITaxaBrasilApi api) =>
+        api.ObterTaxasAsync();
+
+    [Fact]
+    public async Task RecuperarTodasAsTaxas_DeveRetornarItens()
     {
         // Arrange & Act
-        var taxas = await api.ObterTaxasAsync();
+        var taxas = await ManualApi.ObterTaxasAsync();
 
         // Assert
         taxas.IsSuccessful.Should().BeTrue();
         taxas.Content.Should().NotBeNull();
     }
 
-    [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarBancoPorCodigo_DeveRetornarItem(ITaxaBrasilApi api)
+    [Fact]
+    public async Task RecuperarTaxaPorSigla_DeveRetornarItem()
     {
         // Arrange
-        const string sigla = "IPCA";
+        const string SIGLA = "IPCA";
 
         // Act
-        var taxa = await api.ObterTaxaPorSiglaAsync(sigla);
+        var taxa = await ManualApi.ObterTaxaPorSiglaAsync(SIGLA);
 
         // Assert
         taxa.IsSuccessful.Should().BeTrue();

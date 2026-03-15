@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.Developer;
 
-public sealed class DisifyEmailTests
+public sealed class DisifyEmailTests : ConnectorTestsBase<IDisifyEmailApi>
 {
-    public static TheoryData<IDisifyEmailApi> Apis =>
-    new()
-    {
-        { DisifyEmailApiExtensoes.ObterDisifyEmailApi() },
-        { TestsHelpers.ObterApi<IDisifyEmailApi>(s => s.AddDisifyEmail()) },
-    };
+    protected override IDisifyEmailApi ManualApi => DisifyEmailApiExtensoes.ObterDisifyEmailApi();
+
+    protected override IDisifyEmailApi ServiceCollectionApi => TestsHelpers.ObterApi<IDisifyEmailApi>(s => s.AddDisifyEmail());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task VerificarStatusEmail_DeveRetornarItemAsync(IDisifyEmailApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IDisifyEmailApi api) =>
+        api.VerificarValidadeDoEmailAsync("teste@teste.com");
+
+    [Fact]
+    public async Task VerificarStatusEmail_DeveRetornarItemAsync()
     {
         // Arrange
-        const string email = "teste@teste.com";
+        const string EMAIL = "teste@teste.com";
 
         // Act
-        var emailStatus = await api.VerificarValidadeDoEmailAsync(email);
+        var emailStatus = await ManualApi.VerificarValidadeDoEmailAsync(EMAIL);
 
         // Assert
         emailStatus.IsSuccessful.Should().BeTrue();

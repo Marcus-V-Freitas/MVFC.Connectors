@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class DddTests
+public sealed class DddTests : ConnectorTestsBase<IDddBrasilApi>
 {
-    public static TheoryData<IDddBrasilApi> Apis =>
-        new()
-        {
-            DddBrasilApiExtensoes.ObterDddBrasilApi(),
-            TestsHelpers.ObterApi<IDddBrasilApi>(s => s.AddDddBrasilApi()),
-        };
+    protected override IDddBrasilApi ManualApi => DddBrasilApiExtensoes.ObterDddBrasilApi();
+
+    protected override IDddBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<IDddBrasilApi>(s => s.AddDddBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarDdd_DeveRetornarItens(IDddBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IDddBrasilApi api) =>
+        api.ObterDddInfoPorCodigoAsync("55");
+
+    [Fact]
+    public async Task RecuperarDdd_DeveRetornarItens()
     {
         // Arrange &
-        const string codigoDdd = "55";
+        const string CODIGO_DDD = "55";
 
         // Act
-        var dddInfo = await api.ObterDddInfoPorCodigoAsync(codigoDdd);
+        var dddInfo = await ManualApi.ObterDddInfoPorCodigoAsync(CODIGO_DDD);
 
         // Assert
         dddInfo.IsSuccessful.Should().BeTrue();

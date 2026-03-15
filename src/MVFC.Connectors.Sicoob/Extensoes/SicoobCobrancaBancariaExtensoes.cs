@@ -8,9 +8,17 @@ public static class SicoobCobrancaBancariaExtensoes
         { true,  "https://sandbox.sicoob.com.br/sicoob/sandbox/cobranca-bancaria/v3" }
     };
 
-    public static ISicoobCobrancaBancariaApi ObterSicoobCobrancaBancariaApi(SicoobConfig config) =>
-         SicoobExtensoes.ObterSicoobApi<ISicoobCobrancaBancariaApi>(_urlsBase, config);
+    public static ISicoobCobrancaBancariaApi ObterSicoobCobrancaBancariaApi(SicoobConfig config)
+    {
+        ArgumentNullException.ThrowIfNull(config);
 
-    public static void AddSicoobCobrancaBancaria(this IServiceCollection services, SicoobConfig config) =>
+        return SicoobExtensoes.ObterSicoobApi<ISicoobCobrancaBancariaApi>(_urlsBase, config);
+    }
+
+    public static void AddSicoobCobrancaBancaria(this IServiceCollection services, SicoobConfig config)
+    {
+        ArgumentNullException.ThrowIfNull(config);
+
         SicoobExtensoes.AddSicoob<ISicoobCobrancaBancariaApi>(services, _urlsBase, config);
+    }        
 }

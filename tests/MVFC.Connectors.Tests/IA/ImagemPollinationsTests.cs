@@ -1,28 +1,34 @@
 ﻿namespace MVFC.Connectors.Tests.IA;
 
-public sealed class ImagemPollinationsTests : DirectoryHelper
+public sealed class ImagemPollinationsTests : ConnectorTestsBase<IImagemPollinationsApi>
 {
-    public static TheoryData<IImagemPollinationsApi> Apis =>
-    new()
-    {
-        { ImagemPollinationExtensoes.ObterImagemPollinationsApi() },
-        { TestsHelpers.ObterApi<IImagemPollinationsApi>(s => s.AddImagemPollinations()) },
-    };
+    private readonly ImagemPollinationsClassFixture _fixture = new();
 
-    protected override string ARQUIVO_PATH => "temp_folder_pollinations";
+    protected override IImagemPollinationsApi ManualApi => ImagemPollinationExtensoes.ObterImagemPollinationsApi();
+
+    protected override IImagemPollinationsApi ServiceCollectionApi => TestsHelpers.ObterApi<IImagemPollinationsApi>(s => s.AddImagemPollinations());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task GerarImagem_DeveRetornarNaoVazioAsync(IImagemPollinationsApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IImagemPollinationsApi api) =>
+        api.GerarImagemAsync("Gere uma imagem de Darth Vader");
+
+    [Fact]
+    public async Task GerarImagem_DeveRetornarNaoVazioAsync()
     {
         // Arrange
-        const string prompt = "Gere uma imagem de Darth Vader";
-        var imagemGeradaPath = Path.Combine(ARQUIVO_PATH, $"{Guid.NewGuid()}.jpg");
+        const string PROMPT = "Gere uma imagem de Darth Vader";
+        var imagemGeradaPath = Path.Combine(_fixture.ARQUIVO_PATH, $"{Guid.NewGuid()}.jpg");
 
         // Act
-        var imagemGerada = await api.GerarImagemAsync(prompt);
+        var imagemGerada = await ManualApi.GerarImagemAsync(PROMPT);
 
         // Assert
-        AssertArquivoGerado(imagemGerada, imagemGeradaPath);
+        _fixture.AssertArquivoGerado(imagemGerada, imagemGeradaPath);
     }
 }

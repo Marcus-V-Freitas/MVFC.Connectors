@@ -12,9 +12,9 @@ internal sealed class BancoDataTratadoHandler(IBancoDataScraper scraper, IBancoD
         if (string.IsNullOrEmpty(bankCode))
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
 
-        var response = await base.SendAsync(request, cancellationToken);
-        var html = await response.Content.ReadAsStringAsync(cancellationToken);
-        var dadosBrutos = await _scraper.ScrapeAsync(bankCode, html);
+        var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        var html = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+        var dadosBrutos = await _scraper.ScrapeAsync(bankCode, html).ConfigureAwait(false);
         var dadosTratados = _transform.Transformar(dadosBrutos);
 
         return new HttpResponseMessage(HttpStatusCode.OK)

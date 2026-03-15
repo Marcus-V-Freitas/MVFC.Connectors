@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class IsbnTests
+public sealed class IsbnTests : ConnectorTestsBase<IIsbnBrasilApi>
 {
-    public static TheoryData<IIsbnBrasilApi> Apis =>
-        new()
-        {
-            { IsbnBrasilApiExtensoes.ObterIsbnBrasilApi() },
-            { TestsHelpers.ObterApi<IIsbnBrasilApi>(s => s.AddIsbnBrasilApi()) },
-        };
+    protected override IIsbnBrasilApi ManualApi => IsbnBrasilApiExtensoes.ObterIsbnBrasilApi();
+
+    protected override IIsbnBrasilApi ServiceCollectionApi => TestsHelpers.ObterApi<IIsbnBrasilApi>(s => s.AddIsbnBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarIsbn_DeveRetornarItens(IIsbnBrasilApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IIsbnBrasilApi api) =>
+        api.ObterLivroPorIsbnAsync("9788545702870");
+
+    [Fact]
+    public async Task RecuperarIsbn_DeveRetornarItens()
     {
         // Arrange
-        const string isbn = "9788545702870";
+        const string ISBN = "9788545702870";
 
         // Act
-        var livro = await api.ObterLivroPorIsbnAsync(isbn);
+        var livro = await ManualApi.ObterLivroPorIsbnAsync(ISBN);
 
         // Assert
         livro.IsSuccessful.Should().BeTrue();

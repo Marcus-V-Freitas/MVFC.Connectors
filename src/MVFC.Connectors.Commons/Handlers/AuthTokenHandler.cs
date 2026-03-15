@@ -6,7 +6,9 @@ public sealed class AuthTokenHandler(ITokenProvider tokenProvider) : DelegatingH
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        var token = await _tokenProvider.ObterTokenAsync(cancellationToken);
+        ArgumentNullException.ThrowIfNull(request);
+
+        var token = await _tokenProvider.ObterTokenAsync(cancellationToken).ConfigureAwait(false);
 
         if (!string.IsNullOrEmpty(token))
         {
@@ -18,7 +20,7 @@ public sealed class AuthTokenHandler(ITokenProvider tokenProvider) : DelegatingH
             request.Headers.TryAddWithoutValidation(header.Key, header.Value);
         }
 
-        var response = await base.SendAsync(request, cancellationToken);
+        var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
         return response;
     }

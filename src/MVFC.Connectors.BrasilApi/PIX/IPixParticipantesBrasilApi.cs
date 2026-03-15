@@ -3,5 +3,5 @@
 public interface IPixParticipantesBrasilApi : IConnectorApi
 {
     [Get("/pix/v1/participants")]
-    Task<ApiResponse<IReadOnlyList<PixParticipanteDto>>> ObterParticipantesPixAsync();
+    public Task<ApiResponse<IReadOnlyList<PixParticipanteDto>>> ObterParticipantesPixAsync();
 }

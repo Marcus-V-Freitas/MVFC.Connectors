@@ -3,8 +3,8 @@
 public interface ITaxaBrasilApi : IConnectorApi
 {
     [Get("/taxas/v1/{sigla}")]
-    Task<ApiResponse<TaxaDto>> ObterTaxaPorSiglaAsync(string sigla);
+    public Task<ApiResponse<TaxaDto>> ObterTaxaPorSiglaAsync(string sigla);
 
     [Get("/taxas/v1")]
-    Task<ApiResponse<IReadOnlyList<TaxaDto>>> ObterTaxasAsync();
+    public Task<ApiResponse<IReadOnlyList<TaxaDto>>> ObterTaxasAsync();
 }

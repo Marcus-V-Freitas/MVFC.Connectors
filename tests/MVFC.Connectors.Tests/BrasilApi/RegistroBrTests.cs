@@ -1,23 +1,29 @@
 ﻿namespace MVFC.Connectors.Tests.BrasilApi;
 
-public sealed class RegistroBrTests
+public sealed class RegistroBrTests : ConnectorTestsBase<IRegistroBrApi>
 {
-    public static TheoryData<IRegistroBrApi> Apis =>
-    new()
-    {
-        { RegistroBrBrasilApiExtensoes.ObterRegistroBrBrasilApi() },
-        { TestsHelpers.ObterApi<IRegistroBrApi>(s => s.AddRegistroBrBrasilApi()) },
-    };
+    protected override IRegistroBrApi ManualApi => RegistroBrBrasilApiExtensoes.ObterRegistroBrBrasilApi();
+
+    protected override IRegistroBrApi ServiceCollectionApi => TestsHelpers.ObterApi<IRegistroBrApi>(s => s.AddRegistroBrBrasilApi());
+
+    public static TheoryData<RegistrationMode> Modes => [RegistrationMode.Manual, RegistrationMode.ServiceCollection];
 
     [Theory]
-    [MemberData(nameof(Apis))]
-    public async Task RecuperarRegistroBrPorDominio_DeveRetornarItens(IRegistroBrApi api)
+    [MemberData(nameof(Modes))]
+    public Task GarantirQueApiEstaConfiguradaEBuscandoDados(RegistrationMode mode) =>
+        ValidarConfiguracaoApi(mode);
+
+    protected override Task ExecutarChamadaBasica(IRegistroBrApi api) =>
+        api.VerificarStatusDoDominioAsync("marcus");
+
+    [Fact]
+    public async Task RecuperarRegistroBrPorDominio_DeveRetornarItens()
     {
         // Arrange
-        const string dominio = "marcus";
+        const string DOMINIO = "google";
 
         // Act
-        var registro = await api.VerificarStatusDoDominioAsync(dominio);
+        var registro = await ManualApi.VerificarStatusDoDominioAsync(DOMINIO);
 
         // Assert
         registro.IsSuccessful.Should().BeTrue();

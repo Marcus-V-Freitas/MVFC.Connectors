@@ -2,5 +2,5 @@
 
 public interface IUserAgentProvider
 {
-    string ObterUserAgent();
+    public string ObterUserAgent();
 }

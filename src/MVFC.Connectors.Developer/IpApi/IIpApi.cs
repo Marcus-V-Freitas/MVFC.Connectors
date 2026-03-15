@@ -3,5 +3,5 @@
 public interface IIpApi : IConnectorApi
 {
     [Get("/?q={numero}")]
-    Task<ApiResponse<IpDto>> ObterIpPorNumeroAsync(string numero);
+    public Task<ApiResponse<IpDto>> ObterIpPorNumeroAsync(string numero);
 }
