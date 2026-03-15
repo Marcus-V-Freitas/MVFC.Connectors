@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [3.0.1] - 2026-03-16
+
+### Changed
+
+- Sicoob configuration updated to use ClientSecret instead of AccessToken
+
 ## [3.0.0] - 2026-03-15
 
 ### Added
@@ -190,6 +196,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[3.0.1]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.0...v3.0.1
+[3.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v2.1.4...v3.0.0
 [2.1.4]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v2.1.3...v2.1.4
 [2.1.3]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v2.1.2...v2.1.3
 [2.1.2]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v2.1.1...v2.1.2
