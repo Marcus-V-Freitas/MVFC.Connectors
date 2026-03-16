@@ -14,9 +14,8 @@ global using MVFC.Connectors.Conversores.Html2Pdf.Extensoes;
 global using MVFC.Connectors.Conversores.Html2Pdf.Modelos.Request;
 global using MVFC.Connectors.Developer.FishFish;
 global using MVFC.Connectors.Developer.FishFish.Extensoes;
-global using MVFC.Connectors.Developer.MysqlExplain;
-global using MVFC.Connectors.Developer.MysqlExplain.Extensoes;
-global using MVFC.Connectors.Developer.MysqlExplain.Modelos.Request;
+global using MVFC.Connectors.Developer.DaliboExplain;
+global using MVFC.Connectors.Developer.DaliboExplain.Extensoes;
 global using MVFC.Connectors.Conversores.GoogleTradutor;
 global using MVFC.Connectors.Conversores.GoogleTradutor.Extensoes;
 global using MVFC.Connectors.Developer.IpApi;
@@ -97,4 +96,4 @@ global using MVFC.Connectors.Sicoob.Modelos.Request.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Tests.IA.Helpers;
 global using MVFC.Connectors.Tests.Conversores.Helpers;
 global using MVFC.Connectors.BancoData.Exceptions;
-
+global using MVFC.Connectors.Developer.DaliboExplain.Modelos.Request;
