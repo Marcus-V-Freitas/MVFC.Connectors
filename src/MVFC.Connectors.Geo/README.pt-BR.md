@@ -1,11 +1,11 @@
-﻿# MVFC.Connectors.Geo
+# MVFC.Connectors.Geo
 
 Conectores para geolocalização e resolução de endereços, com suporte a ViaCEP, Geocoding e GeoNet.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Geo.svg)](https://www.nuget.org/packages/MVFC.Connectors.Geo)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Geo.svg)](https://www.nuget.org/packages/MVFC.Connectors.Geo)
-[![License](https://img.shields.io/github/license/Marcus-V-Freitas/MVFC.Connectors.svg)](../../LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/Marcus-V-Freitas/MVFC.Connectors/ci.yml?branch=main)](../../actions)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português

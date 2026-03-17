@@ -1,11 +1,11 @@
-﻿# MVFC.Connectors.Conversores
+# MVFC.Connectors.Conversores
 
 Conectores para serviços de conversão de conteúdo, incluindo tradução de texto, consulta de dicionário e geração de PDF a partir de HTML.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
-[![License](https://img.shields.io/github/license/Marcus-V-Freitas/MVFC.Connectors.svg)](../../LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/Marcus-V-Freitas/MVFC.Connectors/ci.yml?branch=main)](../../actions)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português

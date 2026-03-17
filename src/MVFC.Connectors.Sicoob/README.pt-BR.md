@@ -1,11 +1,11 @@
-﻿# MVFC.Connectors.Sicoob
+# MVFC.Connectors.Sicoob
 
 Conector para as APIs bancárias do Sicoob, cobrindo cobrança bancária, gestão de boletos, pagamentos, negativação, protestos e webhooks.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
-[![License](https://img.shields.io/github/license/Marcus-V-Freitas/MVFC.Connectors.svg)](../../LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/Marcus-V-Freitas/MVFC.Connectors/ci.yml?branch=main)](../../actions)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português

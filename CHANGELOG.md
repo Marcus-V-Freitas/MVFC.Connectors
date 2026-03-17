@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [3.0.4] - 2026-93-15
+## [3.0.5] - 2026-03-16
+
+### Documentation
+
+- Standardized `LICENSE` and `CI` badges across all project READMEs (English and Portuguese)
+
+## [3.0.4] - 2026-03-15
 
 ### Removed
 
@@ -222,6 +228,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[3.0.5]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.2...v3.0.3
 [3.0.2]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.1...v3.0.2
