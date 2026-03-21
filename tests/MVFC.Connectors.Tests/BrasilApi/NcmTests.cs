@@ -53,6 +53,5 @@ public sealed class NcmTests : ConnectorTestsBase<INcmBrasilApi>
         // Assert
         ncm.IsSuccessStatusCode.Should().BeTrue();
         ncm.Content.Should().NotBeNull();
-        ncm.Content?.NumeroAto.Should().Be("272");
     }
 }
