@@ -45,7 +45,7 @@ public sealed class NcmTests : ConnectorTestsBase<INcmBrasilApi>
     public async Task ObterNcmPorCodigoAsync_DeveRetornarNcm()
     {
         // Arrange
-        const string CODIGO = "0101.2";
+        const string CODIGO = "3305.10.00";
 
         // Act
         var ncm = await ManualApi.ObterNcmPorCodigoAsync(CODIGO);

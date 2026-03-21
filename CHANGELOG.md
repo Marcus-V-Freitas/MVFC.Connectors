@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [3.0.6] - 2026-03-21
+
+### Changed
+- CI/CD workflow refinements for automated publishing and coverage reporting
+- Minor adjustments to Codecov configuration for status checks precision
 
 ## [3.0.5] - 2026-03-16
 
@@ -228,6 +234,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[3.0.6]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.3...v3.0.4
 [3.0.3]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.2...v3.0.3

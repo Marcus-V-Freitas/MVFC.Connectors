@@ -1,4 +1,4 @@
-Task("Default")
+﻿Task("Default")
     .IsDependentOn("Test-Coverage")
     .Does(() =>
 {
