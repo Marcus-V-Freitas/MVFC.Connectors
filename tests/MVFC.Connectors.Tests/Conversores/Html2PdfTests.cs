@@ -1,6 +1,6 @@
 ﻿namespace MVFC.Connectors.Tests.Conversores;
 
-public sealed class Html2PdfTests() : ConnectorTestsBase<IHtml2PdfApi>
+public sealed class Html2PdfTests() : ConnectorTestsBase<IHtml2PdfApi>, IDisposable
 {
     private readonly Html2PdfClassFixture _fixture = new();
 
@@ -32,4 +32,7 @@ public sealed class Html2PdfTests() : ConnectorTestsBase<IHtml2PdfApi>
         // Assert
         _fixture.AssertArquivoGerado(pdfGerado, pdfGeradoPath);
     }
+
+    public void Dispose() =>
+        _fixture.Dispose();
 }

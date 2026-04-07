@@ -1,41 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<IsPackable>false</IsPackable>
-		<IsTestProject>true</IsTestProject>
-		<UserSecretsId>24e0c8ce-cc99-4e24-b73a-dcbb6b9dfa35</UserSecretsId>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <UserSecretsId>24e0c8ce-cc99-4e24-b73a-dcbb6b9dfa35</UserSecretsId>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="coverlet.collector" />
-		<PackageReference Include="fluentAssertions" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
-		<PackageReference Include="Microsoft.NET.Test.Sdk" />
-		<PackageReference Include="xunit.v3" />
-		<PackageReference Include="xunit.runner.visualstudio" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="fluentAssertions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\src\MVFC.Connectors.BancoData\MVFC.Connectors.BancoData.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.BrasilApi\MVFC.Connectors.BrasilApi.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Conversores\MVFC.Connectors.Conversores.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Developer\MVFC.Connectors.Developer.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Educacao\MVFC.Connectors.Educacao.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Financas\MVFC.Connectors.Financas.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Geo\MVFC.Connectors.Geo.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Justica\MVFC.Connectors.Justica.csproj" />
-		<ProjectReference Include="..\..\src\MVFC.Connectors.Sicoob\MVFC.Connectors.Sicoob.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MVFC.Connectors.BancoData\MVFC.Connectors.BancoData.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.BrasilApi\MVFC.Connectors.BrasilApi.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Conversores\MVFC.Connectors.Conversores.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Developer\MVFC.Connectors.Developer.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Educacao\MVFC.Connectors.Educacao.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Financas\MVFC.Connectors.Financas.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Geo\MVFC.Connectors.Geo.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.IA\MVFC.Connectors.IA.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Justica\MVFC.Connectors.Justica.csproj" />
+    <ProjectReference Include="..\..\src\MVFC.Connectors.Sicoob\MVFC.Connectors.Sicoob.csproj" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <None Update="Sicoob\Jsons\**">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
+  <ItemGroup>
+    <None Update="Sicoob\Jsons\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
 </Project>

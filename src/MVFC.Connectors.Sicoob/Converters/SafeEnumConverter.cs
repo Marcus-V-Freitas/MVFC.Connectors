@@ -25,6 +25,6 @@ public sealed class SafeEnumConverter<TEnum> : JsonConverter<TEnum>
     {
         ArgumentNullException.ThrowIfNull(writer);
 
-        writer.WriteNumberValue(Convert.ToInt32(value));
+        writer.WriteNumberValue(Convert.ToInt32(value, CultureInfo.InvariantCulture));
     }
 }

@@ -23,3 +23,4 @@ global using MVFC.Connectors.Sicoob.Modelos.Request.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.Modelos.Response.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.CobrancaBancariaPagamento;
 global using MVFC.Connectors.Sicoob.Attributes;
+global using System.Globalization;

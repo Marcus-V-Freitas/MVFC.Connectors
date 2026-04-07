@@ -7,8 +7,8 @@ internal sealed class FlexibleStringConverter : JsonConverter<string>
         return reader.TokenType switch
         {
             JsonTokenType.String => reader.GetString(),
-            JsonTokenType.Number when reader.TryGetInt64(out var longValue) => longValue.ToString(),
-            JsonTokenType.Number when reader.TryGetDouble(out var doubleValue) => doubleValue.ToString("F0"),
+            JsonTokenType.Number when reader.TryGetInt64(out var longValue) => longValue.ToString(CultureInfo.InvariantCulture),
+            JsonTokenType.Number when reader.TryGetDouble(out var doubleValue) => doubleValue.ToString("F0", CultureInfo.InvariantCulture),
             JsonTokenType.Null => null,
             _ => throw new JsonException($"Não é possível converter {reader.TokenType} para string")
         };

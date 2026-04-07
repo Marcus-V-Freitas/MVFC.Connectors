@@ -31,7 +31,7 @@ internal static class HelpersExtensoes
         RegexExtensoes.CnpjRegex().Replace(cnpj, "");
 
     internal static int CalcularAnosDeOperacao(DateTime dataAbertura) =>
-        dataAbertura == DateTime.MinValue ? 0 : (DateTime.Now.Year - dataAbertura.Year);
+        dataAbertura == DateTimeOffset.MinValue ? 0 : (DateTimeOffset.Now.Year - dataAbertura.Year);
 
     internal static TipoControle ClassificarControleAcionario(string controle)
     {
@@ -53,7 +53,7 @@ internal static class HelpersExtensoes
     internal static (int ano, bool parcial) ExtrairAno(string texto)
     {
         var match = RegexExtensoes.AnoRegex().Match(texto);
-        var ano = match.Success ? int.Parse(match.Groups[1].Value) : 0;
+        var ano = match.Success ? int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
         var parcial = texto.Contains("parcial", StringComparison.OrdinalIgnoreCase);
 
         return (ano, parcial);
@@ -83,8 +83,8 @@ internal static class HelpersExtensoes
         if (!match.Success)
             return (0, 0);
 
-        var trimestre = int.Parse(match.Groups[1].Value);
-        var ano = int.Parse(match.Groups[2].Value);
+        var trimestre = int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+        var ano = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
         return (ano, trimestre);
     }
 
@@ -93,7 +93,7 @@ internal static class HelpersExtensoes
         return DateTime.TryParseExact(texto, "dd/MM/yyyy",
             CultureInfo.InvariantCulture, DateTimeStyles.None, out var data)
             ? data
-            : DateTime.MinValue;
+            : DateTimeOffset.MinValue.Date;
     }
 
     internal static int ExtrairValorInteiro(string texto)
@@ -148,33 +148,33 @@ internal static class HelpersExtensoes
         return valor;
     }
 
-    internal static DateTime ExtrairMesDoAno(string texto)
+    internal static DateTimeOffset ExtrairMesDoAno(string texto)
     {
         var match = RegexExtensoes.MesRegex().Match(texto);
 
         if (!match.Success)
-            return DateTime.Now;
+            return DateTimeOffset.UtcNow;
 
         var nomeDoMes = match.Groups[1].Value;
-        var ano = int.Parse(match.Groups[2].Value);
+        var ano = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
 
-        return _meses.TryGetValue(nomeDoMes.ToLower(), out var mes)
-            ? new DateTime(ano, mes, 1, 0, 0, 0, DateTimeKind.Unspecified)
-            : DateTime.Now;
+        return _meses.TryGetValue(nomeDoMes.ToLower(CultureInfo.InvariantCulture), out var mes)
+            ? new DateTimeOffset(ano, mes, 1, 0, 0, 0, TimeSpan.Zero)
+            : DateTimeOffset.UtcNow;
     }
 
-    internal static DateTime ExtrairTrimestre(string texto)
+    internal static DateTimeOffset ExtrairTrimestre(string texto)
     {
         var match = RegexExtensoes.TrimestreRegex().Match(texto);
 
         if (!match.Success)
-            return DateTime.Now;
+            return DateTimeOffset.UtcNow;
 
-        var trimestre = int.Parse(match.Groups[1].Value);
-        var ano = int.Parse(match.Groups[2].Value);
+        var trimestre = int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+        var ano = int.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
         var mes = (trimestre - 1) * 3 + 3;
 
-        return new DateTime(ano, mes, 1, 0, 0, 0, DateTimeKind.Unspecified);
+        return new DateTimeOffset(ano, mes, 1, 0, 0, 0, TimeSpan.Zero);
     }
 
     internal static StringContent CriarConteudoJson<T>(T obj) =>

@@ -7,8 +7,6 @@ global using Xunit;
 global using Refit;
 global using MVFC.Connectors.Financas.Yahoo;
 global using MVFC.Connectors.Financas.Yahoo.Extensoes;
-global using MVFC.Connectors.Financas.Reddit;
-global using MVFC.Connectors.Financas.Reddit.Extensoes;
 global using MVFC.Connectors.Conversores.Html2Pdf;
 global using MVFC.Connectors.Conversores.Html2Pdf.Extensoes;
 global using MVFC.Connectors.Conversores.Html2Pdf.Modelos.Request;

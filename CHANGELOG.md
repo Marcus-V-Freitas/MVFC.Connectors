@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [4.0.0] - 2026-04-06
+
+### Added
+
+- `MinVer` package configuration to automate solution-wide semantic versioning
+- `cleanup-tag-on-failure` job to CI workflow to handle tag deletions on workflow failures
+- `ImplicitUsings`, `Nullable`, and `AnalysisLevel` properties in `Directory.Build.props`
+
+### Changed
+
+- CI package generation process transitioned to use standard `dotnet pack`, removing manual `sed` version overrides
+- Replaced `DateTime` with `DateTimeOffset` and enforced `CultureInfo.InvariantCulture` across parsing and serialization
+- Excluded test and playground projects from code coverage metrics
+- Ignored specific Sonar rules in `.editorconfig`
+- Renamed `Directory.Build.target` to `Directory.Build.targets`
+- Modernized and standardized package and repository links across all projects
+
+### Removed
+
+- `MVFC.Connectors.Financas.Reddit` connector and its corresponding tests
+
+### Tests
+
+- Implemented `IDisposable` in `Html2PdfTests` and `ImagemPollinationsTests` for explicit resource handling
 
 ## [3.0.6] - 2026-03-21
 
@@ -234,6 +259,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[4.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.6...v4.0.0
 [3.0.6]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.3...v3.0.4

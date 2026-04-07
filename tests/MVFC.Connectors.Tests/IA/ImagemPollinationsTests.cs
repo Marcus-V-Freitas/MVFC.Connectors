@@ -1,6 +1,6 @@
 ﻿namespace MVFC.Connectors.Tests.IA;
 
-public sealed class ImagemPollinationsTests : ConnectorTestsBase<IImagemPollinationsApi>
+public sealed class ImagemPollinationsTests : ConnectorTestsBase<IImagemPollinationsApi>, IDisposable
 {
     private readonly ImagemPollinationsClassFixture _fixture = new();
 
@@ -31,4 +31,7 @@ public sealed class ImagemPollinationsTests : ConnectorTestsBase<IImagemPollinat
         // Assert
         _fixture.AssertArquivoGerado(imagemGerada, imagemGeradaPath);
     }
+
+    public void Dispose() =>
+        _fixture.Dispose();
 }

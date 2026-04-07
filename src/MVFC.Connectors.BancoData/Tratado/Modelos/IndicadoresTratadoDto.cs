@@ -1,7 +1,7 @@
 ﻿namespace MVFC.Connectors.BancoData.Tratado.Modelos;
 
 public sealed record IndicadoresTratadoDto(
-    DateTime DataReferencia,
+    DateTimeOffset DataReferencia,
     decimal IndiceBasileia,
     decimal IndiceImobilizacao,
     SituacaoBasileia SituacaoBasileia,

@@ -1,7 +1,7 @@
 ﻿namespace MVFC.Connectors.BancoData.Tratado.Modelos;
 
 public sealed record BalancoTratadoDto(
-    DateTime DataApuracao,
+    DateTimeOffset DataApuracao,
     int Ano,
     int Mes,
     decimal PatrimonioLiquido,
