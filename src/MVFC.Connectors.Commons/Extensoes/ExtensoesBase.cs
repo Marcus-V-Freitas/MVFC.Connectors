@@ -18,6 +18,8 @@ public static class ExtensoesBase
     public static IHttpClientBuilder AddApi<T>(this IServiceCollection services, string url, Action<ConnectorsSettingsServices, IServiceCollection>? action = null)
         where T : class, IConnectorApi
     {
+        ArgumentNullException.ThrowIfNull(services);
+
         services.AddSingleton<IUserAgentProvider, RandomUserAgentProvider>();
         services.AddTransient<LoggingHandler>();
         services.AddTransient<UserAgentHandler>();
@@ -25,10 +27,10 @@ public static class ExtensoesBase
         var settings = new ConnectorsSettingsServices(new RefitSettings());
         action?.Invoke(settings, services);
 
-        var http = services.AddRefitClient<T>(settings.RefitSettings)
+        var http = services.AddRefitGeneratedClient<T>(settings.RefitSettings)
                            .ConfigureHttpClient(h => h.BaseAddress = new Uri(url))
-                           .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler 
-                           { 
+                           .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+                           {
                                ServerCertificateCustomValidationCallback = (_, _, _, _) => true,
                            })
                            .AddHttpMessageHandler<LoggingHandler>()

@@ -5,7 +5,7 @@ Connector for education-related data via the Hipolabs public API, providing info
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Educacao.svg)](https://www.nuget.org/packages/MVFC.Connectors.Educacao)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Educacao.svg)](https://www.nuget.org/packages/MVFC.Connectors.Educacao)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -30,8 +30,8 @@ dotnet add package MVFC.Connectors.Educacao
 
 ## Supported Services
 
-| Interface | Description |
-|---|---|
+| Interface      | Description                                |
+| -------------- | ------------------------------------------ |
 | `IHipolabsApi` | Search universities by name and/or country |
 
 ---
@@ -64,10 +64,10 @@ public class UniversityService(IHipolabsApi hipolabsApi)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
+| Package                                                         | Description                |
+| --------------------------------------------------------------- | -------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| [MVFC.Connectors](../../README.md)                              | Repository overview        |
 
 ---
 

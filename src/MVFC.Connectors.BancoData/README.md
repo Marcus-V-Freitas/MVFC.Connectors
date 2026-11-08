@@ -5,7 +5,7 @@ Connector for fetching raw and transformed bank data from Banco Central do Brasi
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.BancoData.svg)](https://www.nuget.org/packages/MVFC.Connectors.BancoData)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.BancoData.svg)](https://www.nuget.org/packages/MVFC.Connectors.BancoData)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -31,12 +31,12 @@ dotnet add package MVFC.Connectors.BancoData
 
 ## Supported APIs
 
-| Interface | Description |
-|---|---|
-| `IBancoDataBrutoApi` | Raw bank list from Banco Central do Brasil |
-| `IBancoDataTratadoApi` | Normalized and structured bank list |
-| `IBancoDataScraper` | Scraper abstraction for data extraction |
-| `IBancoDataTransform` | Transformation pipeline for raw data |
+| Interface              | Description                                |
+| ---------------------- | ------------------------------------------ |
+| `IBancoDataBrutoApi`   | Raw bank list from Banco Central do Brasil |
+| `IBancoDataTratadoApi` | Normalized and structured bank list        |
+| `IBancoDataScraper`    | Scraper abstraction for data extraction    |
+| `IBancoDataTransform`  | Transformation pipeline for raw data       |
 
 ---
 
@@ -80,11 +80,11 @@ public class BankService(IBancoDataTratadoHandler handler)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
-| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
-| [MVFC.Connectors.BrasilApi](../MVFC.Connectors.BrasilApi/README.md) | BrasilAPI bank endpoint |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| Package                                                             | Description                |
+| ------------------------------------------------------------------- | -------------------------- |
+| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md)     | Shared HTTP infrastructure |
+| [MVFC.Connectors.BrasilApi](../MVFC.Connectors.BrasilApi/README.md) | BrasilAPI bank endpoint    |
+| [MVFC.Connectors](../../README.md)                                  | Repository overview        |
 
 ---
 

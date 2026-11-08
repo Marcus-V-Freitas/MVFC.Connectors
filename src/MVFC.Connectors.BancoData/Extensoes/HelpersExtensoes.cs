@@ -2,11 +2,11 @@
 
 internal static class HelpersExtensoes
 {
-    private static readonly Dictionary<string, int> _meses = new()
+    private static readonly Dictionary<string, int> _meses = new(StringComparer.OrdinalIgnoreCase)
     {
         {"janeiro", 1}, {"fevereiro", 2}, {"março", 3}, {"abril", 4},
         {"maio", 5}, {"junho", 6}, {"julho", 7}, {"agosto", 8},
-        {"setembro", 9}, {"outubro", 10}, {"novembro", 11}, {"dezembro", 12}
+        {"setembro", 9}, {"outubro", 10}, {"novembro", 11}, {"dezembro", 12},
     };
 
     internal static string ExtrairBankCode(string? caminho)
@@ -31,7 +31,7 @@ internal static class HelpersExtensoes
         RegexExtensoes.CnpjRegex().Replace(cnpj, "");
 
     internal static int CalcularAnosDeOperacao(DateTime dataAbertura) =>
-        dataAbertura == DateTimeOffset.MinValue ? 0 : (DateTimeOffset.Now.Year - dataAbertura.Year);
+        dataAbertura == DateTimeOffset.MinValue.Date ? 0 : (DateTimeOffset.Now.Year - dataAbertura.Year);
 
     internal static TipoControle ClassificarControleAcionario(string controle)
     {
@@ -99,18 +99,18 @@ internal static class HelpersExtensoes
     internal static int ExtrairValorInteiro(string texto)
     {
         var match = RegexExtensoes.ValoresInteiroRegex().Match(texto);
-        return match.Success && int.TryParse(match.Value, out var valor) ? valor : 0;
+        return match.Success && int.TryParse(match.Value, CultureInfo.InvariantCulture, out var valor) ? valor : 0;
     }
 
     internal static decimal CalcularPercentual(decimal resultado, decimal lucro) =>
-        Math.Round(resultado != 0 ? lucro / resultado * 100 : 0, 2);
+        Math.Round(resultado != 0 ? lucro / resultado * 100 : 0, 2, MidpointRounding.ToEven);
 
     internal static decimal ExtrairValorMonetario(string texto)
     {
         var match = RegexExtensoes.ValorMonetarioRegex().Match(texto);
         if (!match.Success) return 0m;
 
-        var textoNumerico = match.Groups[1].Value.Replace(",", ".", StringComparison.Ordinal);
+        var textoNumerico = match.Groups[1].Value.Replace(',', '.');
 
         if (!decimal.TryParse(textoNumerico, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor))
             return 0m;
@@ -143,8 +143,8 @@ internal static class HelpersExtensoes
         if (!match.Success) 
             return 0m;
 
-        var textoNumerico = match.Groups[1].Value.Replace(",", ".", StringComparison.Ordinal);
-        decimal.TryParse(textoNumerico, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor);
+        var textoNumerico = match.Groups[1].Value.Replace(',', '.');
+        _ = decimal.TryParse(textoNumerico, NumberStyles.Any, CultureInfo.InvariantCulture, out var valor);
         return valor;
     }
 

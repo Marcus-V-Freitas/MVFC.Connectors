@@ -5,7 +5,7 @@ Connectors for content conversion services, including text translation, dictiona
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -30,11 +30,11 @@ dotnet add package MVFC.Connectors.Conversores
 
 ## Supported Services
 
-| Interface | Description |
-|---|---|
-| `IGoogleTradutorApi` | Text translation via Google Translator |
-| `IDictionaryApi` | Word definitions, phonetics and examples |
-| `IHtml2PdfApi` | HTML content to PDF conversion |
+| Interface            | Description                              |
+| -------------------- | ---------------------------------------- |
+| `IGoogleTradutorApi` | Text translation via Google Translator   |
+| `IDictionaryApi`     | Word definitions, phonetics and examples |
+| `IHtml2PdfApi`       | HTML content to PDF conversion           |
 
 ---
 
@@ -79,10 +79,10 @@ public class DictionaryService(IDictionaryApi dictionaryApi)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
+| Package                                                         | Description                |
+| --------------------------------------------------------------- | -------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| [MVFC.Connectors](../../README.md)                              | Repository overview        |
 
 ---
 

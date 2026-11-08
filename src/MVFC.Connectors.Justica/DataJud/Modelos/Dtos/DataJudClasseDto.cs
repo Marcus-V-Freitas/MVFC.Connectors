@@ -1,4 +1,4 @@
-﻿namespace MVFC.Connectors.Justica.DataJud.Modelos;
+﻿namespace MVFC.Connectors.Justica.DataJud.Modelos.Dtos;
 
 public sealed record DataJudClasseDto(
     [property: JsonPropertyName("codigo")] int Codigo,

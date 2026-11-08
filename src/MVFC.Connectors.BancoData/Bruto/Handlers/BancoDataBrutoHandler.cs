@@ -9,7 +9,12 @@ internal sealed class BancoDataBrutoHandler(IBancoDataScraper scraper) : Delegat
         var bankCode = HelpersExtensoes.ExtrairBankCode(request.RequestUri?.PathAndQuery);
 
         if (string.IsNullOrEmpty(bankCode))
-            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        {
+            return new HttpResponseMessage(HttpStatusCode.BadRequest)
+            {
+                RequestMessage = request,
+            };
+        }
 
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var html = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
@@ -18,6 +23,7 @@ internal sealed class BancoDataBrutoHandler(IBancoDataScraper scraper) : Delegat
         return new HttpResponseMessage(HttpStatusCode.OK)
         {
             Content = HelpersExtensoes.CriarConteudoJson(dadosBrutos),
+            RequestMessage = request,
         };
     }
 }

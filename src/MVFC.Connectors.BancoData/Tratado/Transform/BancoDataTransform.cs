@@ -1,6 +1,6 @@
 ﻿namespace MVFC.Connectors.BancoData.Tratado.Transform;
 
-internal sealed class BancoDataTransformer : IBancoDataTransform
+internal sealed class BancoDataTransform : IBancoDataTransform
 {
     public BancoTratadoDto Transformar(BancoBrutoDto dadosBrutos) =>
         new(
@@ -43,7 +43,7 @@ internal sealed class BancoDataTransformer : IBancoDataTransform
     {
         var data = HelpersExtensoes.ExtrairMesDoAno(dadosBrutos.DataReferencia);
         var agencias = HelpersExtensoes.ExtrairValorInteiro(dadosBrutos.NumeroAgencias);
-        var pontos = dadosBrutos.PontosAtendimento == "-" ? (int?)null : HelpersExtensoes.ExtrairValorInteiro(dadosBrutos.PontosAtendimento);
+        var pontos = string.Equals(dadosBrutos.PontosAtendimento, "-", StringComparison.OrdinalIgnoreCase) ? (int?)null : HelpersExtensoes.ExtrairValorInteiro(dadosBrutos.PontosAtendimento);
         var total = agencias + (pontos ?? 0);
 
         return new RedeAtendimentoTratadoDto(

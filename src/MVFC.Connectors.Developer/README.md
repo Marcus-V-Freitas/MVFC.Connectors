@@ -5,7 +5,7 @@ Utility connectors for development workflows, diagnostics, and infrastructure to
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Developer.svg)](https://www.nuget.org/packages/MVFC.Connectors.Developer)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Developer.svg)](https://www.nuget.org/packages/MVFC.Connectors.Developer)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -16,9 +16,8 @@ English | [Português](README.pt-BR.md)
 
 - Disposable email validation via Disify
 - Phishing and malicious URL detection via FishFish
-- IP geolocation and metadata via IP-API
+- MySQL query visual explanation via Dalibo Explain
 - Lightweight key-value storage via KeyVal
-- MySQL query explanation via MySqlExplain
 
 ---
 
@@ -32,13 +31,12 @@ dotnet add package MVFC.Connectors.Developer
 
 ## Supported Services
 
-| Interface | Description |
-|---|---|
-| `IDisifyEmailApi` | Detect disposable or invalid email addresses |
-| `IFishFishApi` | Check URLs and domains for phishing or malware |
-| `IIpApi` | IP address geolocation and metadata |
-| `IKeyValApi` | Simple key-value store for lightweight persistence |
-| `IMysqlExplainApi` | Analyze and explain MySQL query execution plans |
+| Interface           | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `IDisifyEmailApi`   | Detect disposable or invalid email addresses       |
+| `IFishFishApi`      | Check URLs and domains for phishing or malware     |
+| `IDaliboExplainApi` | Generate and retrieve visual MySQL query plans     |
+| `IKeyValApi`        | Simple key-value store for lightweight persistence |
 
 ---
 
@@ -69,12 +67,13 @@ public class EmailService(IDisifyEmailApi disifyApi)
 ```
 
 ```csharp
-// Check an IP address
-public class IpService(IIpApi ipApi)
+// Generate a visual explain for a MySQL query
+public class ExplainService(IDaliboExplainApi daliboApi)
 {
-    public async Task<IpDto> GetInfoAsync(string ip, CancellationToken ct)
+    public async Task<string> GetExplainUrlAsync(DaliboExplainRequestUrl request, CancellationToken ct)
     {
-        return await ipApi.ObterAsync(ip, ct);
+        var result = await daliboApi.GerarVisualExplainUrlAsync(request);
+        return result.Content!.Url;
     }
 }
 ```
@@ -83,10 +82,10 @@ public class IpService(IIpApi ipApi)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
+| Package                                                         | Description                |
+| --------------------------------------------------------------- | -------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| [MVFC.Connectors](../../README.md)                              | Repository overview        |
 
 ---
 

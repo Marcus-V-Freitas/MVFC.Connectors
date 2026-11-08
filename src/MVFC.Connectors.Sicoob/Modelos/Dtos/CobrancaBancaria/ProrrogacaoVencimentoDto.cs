@@ -1,4 +1,4 @@
 ﻿namespace MVFC.Connectors.Sicoob.Modelos.Dtos.CobrancaBancaria;
 
-public sealed record ProrrogacaoVencimento(
+public sealed record ProrrogacaoVencimentoDto(
     [property: JsonPropertyName("dataVencimento")] DateOnly DataVencimento);

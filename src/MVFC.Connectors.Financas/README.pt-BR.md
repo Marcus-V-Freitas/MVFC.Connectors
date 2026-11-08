@@ -5,7 +5,7 @@ Conectores para dados financeiros, incluindo instituições do BCB, Yahoo Financ
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -30,11 +30,11 @@ dotnet add package MVFC.Connectors.Financas
 
 ## Serviços Suportados
 
-| Interface | Descrição |
-|---|---|
+| Interface            | Descrição                                   |
+| -------------------- | ------------------------------------------- |
 | `IBcbInstituicaoApi` | Instituições financeiras registradas no BCB |
-| `IYahooApi` | Dados de mercado de ações e ativos |
-| `IRedditStockApi` | Discussões e sentimento de ações no Reddit |
+| `IYahooApi`          | Dados de mercado de ações e ativos          |
+| `IRedditStockApi`    | Discussões e sentimento de ações no Reddit  |
 
 ---
 
@@ -78,11 +78,11 @@ public class AcaoService(IYahooApi yahooApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
-| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada |
+| Pacote                                                                    | Descrição                                          |
+| ------------------------------------------------------------------------- | -------------------------------------------------- |
+| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md)     | Infraestrutura HTTP compartilhada                  |
 | [MVFC.Connectors.BrasilApi](../MVFC.Connectors.BrasilApi/README.pt-BR.md) | Endpoints financeiros da BrasilAPI (câmbio, taxas) |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors](../../README.pt-BR.md)                                  | Visão geral do repositório                         |
 
 ---
 

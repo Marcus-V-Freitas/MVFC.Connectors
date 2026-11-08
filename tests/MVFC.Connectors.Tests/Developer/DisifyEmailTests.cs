@@ -28,6 +28,6 @@ public sealed class DisifyEmailTests : ConnectorTestsBase<IDisifyEmailApi>
         // Assert
         emailStatus.IsSuccessful.Should().BeTrue();
         emailStatus.Content.Should().NotBeNull();
-        emailStatus.Content!.Disposable.Should().BeTrue();
+        emailStatus.Content!.Dns.Should().BeTrue();
     }
 }

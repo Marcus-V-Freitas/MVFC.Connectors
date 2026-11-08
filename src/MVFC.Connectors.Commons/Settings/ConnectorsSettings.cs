@@ -2,6 +2,7 @@
 
 public sealed record ConnectorsSettings(
     LogLevel LogLevel = LogLevel.Information,
-    HttpSettings? HttpSettings = null,
-    RefitSettings? RefitSettings = null);
-
+    HttpSettings? HttpSettings = null)
+{
+    public RefitSettings RefitSettings { get; init; } = new();
+}

@@ -5,7 +5,7 @@ public sealed class RefitApiBuilder<T>
 {
     private readonly string _baseUrl;
     private readonly IList<DelegatingHandler> _handlers = [];
-    private RefitSettings? _refitSettings;
+    private RefitSettings _refitSettings = new();
     private HttpSettings? _httpSettings;
 
     private RefitApiBuilder(string baseUrl)
@@ -39,7 +39,7 @@ public sealed class RefitApiBuilder<T>
         return this;
     }
 
-    public RefitApiBuilder<T> AdicionarRefitSettings(RefitSettings? settings)
+    public RefitApiBuilder<T> AdicionarRefitSettings(RefitSettings settings)
     {
         _refitSettings = settings;
         return this;
@@ -72,6 +72,6 @@ public sealed class RefitApiBuilder<T>
             BaseAddress = new Uri(_baseUrl),
         };
 
-        return RestService.For<T>(httpClient, _refitSettings);
+        return RestService.ForGenerated<T>(httpClient, _refitSettings);
     }
 }

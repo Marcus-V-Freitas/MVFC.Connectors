@@ -38,10 +38,15 @@ public sealed class BancoDataBrutoTests : ConnectorTestsBase<IBancoDataBrutoApi>
         const string BANK_CODE = "banco-inexistente-xyz";
 
         // Act
-        var act = async () =>  await ManualApi.ObterDadosBrutosAsync(BANK_CODE).ConfigureAwait(true);
+        var dadosBrutos = await ManualApi.ObterDadosBrutosAsync(BANK_CODE).ConfigureAwait(true);
 
         // Assert
-        await act.Should().ThrowAsync<ScraperException>();
+        dadosBrutos.IsSuccessful.Should().BeFalse();
+        dadosBrutos.StatusCode.Should().BeNull();
+        dadosBrutos.Error.Should().NotBeNull();
+        dadosBrutos.Error!.InnerException
+                          .Should().BeOfType<ScraperException>()
+                          .Subject.Message.Should().Be("Esperada pelo menos 10 tabelas, encontradas 0");
     }
 
     [Fact]
@@ -51,9 +56,10 @@ public sealed class BancoDataBrutoTests : ConnectorTestsBase<IBancoDataBrutoApi>
         const string BANK_CODE = "";
 
         // Act
-        var act = async () => await ManualApi.ObterDadosBrutosAsync(BANK_CODE).ConfigureAwait(true);
+        var dadosBrutos = await ManualApi.ObterDadosBrutosAsync(BANK_CODE).ConfigureAwait(true);
 
         // Assert
-        await act.Should().ThrowAsync<NullReferenceException>();
+        dadosBrutos.IsSuccessful.Should().BeFalse();
+        dadosBrutos.StatusCode.Should().Be(HttpStatusCode.BadRequest);
     }
 }

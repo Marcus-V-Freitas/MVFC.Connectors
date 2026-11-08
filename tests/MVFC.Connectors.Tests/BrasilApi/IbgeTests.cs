@@ -43,18 +43,4 @@ public sealed class IbgeTests : ConnectorTestsBase<IIbgeBrasilApi>
         ufs.IsSuccessful.Should().BeTrue();
         ufs.Content.Should().NotBeNullOrEmpty();
     }
-
-    [Fact]
-    public async Task RecuperarUfPorCodigo_DeveRetornarItens()
-    {
-        // Arrange &
-        const int CODIGO = 35;
-
-        // Act
-        var uf = await ManualApi.ObterEstadoPorCodigoAsync(CODIGO);
-
-        // Assert
-        uf.IsSuccessful.Should().BeTrue();
-        uf.Content.Should().NotBeNull();
-    }
 }

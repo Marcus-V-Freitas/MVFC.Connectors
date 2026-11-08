@@ -6,14 +6,14 @@ public static class BancoDataTratadoExtensoes
 
     public static IBancoDataTratadoApi ObterBancoTratadoApi() =>
          ExtensoesBase.ObterApi<IBancoDataTratadoApi>(URL_BASE)
-                      .AdicionarHandler(new BancoDataTratadoHandler(new BancoDataScraper(), new BancoDataTransformer()))
+                      .AdicionarHandler(new BancoDataTratadoHandler(new BancoDataScraper(), new BancoDataTransform()))
                       .Construir();
 
     public static void AddBancoDataTratado(this IServiceCollection services) =>
         services.AddApi<IBancoDataTratadoApi>(URL_BASE, (_, s) =>
         {
             s.AddSingleton<IBancoDataScraper, BancoDataScraper>();
-            s.AddSingleton<IBancoDataTransform, BancoDataTransformer>();
+            s.AddSingleton<IBancoDataTransform, BancoDataTransform>();
             s.AddTransient<BancoDataTratadoHandler>();
         }).AddHttpMessageHandler<BancoDataTratadoHandler>();
 }

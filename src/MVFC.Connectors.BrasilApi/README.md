@@ -5,7 +5,7 @@ Connector for the [BrasilAPI](https://brasilapi.com.br) public API, covering a w
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.BrasilApi.svg)](https://www.nuget.org/packages/MVFC.Connectors.BrasilApi)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.BrasilApi.svg)](https://www.nuget.org/packages/MVFC.Connectors.BrasilApi)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -15,7 +15,7 @@ English | [Português](README.pt-BR.md)
 ## Features
 
 - Typed interfaces for each BrasilAPI endpoint
-- Covers address, financial, vehicle, geographic, and fiscal data
+- Covers address, financial, geographic, and fiscal data
 - No authentication required
 - Fully integrated with `MVFC.Connectors.Commons` HTTP infrastructure
 
@@ -31,23 +31,23 @@ dotnet add package MVFC.Connectors.BrasilApi
 
 ## Supported Endpoints
 
-| Interface | Description |
-|---|---|
-| `IBancoBrasilApi` | Brazilian bank list |
-| `ICepBrasilApi` | Address lookup by ZIP code (CEP) |
-| `ICnpjBrasilApi` | Company data lookup by CNPJ |
-| `ICambioBrasilApi` | Exchange rates |
-| `ICorretoraBrasilApi` | Stock brokers registered at CVM |
-| `ICptecBrasilApi` | Weather forecasts via CPTEC |
-| `IDddBrasilApi` | DDD area code information |
-| `IFeriadoBrasilApi` | Brazilian national holidays |
-| `IFipeBrasilApi` | FIPE vehicle pricing table |
-| `IIbgeBrasilApi` | IBGE cities and states data |
-| `IIsbnBrasilApi` | Book data by ISBN |
-| `INcmBrasilApi` | NCM fiscal classification |
-| `IPixParticipantesBrasilApi` | PIX participants list |
-| `IRegistroBrApi` | .br domain registration data |
-| `ITaxaBrasilApi` | Brazilian financial interest rates |
+| Interface                    | Description                              |
+| ---------------------------- | ---------------------------------------- |
+| `IBancoBrasilApi`            | Brazilian bank list                      |
+| `ICepBrasilApi`              | Address lookup by ZIP code (CEP)         |
+| `ICnpjBrasilApi`             | Company data lookup by CNPJ              |
+| `ICambioBrasilApi`           | Exchange rates                           |
+| `ICorretoraBrasilApi`        | Stock brokers registered at CVM          |
+| `ICptecBrasilApi`            | Weather forecasts via CPTEC              |
+| `IDddBrasilApi`              | DDD area code information                |
+| `IFeriadoBrasilApi`          | Brazilian national holidays              |
+| `IFipeBrasilApi`             | FIPE vehicle brands and reference tables |
+| `IIbgeBrasilApi`             | IBGE cities and states data              |
+| `IIsbnBrasilApi`             | Book data by ISBN                        |
+| `INcmBrasilApi`              | NCM fiscal classification                |
+| `IPixParticipantesBrasilApi` | PIX participants list                    |
+| `IRegistroBrApi`             | .br domain registration data             |
+| `ITaxaBrasilApi`             | Brazilian financial interest rates       |
 
 ---
 
@@ -102,11 +102,11 @@ public class HolidayService(IFeriadoBrasilApi feriadoApi)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
-| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure |
-| [MVFC.Connectors.Geo](../MVFC.Connectors.Geo/README.md) | Alternative address resolution via ViaCEP |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| Package                                                         | Description                               |
+| --------------------------------------------------------------- | ----------------------------------------- |
+| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure                |
+| [MVFC.Connectors.Geo](../MVFC.Connectors.Geo/README.md)         | Alternative address resolution via ViaCEP |
+| [MVFC.Connectors](../../README.md)                              | Repository overview                       |
 
 ---
 

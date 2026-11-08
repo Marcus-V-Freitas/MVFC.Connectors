@@ -2,7 +2,6 @@
 global using System.Text.Json.Serialization;
 global using System.Runtime.Serialization;
 global using MVFC.Connectors.Justica.DataJud.Enums;
-global using MVFC.Connectors.Justica.DataJud.Modelos;
 global using Refit;
 global using MVFC.Connectors.Justica.DataJud.Modelos.Request;
 global using Microsoft.Extensions.DependencyInjection;
@@ -10,3 +9,4 @@ global using MVFC.Connectors.Commons.Extensoes;
 global using MVFC.Connectors.Commons.Handlers;
 global using MVFC.Connectors.Justica.DataJud.Providers;
 global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using MVFC.Connectors.Justica.DataJud.Modelos.Dtos;

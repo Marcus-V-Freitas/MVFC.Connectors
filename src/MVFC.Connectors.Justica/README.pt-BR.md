@@ -5,7 +5,7 @@ Conector para dados judiciais via a API DataJud, fornecida pelo Conselho Naciona
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Justica.svg)](https://www.nuget.org/packages/MVFC.Connectors.Justica)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Justica.svg)](https://www.nuget.org/packages/MVFC.Connectors.Justica)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -30,8 +30,8 @@ dotnet add package MVFC.Connectors.Justica
 
 ## Serviços Suportados
 
-| Interface | Descrição |
-|---|---|
+| Interface     | Descrição                                   |
+| ------------- | ------------------------------------------- |
 | `IDataJudApi` | Dados de processos judiciais do CNJ DataJud |
 
 ---
@@ -67,10 +67,10 @@ public class ProcessoService(IDataJudApi dataJudApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
+| Pacote                                                                | Descrição                                        |
+| --------------------------------------------------------------------- | ------------------------------------------------ |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada e autenticação |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors](../../README.pt-BR.md)                              | Visão geral do repositório                       |
 
 ---
 

@@ -1,11 +1,11 @@
 # MVFC.Connectors.Geo
 
-Conectores para geolocalização e resolução de endereços, com suporte a ViaCEP, Geocoding e GeoNet.
+Conectores para geolocalização e resolução de endereços, com suporte a ViaCEP e Geocoding.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Geo.svg)](https://www.nuget.org/packages/MVFC.Connectors.Geo)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Geo.svg)](https://www.nuget.org/packages/MVFC.Connectors.Geo)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -16,7 +16,6 @@ Conectores para geolocalização e resolução de endereços, com suporte a ViaC
 
 - Consulta de endereços brasileiros por CEP via ViaCEP
 - Resolução de coordenadas e endereços via Geocoding
-- Dados de geolocalização via GeoNet
 
 ---
 
@@ -30,11 +29,10 @@ dotnet add package MVFC.Connectors.Geo
 
 ## Serviços Suportados
 
-| Interface | Descrição |
-|---|---|
-| `IViaCepApi` | Consulta de endereço brasileiro por CEP |
-| `IGeocodingApi` | Geocodificação direta e reversa |
-| `IGeoNetApi` | Dados de geolocalização e metadados de rede |
+| Interface       | Descrição                                   |
+| --------------- | ------------------------------------------- |
+| `IViaCepApi`    | Consulta de endereço brasileiro por CEP     |
+| `IGeocodingApi` | Geocodificação direta e reversa             |
 
 ---
 
@@ -78,11 +76,11 @@ public class GeoService(IGeocodingApi geocodingApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
+| Pacote                                                                    | Descrição                                 |
+| ------------------------------------------------------------------------- | ----------------------------------------- |
 | [MVFC.Connectors.BrasilApi](../MVFC.Connectors.BrasilApi/README.pt-BR.md) | Consulta alternativa de CEP via BrasilAPI |
-| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md)     | Infraestrutura HTTP compartilhada         |
+| [MVFC.Connectors](../../README.pt-BR.md)                                  | Visão geral do repositório                |
 
 ---
 

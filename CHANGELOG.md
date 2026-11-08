@@ -7,6 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.0] - 2026-11-08
+
+### Removed
+
+- **`MVFC.Connectors.Developer`** — removed `IpApi` connector entirely (`IIpApi`, `IpApiExtensoes`, and all related DTOs: `IpDto`, `IpAsnDto`, `IpCompanyDto`, `IpDatacenterDto`, `IpLocationDto`, `IpAbuseDto`)
+- **`MVFC.Connectors.Geo`** — removed `GeoNet` connector entirely (`IGeoNetApi`, `GeoNetApiExtensoes`, and all related DTOs: `GeoNetDto`, `GeoNetAnswerDto`, `GeoNetFromLoc`)
+- **`MVFC.Connectors.IA`** — removed `Pollinations` image generation connector entirely (`IImagemPollinationsApi`, `IImagemPollinationsProvider`, `ImagemPollinationExtensoes`)
+- **`MVFC.Connectors.BrasilApi`** — removed `FipeVeiculoDto` DTO and `IFipeBrasilApi`/`IIbgeBrasilApi` interface members
+- Removed corresponding tests: `IpTests`, `GeoNetTests`, `ImagemPollinationsTests`, `ImagemPollinationsClassFixture`
+- Removed `FipeTests` and `IbgeTests` integration test classes
+
+### Changed
+
+- **`MVFC.Connectors.BancoData`** — renamed `BancoDataTratadoExtensoes.cs` to `BancoDataBrutoExtensoes.cs` to correctly reflect its scope
+- **`MVFC.Connectors.BancoData`** — `BancoDataBrutoHandler` now populates `RequestMessage` on returned `HttpResponseMessage` instances for proper Refit compatibility
+- **`MVFC.Connectors.BancoData`** — `HelpersExtensoes` hardening: case-insensitive month dictionary (`StringComparer.OrdinalIgnoreCase`), explicit `MidpointRounding.ToEven`, `char`-based `Replace` overloads, discarded return value on `decimal.TryParse`, and `CultureInfo.InvariantCulture` on integer parsing
+- **`MVFC.Connectors.BancoData`** — `RegexExtensoes` and `HelpersExtensoes` minor correctness fixes
+- **CI workflow** (`ci.yml`) — significant restructuring and improvements to the pipeline
+- **`build.cake`** — refactored and simplified build script
+- **`Directory.Packages.props`** — package versions updated
+- **`Directory.Build.props` / `Directory.Build.targets`** — minor property adjustments
+- **`.editorconfig`** — additional rules added
+- **`ConnectorsSettings`** — settings class adjustments
+- **`RefitApiBuilder` / `ExtensoesBase`** — base builder/extension method refinements
+- **`DataJud` DTOs** (`DataJudAssuntoDto`, `DataJudClasseDto`, `DataJudFormatoDto`, `DataJudHitDto`, `DataJudMovimentoDto`, `DataJudOrgaoJulgadorDto`, `DataJudProcessoDto`, `DataJudResultadoDto`, `DataJudShardsDto`, `DataJudSistemaDto`, `DataJudTabeladoDto`, `DataJudTotalDto`) and `DataJudAuthProvider` — minor adjustments
+- **Sicoob** — `SicoobCobrancaBancariaPagamentoExtensoes` renamed and refactored; `SicoobCobrancaBancariaExtensoes`, `JurosMoraAlteracaoDto`, `ProrrogacaoVencimentoDto`, `BoletoAlteracaoRequest`, `SicoobAuthProvider` updated
+- **`YahooCurrencyDto` / `IYahooApi`** — minor adjustments in Financas connector
+- **Tests** — `IntegracaoExtensions` helpers refactored; `BancoDataBrutoTests` updated; `DataJudTests` migrated to `BeSuccessfulOrSkip` assertion helper; `DisifyEmailTests` and `YahooTests` minor fixes
+- **`Usings.cs`** (tests) — added `System.Net` and `FluentAssertions.Primitives` globals; removed globals for deleted connectors
+
+### Added
+
+- `.config/dotnet-tools.json` — dotnet tools manifest added to the repository
+- `dotnet-tools.json` tooling configuration committed to source control
+
+### Documentation
+
+- Updated all project READMEs (`BancoData`, `BrasilApi`, `Commons`, `Conversores`, `Developer`, `Educacao`, `Financas`, `Geo`, `IA`, `Justica`, `Sicoob`) in both English and Portuguese to reflect removed connectors and current state
+
+> ⚠️ **Breaking Changes:** This version removes the `IpApi`, `GeoNet`, and `Pollinations` (image generation) connectors entirely, along with `FipeVeiculoDto` and related interface members in `BrasilApi`. Any consumer depending on these APIs must remove those references before upgrading.
+
 ## [4.0.0] - 2026-04-06
 
 ### Added
@@ -259,6 +300,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[5.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v4.0.0...v5.0.0
 [4.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.6...v4.0.0
 [3.0.6]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.5...v3.0.6
 [3.0.5]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.4...v3.0.5

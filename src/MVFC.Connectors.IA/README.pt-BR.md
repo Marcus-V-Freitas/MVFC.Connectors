@@ -1,11 +1,11 @@
 # MVFC.Connectors.IA
 
-Conectores para serviços de geração com inteligência artificial via a API Pollinations, com suporte a geração de imagens e textos.
+Conectores para serviços de geração com inteligência artificial via a API Pollinations, com suporte a geração de textos.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.IA.svg)](https://www.nuget.org/packages/MVFC.Connectors.IA)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.IA.svg)](https://www.nuget.org/packages/MVFC.Connectors.IA)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -14,9 +14,7 @@ Conectores para serviços de geração com inteligência artificial via a API Po
 
 ## Funcionalidades
 
-- Geração de imagens a partir de prompts de texto via Pollinations
 - Geração de texto via Pollinations
-- Provedor plugável de geração de imagens via `IImagemPollinationsProvider`
 - Extension methods para uso simplificado
 
 ---
@@ -31,11 +29,9 @@ dotnet add package MVFC.Connectors.IA
 
 ## Serviços Suportados
 
-| Interface | Descrição |
-|---|---|
-| `IImagemPollinationsApi` | Geração de imagens a partir de prompts |
-| `ITextoPollinationsApi` | Geração de respostas textuais a partir de prompts |
-| `IImagemPollinationsProvider` | Abstração de provedor para geração de imagens |
+| Interface                     | Descrição                                         |
+| -----------------------       | ------------------------------------------------- |
+| `ITextoPollinationsApi`       | Geração de respostas textuais a partir de prompts |
 
 ---
 
@@ -54,24 +50,13 @@ var app = builder.Build();
 ## Exemplos
 
 ```csharp
-// Gerar imagem a partir de um prompt
-public class ImagemService(IImagemPollinationsProvider provider)
-{
-    public async Task<byte[]> GerarAsync(string prompt, CancellationToken ct)
-    {
-        return await provider.GenerateAsync(prompt, ct);
-    }
-}
-```
-
-```csharp
 // Gerar texto a partir de um prompt
 public class TextoService(ITextoPollinationsApi textoApi)
 {
     public async Task<string> GerarAsync(string prompt, CancellationToken ct)
     {
-        var resultado = await textoApi.GerarAsync(prompt, ct);
-        return resultado.Text;
+        var resultado = await textoApi.GerarTextoAsync(prompt);
+        return resultado.Content!;
     }
 }
 ```
@@ -80,10 +65,10 @@ public class TextoService(ITextoPollinationsApi textoApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
+| Pacote                                                                | Descrição                         |
+| --------------------------------------------------------------------- | --------------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors](../../README.pt-BR.md)                              | Visão geral do repositório        |
 
 ---
 

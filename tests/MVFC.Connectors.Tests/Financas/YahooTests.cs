@@ -14,13 +14,13 @@ public sealed class YahooTests : ConnectorTestsBase<IYahooApi>
         ValidarConfiguracaoApi(mode);
 
     protected override Task ExecutarChamadaBasica(IYahooApi api) =>
-        api.ObterMoedaPorNomeEPeriodoAsync("BRL");
+        api.ObterMoedaPorNomeEPeriodoAsync("USD");
 
     [Fact]
     public async Task ObterMoedaPorNome_DeveRetornarItemAsync()
     {
         // Arrange
-        const string MOEDA = "BRL";
+        const string MOEDA = "USD";
 
         // Act
         var yahooMoeda = await ManualApi.ObterMoedaPorNomeEPeriodoAsync(MOEDA);

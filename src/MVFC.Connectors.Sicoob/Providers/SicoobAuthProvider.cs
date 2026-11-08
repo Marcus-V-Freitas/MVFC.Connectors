@@ -6,7 +6,7 @@ internal sealed class SicoobAuthProvider(SicoobConfig config) : ITokenProvider
         await Task.FromResult(config.AccessToken).ConfigureAwait(false);
 
     public IDictionary<string, string> ObterAuthHeaders() =>
-        new Dictionary<string, string>()
+        new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
             { "client_id", config.ClientId },
         };

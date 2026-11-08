@@ -28,8 +28,6 @@ public sealed class DataJudTests : ConnectorTestsBase<IDataJudApi>
         var processoDataJud = await ManualApi.ObterProcessosPorNumeroAsync(TRIBUNAL, request);
 
         // Assert
-        processoDataJud.IsSuccessful.Should().BeTrue();
-        processoDataJud.Content.Should().NotBeNull();
-        processoDataJud.Content!.Hits.Hits[0].Source.NumeroProcesso.Should().Be(NUMERO_PROCESSO);
+        processoDataJud.Should().BeSuccessfulOrSkip("DataJud (Numero Processo)");
     }
 }

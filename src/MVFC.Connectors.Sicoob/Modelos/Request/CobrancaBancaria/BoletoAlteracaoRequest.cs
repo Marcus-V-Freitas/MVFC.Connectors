@@ -20,7 +20,7 @@ public sealed record BoletoAlteracaoRequest(
     public MultaAlteracaoDto? Multa { get; init; }
 
     [JsonPropertyName("jurosMora")]
-    public JurosMoraAlteracao? JurosMora { get; init; }
+    public JurosMoraAlteracaoDto? JurosMora { get; init; }
 
     [JsonPropertyName("rateioCredito")]
     public RateioCreditoAlteracaoDto? RateioCredito { get; init; }
@@ -29,7 +29,7 @@ public sealed record BoletoAlteracaoRequest(
     public PixAlteracaoDto? Pix { get; init; }
 
     [JsonPropertyName("prorrogacaoVencimento")]
-    public ProrrogacaoVencimento? ProrrogacaoVencimento { get; init; }
+    public ProrrogacaoVencimentoDto? ProrrogacaoVencimento { get; init; }
 
     [JsonPropertyName("prorrogacaoLimitePagamento")]
     public ProrrogacaoLimitePagamentoDto? ProrrogacaoLimitePagamento { get; init; }

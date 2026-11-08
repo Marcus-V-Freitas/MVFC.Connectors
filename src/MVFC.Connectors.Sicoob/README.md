@@ -5,7 +5,7 @@ Connector for Sicoob banking APIs, covering bank billing, boleto management, pay
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 English | [Português](README.pt-BR.md)
@@ -33,16 +33,16 @@ dotnet add package MVFC.Connectors.Sicoob
 
 ## Supported APIs
 
-| Interface | Description |
-|---|---|
-| `ISicoobCobrancaBancariaApi.Boleto` | Issue, query, and cancel boletos |
-| `ISicoobCobrancaBancariaApi.Health` | API health check |
-| `ISicoobCobrancaBancariaApi.Movimentacao` | Billing movement queries |
-| `ISicoobCobrancaBancariaApi.Negativacao` | Negativation operations |
-| `ISicoobCobrancaBancariaApi.Pagador` | Payer registration and management |
-| `ISicoobCobrancaBancariaApi.Protesto` | Protest operations |
-| `ISicoobCobrancaBancariaApi.Webhook` | Webhook registration and management |
-| `ISicoobCobrancaBancariaPagamentoApi.Boleto` | Boleto payment queries |
+| Interface                                       | Description                         |
+| ----------------------------------------------- | ----------------------------------- |
+| `ISicoobCobrancaBancariaApi.Boleto`             | Issue, query, and cancel boletos    |
+| `ISicoobCobrancaBancariaApi.Health`             | API health check                    |
+| `ISicoobCobrancaBancariaApi.Movimentacao`       | Billing movement queries            |
+| `ISicoobCobrancaBancariaApi.Negativacao`        | Negativation operations             |
+| `ISicoobCobrancaBancariaApi.Pagador`            | Payer registration and management   |
+| `ISicoobCobrancaBancariaApi.Protesto`           | Protest operations                  |
+| `ISicoobCobrancaBancariaApi.Webhook`            | Webhook registration and management |
+| `ISicoobCobrancaBancariaPagamentoApi.Boleto`    | Boleto payment queries              |
 | `ISicoobCobrancaBancariaPagamentoApi.Pagamento` | Payment confirmation and settlement |
 
 ---
@@ -102,10 +102,10 @@ public class PagamentoService(ISicoobCobrancaBancariaPagamentoApi pagamentoApi)
 
 ## Related Packages
 
-| Package | Description |
-|---|---|
+| Package                                                         | Description                                   |
+| --------------------------------------------------------------- | --------------------------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.md) | Shared HTTP infrastructure and authentication |
-| [MVFC.Connectors](../../README.md) | Repository overview |
+| [MVFC.Connectors](../../README.md)                              | Repository overview                           |
 
 ---
 

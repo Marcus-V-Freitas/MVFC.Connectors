@@ -5,7 +5,7 @@ public static class SicoobCobrancaBancariaExtensoes
     private static readonly Dictionary<bool, string> _urlsBase = new()
     {
         { false, "https://api.sicoob.com.br/cobranca-bancaria/v3" },
-        { true,  "https://sandbox.sicoob.com.br/sicoob/sandbox/cobranca-bancaria/v3" }
+        { true,  "https://sandbox.sicoob.com.br/sicoob/sandbox/cobranca-bancaria/v3" },
     };
 
     public static ISicoobCobrancaBancariaApi ObterSicoobCobrancaBancariaApi(SicoobConfig config)
@@ -19,6 +19,6 @@ public static class SicoobCobrancaBancariaExtensoes
     {
         ArgumentNullException.ThrowIfNull(config);
 
-        SicoobExtensoes.AddSicoob<ISicoobCobrancaBancariaApi>(services, _urlsBase, config);
-    }        
+        services.AddSicoob<ISicoobCobrancaBancariaApi>(_urlsBase, config);
+    }
 }

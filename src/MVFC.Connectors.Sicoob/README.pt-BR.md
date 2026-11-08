@@ -5,7 +5,7 @@ Conector para as APIs bancárias do Sicoob, cobrindo cobrança bancária, gestã
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Sicoob.svg)](https://www.nuget.org/packages/MVFC.Connectors.Sicoob)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -33,17 +33,17 @@ dotnet add package MVFC.Connectors.Sicoob
 
 ## APIs Suportadas
 
-| Interface | Descrição |
-|---|---|
-| `ISicoobCobrancaBancariaApi.Boleto` | Emissão, consulta e cancelamento de boletos |
-| `ISicoobCobrancaBancariaApi.Health` | Verificação de saúde da API |
-| `ISicoobCobrancaBancariaApi.Movimentacao` | Consulta de movimentações de cobrança |
-| `ISicoobCobrancaBancariaApi.Negativacao` | Operações de negativação |
-| `ISicoobCobrancaBancariaApi.Pagador` | Cadastro e gestão de pagadores |
-| `ISicoobCobrancaBancariaApi.Protesto` | Operações de protesto |
-| `ISicoobCobrancaBancariaApi.Webhook` | Registro e gerenciamento de webhooks |
-| `ISicoobCobrancaBancariaPagamentoApi.Boleto` | Consulta de boletos para pagamento |
-| `ISicoobCobrancaBancariaPagamentoApi.Pagamento` | Confirmação e liquidação de pagamentos |
+| Interface                                       | Descrição                                   |
+| ----------------------------------------------- | ------------------------------------------- |
+| `ISicoobCobrancaBancariaApi.Boleto`             | Emissão, consulta e cancelamento de boletos |
+| `ISicoobCobrancaBancariaApi.Health`             | Verificação de saúde da API                 |
+| `ISicoobCobrancaBancariaApi.Movimentacao`       | Consulta de movimentações de cobrança       |
+| `ISicoobCobrancaBancariaApi.Negativacao`        | Operações de negativação                    |
+| `ISicoobCobrancaBancariaApi.Pagador`            | Cadastro e gestão de pagadores              |
+| `ISicoobCobrancaBancariaApi.Protesto`           | Operações de protesto                       |
+| `ISicoobCobrancaBancariaApi.Webhook`            | Registro e gerenciamento de webhooks        |
+| `ISicoobCobrancaBancariaPagamentoApi.Boleto`    | Consulta de boletos para pagamento          |
+| `ISicoobCobrancaBancariaPagamentoApi.Pagamento` | Confirmação e liquidação de pagamentos      |
 
 ---
 
@@ -102,10 +102,10 @@ public class PagamentoService(ISicoobCobrancaBancariaPagamentoApi pagamentoApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
+| Pacote                                                                | Descrição                                        |
+| --------------------------------------------------------------------- | ------------------------------------------------ |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada e autenticação |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors](../../README.pt-BR.md)                              | Visão geral do repositório                       |
 
 ---
 

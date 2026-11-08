@@ -7,7 +7,4 @@ public interface IIbgeBrasilApi : IConnectorApi
 
     [Get("/ibge/uf/v1")]
     public Task<ApiResponse<IReadOnlyList<IbgeEstadoDto>>> ObterEstadosAsync();
-
-    [Get("/ibge/uf/v1/{codigo}")]
-    public Task<ApiResponse<IbgeEstadoDto>> ObterEstadoPorCodigoAsync(int codigo);
 }

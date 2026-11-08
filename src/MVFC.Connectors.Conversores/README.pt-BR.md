@@ -5,7 +5,7 @@ Conectores para serviços de conversão de conteúdo, incluindo tradução de te
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Conversores.svg)](https://www.nuget.org/packages/MVFC.Connectors.Conversores)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](../../LICENSE)
-[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
+[![CI](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Marcus-V-Freitas/MVFC.Connectors/actions/workflows/ci.yml)
 ![Platform](https://img.shields.io/badge/.NET-9%20%7C%2010-blue)
 
 [English](README.md) | Português
@@ -30,11 +30,11 @@ dotnet add package MVFC.Connectors.Conversores
 
 ## Serviços Suportados
 
-| Interface | Descrição |
-|---|---|
-| `IGoogleTradutorApi` | Tradução de texto via Google Tradutor |
-| `IDictionaryApi` | Definições, fonética e exemplos de palavras |
-| `IHtml2PdfApi` | Conversão de conteúdo HTML para PDF |
+| Interface            | Descrição                                   |
+| -------------------- | ------------------------------------------- |
+| `IGoogleTradutorApi` | Tradução de texto via Google Tradutor       |
+| `IDictionaryApi`     | Definições, fonética e exemplos de palavras |
+| `IHtml2PdfApi`       | Conversão de conteúdo HTML para PDF         |
 
 ---
 
@@ -79,10 +79,10 @@ public class DicionarioService(IDictionaryApi dictionaryApi)
 
 ## Pacotes Relacionados
 
-| Pacote | Descrição |
-|---|---|
+| Pacote                                                                | Descrição                         |
+| --------------------------------------------------------------------- | --------------------------------- |
 | [MVFC.Connectors.Commons](../MVFC.Connectors.Commons/README.pt-BR.md) | Infraestrutura HTTP compartilhada |
-| [MVFC.Connectors](../../README.pt-BR.md) | Visão geral do repositório |
+| [MVFC.Connectors](../../README.pt-BR.md)                              | Visão geral do repositório        |
 
 ---
 

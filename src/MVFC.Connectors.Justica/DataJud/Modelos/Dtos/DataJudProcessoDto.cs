@@ -1,4 +1,4 @@
-﻿namespace MVFC.Connectors.Justica.DataJud.Modelos;
+﻿namespace MVFC.Connectors.Justica.DataJud.Modelos.Dtos;
 
 public sealed record DataJudProcessoDto(
     [property: JsonPropertyName("classe")] DataJudClasseDto Classe,
@@ -10,7 +10,7 @@ public sealed record DataJudProcessoDto(
     [property: JsonPropertyName("grau")] string Grau,
     [property: JsonPropertyName("@timestamp")] string Timestamp,
     [property: JsonPropertyName("dataAjuizamento")] string DataAjuizamento,
-    [property: JsonPropertyName("movimentos")] IReadOnlyList<DataJudMovimento> Movimentos,
+    [property: JsonPropertyName("movimentos")] IReadOnlyList<DataJudMovimentoDto> Movimentos,
     [property: JsonPropertyName("id")] string Id,
     [property: JsonPropertyName("nivelSigilo")] int NivelSigilo,
     [property: JsonPropertyName("orgaoJulgador")] DataJudOrgaoJulgadorDto OrgaoJulgador,
