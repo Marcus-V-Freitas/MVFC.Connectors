@@ -1,6 +1,6 @@
 # MVFC.Connectors.Financas
 
-Connectors for financial data including BCB institutions, Yahoo Finance, and Reddit stock discussions.
+Connectors for financial data including BCB institutions, Yahoo Finance, and ETF data via Investo.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
@@ -16,7 +16,7 @@ English | [Português](README.pt-BR.md)
 
 - Full list of financial institutions registered at Banco Central do Brasil (BCB)
 - Stock and asset market data via Yahoo Finance
-- Stock ticker sentiment and discussion data from Reddit
+- ETF product data via Investo
 
 ---
 
@@ -34,7 +34,7 @@ dotnet add package MVFC.Connectors.Financas
 | -------------------- | ---------------------------------------- |
 | `IBcbInstituicaoApi` | Financial institutions registered at BCB |
 | `IYahooApi`          | Stock and asset market data              |
-| `IRedditStockApi`    | Reddit stock discussions and sentiment   |
+| `IInvestoApi`        | ETF product lookup by name               |
 
 ---
 
@@ -67,9 +67,22 @@ public class InstitutionService(IBcbInstituicaoApi bcbApi)
 // Get stock quote from Yahoo Finance
 public class StockService(IYahooApi yahooApi)
 {
-    public async Task<QuoteDto> GetQuoteAsync(string ticker, CancellationToken ct)
+    public async Task<YahooCurrencyDto> GetQuoteAsync(string ticker, CancellationToken ct)
     {
-        return await yahooApi.ObterAsync(ticker, ct);
+        var result = await yahooApi.ObterMoedaPorNomeEPeriodoAsync(ticker);
+        return result.Content!;
+    }
+}
+```
+
+```csharp
+// Look up an ETF by name via Investo
+public class EtfService(IInvestoApi investoApi)
+{
+    public async Task<InvestoEtfDto> GetEtfAsync(string name, CancellationToken ct)
+    {
+        var result = await investoApi.ObterEtfPorNomeAsync(name);
+        return result.Content!;
     }
 }
 ```

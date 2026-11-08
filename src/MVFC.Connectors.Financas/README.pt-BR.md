@@ -1,6 +1,6 @@
 # MVFC.Connectors.Financas
 
-Conectores para dados financeiros, incluindo instituições do BCB, Yahoo Finance e discussões de ações no Reddit.
+Conectores para dados financeiros, incluindo instituições do BCB, Yahoo Finance e dados de ETFs via Investo.
 
 [![NuGet](https://img.shields.io/nuget/v/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
 [![Downloads](https://img.shields.io/nuget/dt/MVFC.Connectors.Financas.svg)](https://www.nuget.org/packages/MVFC.Connectors.Financas)
@@ -16,7 +16,7 @@ Conectores para dados financeiros, incluindo instituições do BCB, Yahoo Financ
 
 - Lista completa de instituições financeiras registradas no Banco Central do Brasil (BCB)
 - Dados de mercado de ações e ativos via Yahoo Finance
-- Dados de discussões e sentimento de ações no Reddit
+- Dados de produtos ETF via Investo
 
 ---
 
@@ -34,7 +34,7 @@ dotnet add package MVFC.Connectors.Financas
 | -------------------- | ------------------------------------------- |
 | `IBcbInstituicaoApi` | Instituições financeiras registradas no BCB |
 | `IYahooApi`          | Dados de mercado de ações e ativos          |
-| `IRedditStockApi`    | Discussões e sentimento de ações no Reddit  |
+| `IInvestoApi`        | Consulta de ETFs por nome                   |
 
 ---
 
@@ -67,9 +67,22 @@ public class InstituicaoService(IBcbInstituicaoApi bcbApi)
 // Consultar cotação via Yahoo Finance
 public class AcaoService(IYahooApi yahooApi)
 {
-    public async Task<QuoteDto> ObterAsync(string ticker, CancellationToken ct)
+    public async Task<YahooCurrencyDto> ObterAsync(string ticker, CancellationToken ct)
     {
-        return await yahooApi.ObterAsync(ticker, ct);
+        var resultado = await yahooApi.ObterMoedaPorNomeEPeriodoAsync(ticker);
+        return resultado.Content!;
+    }
+}
+```
+
+```csharp
+// Consultar um ETF por nome via Investo
+public class EtfService(IInvestoApi investoApi)
+{
+    public async Task<InvestoEtfDto> ObterAsync(string nome, CancellationToken ct)
+    {
+        var resultado = await investoApi.ObterEtfPorNomeAsync(nome);
+        return resultado.Content!;
     }
 }
 ```

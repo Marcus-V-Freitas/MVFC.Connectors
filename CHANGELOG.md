@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.1] - 2026-11-08
+
+### Added
+
+- `global.json` pinning .NET SDK version `10.0.100` (`rollForward: latestFeature`) and configuring `Microsoft.Testing.Platform` test runner
+
+### Documentation
+
+- Synchronized root and domain package READMEs (EN and PT-BR):
+  - Documented `IInvestoApi` and removed deprecated Reddit references in `MVFC.Connectors.Financas`
+  - Documented `IDaliboExplainApi` and removed `IIpApi` / `IMysqlExplainApi` in `MVFC.Connectors.Developer`
+  - Removed `IGeoNetApi` references in `MVFC.Connectors.Geo`
+  - Removed `IImagemPollinationsApi` and provider references in `MVFC.Connectors.IA`
+  - Reflected updated FIPE service capabilities in `MVFC.Connectors.BrasilApi`
+
 ## [5.0.0] - 2026-11-08
 
 ### Removed
@@ -40,7 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `.config/dotnet-tools.json` — dotnet tools manifest added to the repository
-- `dotnet-tools.json` tooling configuration committed to source control
 
 ### Documentation
 
@@ -300,6 +314,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[5.0.1]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v4.0.0...v5.0.0
 [4.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.6...v4.0.0
 [3.0.6]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.5...v3.0.6
