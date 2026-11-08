@@ -26,7 +26,7 @@ public sealed class BancoDataTratadoTests : ConnectorTestsBase<IBancoDataTratado
         var dadosTratados = await ManualApi.ObterDadosTratadosAsync(BANK_CODE);
 
         // Assert
-        dadosTratados.IsSuccessStatusCode.Should().BeTrue("HTTP: {0}, Erro: {1}", dadosTratados.StatusCode, dadosTratados.Error?.ToString());
+        Assert.SkipUnless(dadosTratados.IsSuccessful, $"BancoData: {dadosTratados.Error?.Message}");
         dadosTratados.Content.Should().NotBeNull();
         dadosTratados.Content!.Codigo.Should().BeEquivalentTo(BANK_CODE);
     }

@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.3] - 2026-11-08
+
+### Fixed
+
+- **`MVFC.Connectors.BancoData`** — added early return in `BancoDataBrutoHandler` and `BancoDataTratadoHandler` when upstream HTTP response is not successful, preventing parsing and scraping errors on failed requests
+- **`MVFC.Connectors.Conversores`** — added early return in `GoogleTradutorHandler` when upstream HTTP response is not successful
+
+### Tests
+
+- Migrated integration tests to graceful test skipping via `Assert.SkipUnless` when external APIs are unavailable or fail (`BancoDataBrutoTests`, `BancoDataTratadoTests`, `IbgeTests`, `DictionaryApiTests`, `GoogleTradutorTests`)
+
 ## [5.0.2] - 2026-11-08
 
 ### Tests
@@ -320,6 +331,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[5.0.3]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.2...v5.0.3
 [5.0.2]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v4.0.0...v5.0.0

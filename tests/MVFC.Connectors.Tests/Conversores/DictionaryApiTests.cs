@@ -26,7 +26,7 @@ public sealed class DictionaryApiTests : ConnectorTestsBase<IDictionaryApi>
         var significado = await ManualApi.ObterSignificadoPorPalavraAsync(WORD);
 
         // Assert
-        significado.IsSuccessStatusCode.Should().BeTrue("HTTP: {0}, Erro: {1}", significado.StatusCode, significado.Error?.ToString());
+        Assert.SkipUnless(significado.IsSuccessful, $"Dictionary API: {significado.Error?.Message}");
         significado.Content.Should().NotBeNullOrEmpty();
         significado.Content![0].Word.Should().BeEquivalentTo(WORD);
     }

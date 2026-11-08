@@ -4,8 +4,10 @@ internal sealed class GoogleTradutorHandler : DelegatingHandler
 {
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+        if (!response.IsSuccessStatusCode)
+            return response;
 
         var conteudo = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
         var textoTraduzido = ExtrairTraducao(conteudo);

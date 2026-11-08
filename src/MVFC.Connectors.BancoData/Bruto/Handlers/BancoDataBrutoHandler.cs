@@ -17,6 +17,10 @@ internal sealed class BancoDataBrutoHandler(IBancoDataScraper scraper) : Delegat
         }
 
         var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+        if (!response.IsSuccessStatusCode)
+            return response;
+
         var html = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
         var dadosBrutos = await _scraper.ScrapeAsync(bankCode, html).ConfigureAwait(false);
 
