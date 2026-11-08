@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.2] - 2026-11-08
+
+### Tests
+
+- Enhanced assertion diagnostics across integration tests by including HTTP status codes and error details in failure messages (`BancoDataBrutoTests`, `BancoDataTratadoTests`, `IbgeTests`, `DictionaryApiTests`, and `GoogleTradutorTests`)
+
 ## [5.0.1] - 2026-11-08
 
 ### Added
@@ -314,6 +320,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[5.0.2]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.0...v5.0.1
 [5.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v4.0.0...v5.0.0
 [4.0.0]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v3.0.6...v4.0.0

@@ -33,14 +33,14 @@ public sealed class IbgeTests : ConnectorTestsBase<IIbgeBrasilApi>
         var municipios = await ManualApi.ObterMunicipiosPorUfAsync(SIGLA_UF, _provedores);
 
         // Assert
-        municipios.IsSuccessful.Should().BeTrue();
+        municipios.IsSuccessful.Should().BeTrue("HTTP: {0}, Erro: {1}", municipios.StatusCode, municipios.Error?.ToString());
         municipios.Content.Should().NotBeNullOrEmpty();
 
         // Arrange & Act
         var ufs = await ManualApi.ObterEstadosAsync();
 
         // Assert
-        ufs.IsSuccessful.Should().BeTrue();
+        ufs.IsSuccessful.Should().BeTrue("HTTP: {0}, Erro: {1}", ufs.StatusCode, ufs.Error?.ToString());
         ufs.Content.Should().NotBeNullOrEmpty();
     }
 }

@@ -27,7 +27,7 @@ public sealed class GoogleTradutorTests : ConnectorTestsBase<IGoogleTradutorApi>
         var textoGerado = await ManualApi.TraduzirTextoAsync(TEXTO_DE_ENTRADA, "en", "pt-br");
 
         // Assert
-        textoGerado.IsSuccessStatusCode.Should().BeTrue();
+        textoGerado.IsSuccessful.Should().BeTrue("HTTP: {0}, Erro: {1}", textoGerado.StatusCode, textoGerado.Error?.ToString());
         textoGerado.Content.Should().NotBeNullOrEmpty();
         textoGerado.Content.Should().BeEquivalentTo(TEXTO_ESPERADO);
     }

@@ -26,7 +26,7 @@ public sealed class BancoDataBrutoTests : ConnectorTestsBase<IBancoDataBrutoApi>
         var dadosBrutos = await ManualApi.ObterDadosBrutosAsync(BANK_CODE);
 
         // Assert
-        dadosBrutos.IsSuccessStatusCode.Should().BeTrue();
+        dadosBrutos.IsSuccessStatusCode.Should().BeTrue("HTTP: {0}, Erro: {1}", dadosBrutos.StatusCode, dadosBrutos.Error?.ToString());
         dadosBrutos.Content.Should().NotBeNull();
         dadosBrutos.Content!.Codigo.Should().BeEquivalentTo(BANK_CODE);
     }
