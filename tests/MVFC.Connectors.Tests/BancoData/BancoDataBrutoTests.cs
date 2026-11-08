@@ -42,7 +42,7 @@ public sealed class BancoDataBrutoTests : ConnectorTestsBase<IBancoDataBrutoApi>
 
         // Assert
         dadosBrutos.IsSuccessful.Should().BeFalse();
-        dadosBrutos.StatusCode.Should().BeNull();
+        Assert.SkipUnless(dadosBrutos.StatusCode is null, $"API indisponível: {dadosBrutos.StatusCode} - {dadosBrutos.Error?.Message}");        
         dadosBrutos.Error.Should().NotBeNull();
         dadosBrutos.Error!.InnerException
                           .Should().BeOfType<ScraperException>()

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.4] - 2026-11-08
+
+### Tests
+
+- Updated `BancoDataBrutoTests` to gracefully skip via `Assert.SkipUnless` when upstream status code is unexpected due to external API unavailability, ensuring resilient execution across pipeline runs
+
 ## [5.0.3] - 2026-11-08
 
 ### Fixed
@@ -331,6 +337,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+[5.0.4]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.3...v5.0.4
 [5.0.3]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.2...v5.0.3
 [5.0.2]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.1...v5.0.2
 [5.0.1]: https://github.com/Marcus-V-Freitas/MVFC.Connectors/compare/v5.0.0...v5.0.1
